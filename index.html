@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OddsZaMtaa - Odds, Predictions & WWE | Kenya</title>
+<style>
+body{font-family:Arial;background:#0f0f0f;color:#fff;margin:0;padding:0}
+header{background:#ffcc00;color:#000;padding:15px;text-align:center}
+header h1{margin:0;font-size:28px}
+.search{padding:20px;text-align:center}
+.search input{width:80%;max-width:500px;padding:12px;border-radius:20px;border:none;font-size:16px}
+.card{background:#1e1e1e;margin:15px;padding:15px;border-radius:12px;border-left:5px solid #ffcc00}
+.card h3{margin:0 0 5px}
+.odds{color:#ffcc00;font-weight:bold}
+.btn{display:inline-block;padding:10px 15px;margin:5px 5px 0 0;border-radius:8px;text-decoration:none;color:#fff;font-weight:bold}
+.betika{background:#008000}.sportpesa{background:#0000ff}.odibets{background:#ff6600}
+footer{text-align:center;padding:20px;font-size:13px;color:#aaa}
+</style>
+</head>
+<body>
+<header>
+<h1>⚽ ODDS ZA MTAA 🔥</h1>
+<p>Predictions Za Mtaa | WWE | Football | Global</p>
+</header>
+<div class="search">
+<input type="text" id="searchInput" onkeyup="search()" placeholder="Search... Cody Rhodes, Man United...">
+</div>
+<div id="matches">
+<div class="card">
+<h3>👑 WWE: Cody Rhodes vs Randy Orton</h3>
+<p>Leo 9PM - Crown Jewel Rematch</p>
+<p><b>Prediction Yangu:</b> CODY TO WIN</p>
+<p class="odds">Odds: Cody 1.85 | Orton 1.95</p>
+<a class="btn betika" href="https://www.betika.com/" target="_blank">BET HAPA - BETIKA</a>
+<a class="btn sportpesa" href="https://www.sportpesa.com/" target="_blank">BET HAPA - SPORTPESA</a>
+<a class="btn odibets" href="https://www.odibets.com/" target="_blank">BET HAPA - ODIBETS</a>
+</div>
+<div class="card">
+<h3>⚽ Man United vs Arsenal</h3>
+<p>Jumamosi 6PM - Premier League</p>
+<p><b>Prediction Yangu:</b> OVER 2.5 GOALS</p>
+<p class="odds">Odds: Over 1.90 | Under 1.85</p>
+<a class="btn betika" href="https://www.betika.com/" target="_blank">BET HAPA - BETIKA</a>
+<a class="btn sportpesa" href="https://www.sportpesa.com/" target="_blank">BET HAPA - SPORTPESA</a>
+<a class="btn odibets" href="https://www.odibets.com/" target="_blank">BET HAPA - ODIBETS</a>
+</div>
+</div>
+<footer>18+ ONLY | Bet Responsibly | Usibet na pesa ya rent<br>© 2026 OddsZaMtaa</footer>
+<script>
+function search(){
+let input=document.getElementById('searchInput').value.toLowerCase();
+let cards=document.getElementsByClassName('card');
+for(let i=0;i<cards.length;i++){
+let txt=cards[i].innerText.toLowerCase();
+cards[i].style.display=txt.includes(input)?"":"none";
+}
+}
+</script>
+</body>
+</html>
