@@ -1,9 +1,9 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="sw">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ODDS ZA MTAA 🔥 | Predictions Live</title>
+<title>ODDS ZA MTAA 🔥 | LIVE</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 body{background:#111;color:#fff}
@@ -35,9 +35,8 @@ header p{font-size:13px;margin-top:4px}
 <h1>⚽ ODDS ZA MTAA 🔥</h1>
 <p>Predictions Za Mtaa | LIVE Scores | Football | WWE | Global</p>
 </header>
-
 <div class="search-box">
-<input id="search" placeholder="Search... Chelsea, Arsenal, Real Madrid, Cody Rhodes..." oninput="filterGames()">
+<input id="search" placeholder="Search... Chelsea, Arsenal, Real Madrid, Cody..." oninput="render()">
 </div>
 <div class="tabs">
 <button class="active" onclick="setTab('all',this)">Zote</button>
@@ -46,110 +45,108 @@ header p{font-size:13px;margin-top:4px}
 <button onclick="setTab('tomorrow',this)">Kesho</button>
 <button onclick="setTab('wwe',this)">WWE</button>
 </div>
-
 <div id="status">⏳ Inavuta game za live...</div>
 <div id="games"></div>
 <div class="footer">ODDS ZA MTAA © 2026 | Build na Mtaa, kwa Mtaa | Bet Responsibly 18+</div>
-
 <script>
-let allGames = [];
-let currentTab = 'all';
-
-// MANUAL - Hizi ndio fallback kama API imezima + WWE
-const manualGames = [
-{title:"👑 WWE: Cody Rhodes vs Randy Orton", time:"Leo 9PM - Crown Jewel Rematch", pred:"CODY TO WIN", odds:"Cody 1.85 | Orton 1.95", type:"wwe", status:"manual"},
-{title:"⚽ Man United vs Arsenal", time:"Jumamosi 6PM - Premier League", pred:"OVER 2.5 GOALS", odds:"Over 1.90 | Under 1.85", type:"today", status:"manual"},
-{title:"⚽ Chelsea vs Tottenham", time:"Jumamosi 5:30PM - Premier League", pred:"CHELSEA TO WIN + BTTS", odds:"Chelsea 2.10 | Draw 3.40 | Spurs 3.20", type:"tomorrow", status:"manual"},
-{title:"⚽ Man City vs Liverpool", time:"Jumapili 7PM - Premier League", pred:"OVER 2.5 GOALS", odds:"Over 1.75 | Under 2.05", type:"tomorrow", status:"manual"},
-{title:"⚽ Real Madrid vs Barcelona", time:"Jumapili 10PM - La Liga", pred:"BTTS YES", odds:"BTTS 1.70", type:"tomorrow", status:"manual"},
+let allGames=[];
+let currentTab='all';
+const manualGames=[
+{title:"👑 WWE: Cody Rhodes vs Randy Orton",time:"Leo 9PM - Crown Jewel Rematch",pred:"CODY TO WIN",odds:"Cody 1.85 | Orton 1.95",type:"wwe",status:"manual"},
+{title:"⚽ Man United vs Arsenal",time:"Jumamosi 6PM - Premier League",pred:"OVER 2.5 GOALS",odds:"Over 1.90 | Under 1.85",type:"today",status:"manual"},
+{title:"⚽ Chelsea vs Tottenham",time:"Jumamosi 5:30PM - Premier League",pred:"CHELSEA TO WIN + BTTS",odds:"Chelsea 2.10 | Draw 3.40 | Spurs 3.20",type:"tomorrow",status:"manual"},
+{title:"⚽ Man City vs Liverpool",time:"Jumapili 7PM - Premier League",pred:"OVER 2.5 GOALS",odds:"Over 1.75 | Under 2.05",type:"tomorrow",status:"manual"},
+{title:"⚽ Real Madrid vs Barcelona",time:"Jumapili 10PM - La Liga",pred:"BTTS YES",odds:"BTTS 1.70",type:"tomorrow",status:"manual"},
 ];
-
-function fmtDate(d){ return d.toISOString().slice(0,10).replace(/-/g,''); }
-function getDates(){
-  let t=new Date(), tm=new Date(Date.now()+86400000);
-  return {today: fmtDate(t), tomorrow: fmtDate(tm)};
+function fmtDate(d){return d.toISOString().slice(0,10).replace(/-/g,'')}
+const leagues=["eng.1","esp.1","ita.1","ger.1","fra.1","ned.1","por.1","uefa.champions","uefa.europa","mex.1","bra.1"];
+async function fetchWithProxy(url){
+  // Jaribu njia 3 - moja lazima ipite
+  const tries=[
+    `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
+    `https://corsproxy.io/?url=${encodeURIComponent(url)}`,
+    url
+  ];
+  for(let u of tries){
+    try{
+      let r=await fetch(u);
+      if(r.ok) return await r.json();
+    }catch(e){}
+  }
+  return null;
 }
-const leagues = ["eng.1","esp.1","ita.1","ger.1","fra.1","ned.1","por.1","uefa.champions","uefa.europa"];
-
 async function loadLive(){
-  const {today, tomorrow} = getDates();
-  let fetched = [];
-  // Jaribu ESPN - BURE, haina key
+  let t=new Date(), tm=new Date(Date.now()+86400000);
+  let dates=[{label:'today',d:fmtDate(t)},{label:'tomorrow',d:fmtDate(tm)}];
+  let fetched=[];
+  document.getElementById('status').innerText="⏳ Inavuta game za live... Tafadhali ngoja 10 sec";
   for(let league of leagues){
-    for(let [label, date] of [["today",today],["tomorrow",tomorrow]]){
-      try{
-        let res = await fetch(`https://site.api.espn.com/apis/site/v2/sports/soccer/${league}/scoreboard?dates=${date}`);
-        let data = await res.json();
-        if(data.events) data.events.forEach(ev=>{
-          let comp = ev.competitions[0];
-          let home = comp.competitors.find(c=>c.homeAway==='home');
-          let away = comp.competitors.find(c=>c.homeAway==='away');
-          let isLive = comp.status.type.state==='in';
-          let isDone = comp.status.type.state==='post';
+    for(let dt of dates){
+      let url=`https://site.api.espn.com/apis/site/v2/sports/soccer/${league}/scoreboard?dates=${dt.d}`;
+      let data=await fetchWithProxy(url);
+      if(data && data.events){
+        data.events.forEach(ev=>{
+          let comp=ev.competitions[0];
+          let home=comp.competitors.find(c=>c.homeAway==='home');
+          let away=comp.competitors.find(c=>c.homeAway==='away');
+          let isLive=comp.status.type.state==='in';
+          let isDone=comp.status.type.state==='post';
           fetched.push({
             title:`⚽ ${home.team.displayName} vs ${away.team.displayName}`,
-            time: isLive ? `🔴 LIVE - ${comp.status.displayClock || ''} | ${home.score} - ${away.score}` : isDone ? `FT: ${home.score} - ${away.score}` : `${label==='today'?'Leo':'Kesho'} ${new Date(ev.date).toLocaleTimeString('sw-KE',{hour:'2-digit',minute:'2-digit'})} - ${ev.league || data.leagues?.[0]?.name || 'Football'}`,
-            pred: isLive ? `SCORE LIVE: ${home.score} - ${away.score}` : isDone ? `FULL TIME: ${home.score} - ${away.score}` : "PREDICTION: ANGALIA ODDS KWA BETIKA",
+            time:isLive?`🔴 LIVE - ${comp.status.displayClock||''} | ${home.score} - ${away.score}`:isDone?`FT: ${home.score} - ${away.score}`:`${dt.label==='today'?'Leo':'Kesho'} ${new Date(ev.date).toLocaleTimeString('sw-KE',{hour:'2-digit',minute:'2-digit'})} - ${ev.league || 'Football'}`,
+            pred:isLive?`SCORE LIVE: ${home.score} - ${away.score}`:isDone?`FULL TIME: ${home.score} - ${away.score}`:"PREDICTION: ANGALIA ODDS KWA BETIKA",
             odds:"Check Odds Live kwa Betika / SportPesa",
-            type: isLive ? 'live' : label,
-            status: isLive ? 'live' : 'api',
-            isLive
+            type:isLive?'live':dt.label,
+            status:'api', isLive
           });
         });
-      }catch(e){}
+      }
     }
   }
+  // BACKUP 2: TheSportsDB - kama ESPN imefail
   if(fetched.length===0){
-    document.getElementById('status').innerText = "⚠️ Live API haijapatikana sai - Inaonyesha game za manual";
-    allGames = [...manualGames];
-  } else {
-    document.getElementById('status').innerText = `✅ ${fetched.length} game za live zimepatikana | + WWE & Manual`;
-    allGames = [...fetched, ...manualGames];
+    try{
+      let d2=await fetchWithProxy(`https://www.thesportsdb.com/api/v1/json/3/eventsday.php?d=${t.toISOString().slice(0,10)}&s=Soccer`);
+      if(d2 && d2.events){
+        d2.events.forEach(ev=>{
+          fetched.push({title:`⚽ ${ev.strHomeTeam} vs ${ev.strAwayTeam}`,time:`Leo ${ev.strTime} - ${ev.strLeague}`,pred:ev.strStatus&&ev.strStatus!=='Not Started'?`LIVE: ${ev.intHomeScore} - ${ev.intAwayScore}`:"PREDICTION: ANGALIA ODDS",odds:"Check Odds Live",type:'today',status:'api',isLive:ev.strStatus==='1H'||ev.strStatus==='2H'});
+        });
+      }
+    }catch(e){}
+  }
+  if(fetched.length===0){
+    document.getElementById('status').innerText="⚠️ Live API inachelewa sai - Inaonyesha game za manual. Refresh baada ya 1 min.";
+    allGames=[...manualGames];
+  }else{
+    document.getElementById('status').innerText=`✅ ${fetched.length} game za LIVE zimepatikana! Search timu yoyote.`;
+    allGames=[...fetched,...manualGames];
   }
   render();
 }
-
-function setTab(tab, btn){
-  currentTab = tab;
-  document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  render();
-}
-
-function filterGames(){ render(); }
-
+function setTab(tab,btn){currentTab=tab;document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');render();}
 function render(){
-  let q = document.getElementById('search').value.toLowerCase();
-  let list = allGames.filter(g=>{
-    if(currentTab==='live' && !g.isLive) return false;
-    if(currentTab==='today' && g.type!=='today' && g.type!=='live') return false;
-    if(currentTab==='tomorrow' && g.type!=='tomorrow') return false;
-    if(currentTab==='wwe' && g.type!=='wwe') return false;
-    if(q && !g.title.toLowerCase().includes(q)) return false;
+  let q=document.getElementById('search').value.toLowerCase();
+  let list=allGames.filter(g=>{
+    if(currentTab==='live'&&!g.isLive) return false;
+    if(currentTab==='today'&&g.type!=='today'&&g.type!=='live') return false;
+    if(currentTab==='tomorrow'&&g.type!=='tomorrow') return false;
+    if(currentTab==='wwe'&&g.type!=='wwe') return false;
+    if(q&&!g.title.toLowerCase().includes(q)) return false;
     return true;
   });
-  let box = document.getElementById('games');
-  if(list.length===0){
-    box.innerHTML = `<div style="text-align:center;padding:30px;color:#aaa">Hakuna game ya "<b>${q}</b>" sai.<br><br>Jaribu: Chelsea, Arsenal, Real Madrid, Man City<br>Au angalia tab ya Zote.</div>`;
-    return;
-  }
-  box.innerHTML = list.map(g=>`
+  let box=document.getElementById('games');
+  if(list.length===0){box.innerHTML=`<div style="text-align:center;padding:30px;color:#aaa">Hakuna game ya "<b>${q}</b>" sai.<br><br>Jaribu: Chelsea, Arsenal, Real Madrid<br>Au angalia tab ya Zote.</div>`;return;}
+  box.innerHTML=list.map(g=>`
     <div class="card ${g.isLive?'live':''}">
       <span class="badge ${g.isLive?'live':''}">${g.isLive?'🔴 LIVE SAI':g.status==='manual'?'MANUAL / WWE':g.type==='today'?'LEO':'KESHO / LIVE'}</span>
-      <h3>${g.title}</h3>
-      <p>${g.time}</p>
-      <p><b>Prediction Yangu:</b> ${g.pred}</p>
-      <p class="odds">Odds: ${g.odds}</p>
+      <h3>${g.title}</h3><p>${g.time}</p><p><b>Prediction Yangu:</b> ${g.pred}</p><p class="odds">Odds: ${g.odds}</p>
       <a class="btn betika" href="https://www.betika.com" target="_blank">BET HAPA - BETIKA</a>
       <a class="btn sportpesa" href="https://www.sportpesa.com" target="_blank">BET HAPA - SPORTPESA</a>
       <a class="btn odibets" href="https://www.odibets.com" target="_blank">BET HAPA - ODIBETS</a>
-    </div>
-  `).join('');
+    </div>`).join('');
 }
-
 loadLive();
-// Refresh kila dakika 1 - scores live zinabadilika
-setInterval(loadLive, 60000);
+setInterval(loadLive,60000);
 </script>
 </body>
 </html>
