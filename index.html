@@ -50,7 +50,7 @@ header p{font-size:12px;margin-top:3px}
 <p id="hSub">Football Predictions Today | LIVE Scores | Betting Tips</p>
 </header>
 <div id="langBar">🌍 Language: <button data-lang="sw" onclick="setLang('sw')">Sheng 🇰🇪</button><button data-lang="en" onclick="setLang('en')">English 🇬🇧</button><button data-lang="fr" onclick="setLang('fr')">Français 🇫🇷</button><button data-lang="es" onclick="setLang('es')">Español 🇪🇸</button><button data-lang="pt" onclick="setLang('pt')">Português 🇧🇷</button></div>
-<div class="vip"><span id="vipText">💰 VIP TIPS ZA UHAKIKA? Join WhatsApp</span> 👉 <a id="vipLink" href="https://wa.me/254700000000?text=Nataka%20kujiunga%20VIP%20ODDS%20ZA%20MTAA">CLICK HAPA</a></div>
+<div class="vip"><span id="vipText">💰 VIP TIPS ZA UHAKIKA? Join WhatsApp</span> 👉 <a id="vipLink" href="https://chat.whatsapp.com/FQnuLO1K8Gg1tLm2ouTCt9">CLICK HAPA</a></div>
 <div class="search-box">
 <input id="search" placeholder="Search your team... Chelsea, Arsenal, Real Madrid..." oninput="render()">
 </div>
@@ -75,7 +75,6 @@ pt:{title:"⚽ ODDS ZA MTAA 🔥",sub:"Palpites de Futebol Hoje | Placar AO VIVO
 };
 let curLang='en';
 function setLang(l){curLang=l;let t=LANGS[l];document.getElementById('hTitle').innerText=t.title;document.getElementById('hSub').innerText=t.sub;document.getElementById('vipText').innerText=t.vip;document.getElementById('search').placeholder=t.search;document.getElementById('seoH').innerText=t.seoH;document.getElementById('seoP').innerText=t.seoP;document.getElementById('footBet').innerText=t.foot;document.querySelectorAll('[data-t]').forEach(e=>{e.innerText=t[e.dataset.t]});document.querySelectorAll('#langBar button').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));render();}
-// AUTO DETECT COUNTRY -> LANGUAGE
 async function detectLang(){
   try{
     let r=await fetch('https://ipapi.co/json/');let d=await r.json();
@@ -118,4 +117,4 @@ function render(){
 allGames=[...manualGames];detectLang();render();loadLive();setInterval(loadLive,60000);
 </script>
 </body>
-</html>
+  </html>
