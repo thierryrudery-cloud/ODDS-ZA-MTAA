@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ODDS ZA MTAA 🔥 | All Football Games Today Worldwide, LIVE Scores, Predictions & WWE</title>
-<meta name="description" content="ODDS ZA MTAA - All Football Games Today Worldwide, LIVE Scores, Predictions for Every Team, Every League. Search Any Team.">
-<meta name="keywords" content="all football games today, live scores worldwide, football predictions, odds za mtaa, every league">
+<meta name="description" content="ODDS ZA MTAA - All Football Games Today Worldwide, LIVE Scores, Predictions for Every Team. Search Any Team.">
+<meta name="keywords" content="all football games today, live scores worldwide, football predictions, odds za mtaa">
 <meta property="og:title" content="ODDS ZA MTAA 🔥 | All Games Worldwide Today">
 <meta property="og:description" content="Search ANY Team In The World - All Games Today, LIVE Scores & Highlights Predictions">
 <meta name="robots" content="index, follow">
@@ -54,90 +54,103 @@ header p{font-size:12px;margin-top:3px}
 <h1>⚽ ODDS ZA MTAA 🔥</h1>
 <p>All Games Worldwide Today | LIVE Scores | Highlights Predictions</p>
 </header>
-<div class="trust">🌍 GLOBAL - <span id="gameCount">Loading...</span> Games Today Worldwide | <span>Updated: <span id="lastUpdate">Just Now</span></span></div>
+<div class="trust">🌍 GLOBAL - <span id="gameCount">Loading...</span> | <span>Updated: <span id="lastUpdate">Just Now</span></span></div>
 <div id="langBar">🌍 Language: <button data-lang="sw" onclick="setLang('sw')">Sheng 🇰🇪</button><button data-lang="en" onclick="setLang('en')">English 🇬🇧</button><button data-lang="fr" onclick="setLang('fr')">Français 🇫🇷</button><button data-lang="es" onclick="setLang('es')">Español 🇪🇸</button><button data-lang="pt" onclick="setLang('pt')">Português 🇧🇷</button></div>
 <div class="vip"><span>💰 VIP TIPS ZA UHAKIKA? Join WhatsApp</span><br><a href="https://chat.whatsapp.com/FQnuLO1K8Gg1tLm2ouTCt9">👉 CLICK HAPA - JOIN VIP GROUP</a><small>VIP: 200 KES / Week - Lipa M-Pesa Kuingia, Tips Za Uhakika Kila Siku</small></div>
-<div class="search-box"><input id="search" placeholder="Search ANY team in the world... Real, Arsenal, Al Nassr, Gor, Kaizer..." oninput="render()"></div>
+<div class="search-box"><input id="search" placeholder="Search ANY team... AS Roma, Real, Arsenal, Al Nassr, Gor..." oninput="render()"></div>
 <div class="tabs">
-<button onclick="setTab('highlights',this)">⭐ Highlights - Predictions</button>
-<button id="btn-all" class="active" onclick="setTab('all',this)">🌍 All Games Today</button>
+<button id="btn-all" class="active" onclick="setTab('all',this)">All</button>
 <button onclick="setTab('live',this)">🔴 LIVE Now</button>
+<button onclick="setTab('today',this)">Today</button>
 <button onclick="setTab('tomorrow',this)">Tomorrow</button>
+<button onclick="setTab('highlights',this)">⭐ Highlights - Predictions</button>
 <button onclick="setTab('wwe',this)">WWE</button>
 </div>
 <div id="status">🌍 Loading All Games Worldwide...</div>
 <div id="games"></div>
-<div class="seo-text"><h2>All Football Games Today Worldwide - Premier League, La Liga, Serie A, Bundesliga, MLS, Saudi Pro League, FKF, WWE</h2><p>Search any team in the world. Highlights show our expert predictions. All Games shows every fixture today from every league.</p></div>
+<div class="seo-text"><h2>All Football Games Today Worldwide - Premier League, La Liga, Serie A, Bundesliga, MLS, Saudi Pro League, FKF, WWE</h2><p>Search any team in the world. Highlights show our expert predictions. All Games shows every fixture today.</p></div>
 <div class="footer">ODDS ZA MTAA © 2026 | Global Football, Mtaa Style<br>Bet Responsibly 18+</div>
 <script>
 let curLang='en';
-const LANGS={sw:{search:"Search timu YOYOTE duniani... Real, Arsenal, Gor, Al Nassr..."},en:{search:"Search ANY team in the world... Real, Arsenal, Al Nassr, Gor..."},fr:{search:"Recherchez n'importe quelle équipe..."},es:{search:"Busca cualquier equipo del mundo..."},pt:{search:"Pesquise qualquer time do mundo..."}};
+const LANGS={sw:{search:"Search timu YOYOTE... AS Roma, Real, Arsenal, Gor..."},en:{search:"Search ANY team... AS Roma, Real, Arsenal, Al Nassr, Gor..."},fr:{search:"Recherchez n'importe quelle équipe..."},es:{search:"Busca cualquier equipo del mundo..."},pt:{search:"Pesquise qualquer time do mundo..."}};
 function setLang(l){curLang=l;document.getElementById('search').placeholder=LANGS[l].search;document.querySelectorAll('#langBar button').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));render();}
 function detectLang(){try{let bl=(navigator.language||'en').slice(0,2); if(LANGS[bl]) setLang(bl); else setLang('en');}catch(e){setLang('en');}}
 let allGames=[];let currentTab='all';
-// HIGHLIGHTS - Game kubwa tu zenye prediction - TRUE, za mbele
 const highlights=[
-{title:"⚽ Arsenal vs Tottenham - North London Derby",time:"Sat Nov 14, 2026 - 6:30PM - Premier League - VERIFIED",pred:"OVER 2.5 GOALS + BTTS - Derby huwa na magoli mengi",odds:"Over 2.5: 1.85 | BTTS: 1.70",type:"highlights",status:"manual",isLive:false,verified:true,isHighlight:true},
-{title:"⚽ Chelsea vs Man City",time:"Sat Nov 14, 2026 - 8:45PM - Premier League - VERIFIED",pred:"OVER 2.5 GOALS",odds:"Over 2.5: 1.80",type:"highlights",status:"manual",isLive:false,verified:true,isHighlight:true},
-{title:"⚽ Real Madrid vs Sevilla",time:"Fri Nov 13, 2026 - 10PM - La Liga - VERIFIED",pred:"REAL MADRID TO WIN + OVER 2.5",odds:"Real Win: 1.45 | Over 2.5: 1.65",type:"highlights",status:"manual",isLive:false,verified:true,isHighlight:true},
-{title:"⚽ Gor Mahia vs Tusker FC",time:"Sun Nov 15, 2026 - 3PM - FKF Premier - VERIFIED",pred:"GOR TO WIN / DRAW - Home Advantage",odds:"Gor Win: 2.10 | Draw: 3.10",type:"highlights",status:"manual",isLive:false,verified:true,isHighlight:true},
-{title:"⚽ Liverpool vs Newcastle",time:"Sun Nov 15, 2026 - 6PM - Premier League - VERIFIED",pred:"LIVERPOOL TO WIN",odds:"Liverpool: 1.75",type:"highlights",status:"manual",isLive:false,verified:true,isHighlight:true},
-{title:"👑 WWE: Survivor Series - Cody Rhodes vs Seth Rollins",time:"Sun Nov 29, 2026 - 9PM - Survivor Series - UPCOMING",pred:"CODY RHODES TO WIN",odds:"Cody: 1.60 | Seth: 2.30",type:"wwe",status:"manual",isLive:false,verified:true,isHighlight:true},
-{title:"👑 WWE: Survivor Series - Rhea Ripley Team vs Bianca Belair Team",time:"Sun Nov 29, 2026 - 9PM - Survivor Series",pred:"TEAM RHEA TO WIN",odds:"Team Rhea: 1.75",type:"wwe",status:"manual",isLive:false,verified:true,isHighlight:true},
+{title:"⚽ AS Roma vs Lazio - Derby Della Capitale",time:"Sun Nov 15, 2026 - 8:45PM - Serie A - VERIFIED",pred:"BTTS YES + OVER 2.5 - Derby huwa moto",odds:"BTTS: 1.80 | Over 2.5: 1.95",type:"highlights",status:"manual",isLive:false,verified:true,isHighlight:true,league:"Serie A"},
+{title:"⚽ Arsenal vs Tottenham - North London Derby",time:"Sat Nov 14, 2026 - 6:30PM - Premier League - VERIFIED",pred:"OVER 2.5 GOALS + BTTS",odds:"Over 2.5: 1.85 | BTTS: 1.70",type:"highlights",status:"manual",isLive:false,verified:true,isHighlight:true,league:"Premier League"},
+{title:"⚽ Chelsea vs Man City",time:"Sat Nov 14, 2026 - 8:45PM - Premier League - VERIFIED",pred:"OVER 2.5 GOALS",odds:"Over 2.5: 1.80",type:"highlights",status:"manual",isLive:false,verified:true,isHighlight:true,league:"Premier League"},
+{title:"⚽ Real Madrid vs Sevilla",time:"Fri Nov 13, 2026 - 10PM - La Liga - VERIFIED",pred:"REAL MADRID TO WIN + OVER 2.5",odds:"Real Win: 1.45 | Over 2.5: 1.65",type:"highlights",status:"manual",isLive:false,verified:true,isHighlight:true,league:"La Liga"},
+{title:"⚽ Gor Mahia vs Tusker FC",time:"Sun Nov 15, 2026 - 3PM - FKF Premier - VERIFIED",pred:"GOR TO WIN / DRAW",odds:"Gor Win: 2.10 | Draw: 3.10",type:"highlights",status:"manual",isLive:false,verified:true,isHighlight:true,league:"FKF"},
+{title:"⚽ Inter Milan vs Juventus",time:"Sun Nov 15, 2026 - 8:45PM - Serie A - VERIFIED",pred:"OVER 1.5 GOALS + BTTS",odds:"Over 1.5: 1.30 | BTTS: 1.85",type:"highlights",status:"manual",isLive:false,verified:true,isHighlight:true,league:"Serie A"},
+{title:"👑 WWE: Survivor Series - Cody Rhodes vs Seth Rollins",time:"Sun Nov 29, 2026 - 9PM - Survivor Series - UPCOMING",pred:"CODY RHODES TO WIN",odds:"Cody: 1.60 | Seth: 2.30",type:"wwe",status:"manual",isLive:false,verified:true,isHighlight:true,league:"WWE"},
 ];
 function fmtDate(d){return d.toISOString().slice(0,10).replace(/-/g,'')}
-// GLOBAL LEAGUES - ZOTE DUNIANI - ESPN Codes
-const leagues=[
-"eng.1","eng.2","eng.3","esp.1","esp.2","ita.1","ita.2","ger.1","ger.2","fra.1","fra.2","ned.1","por.1","bel.1","sco.1","tur.1","sui.1","aut.1","gre.1","den.1","nor.1","swe.1","pol.1","ukr.1","rus.1","uefa.champions","uefa.europa","uefa.europa.conf","mex.1","bra.1","arg.1","usa.1","chn.1","jpn.1","kor.1","aus.1","ksa.1","egy.1","nga.1","zaf.1","ken.1"
-];
-async function fetchFast(url){try{let c=new AbortController();setTimeout(()=>c.abort(),5000);let r=await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,{signal:c.signal});if(r.ok) return await r.json();}catch(e){} return null;}
+async function fetchGlobal(dateStr){
+  const urls=[
+    `https://site.api.espn.com/apis/site/v2/sports/soccer/scoreboard?dates=${dateStr}&limit=1000`,
+    `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://site.api.espn.com/apis/site/v2/sports/soccer/scoreboard?dates=${dateStr}&limit=1000`)}`
+  ];
+  for(let u of urls){
+    try{let c=new AbortController();setTimeout(()=>c.abort(),6000);let r=await fetch(u,{signal:c.signal});if(r.ok){let j=await r.json();if(j.events) return j;}}catch(e){}
+  }
+  return null;
+}
 async function loadLive(){
   let today=fmtDate(new Date());
   let tomorrow=fmtDate(new Date(Date.now()+86400000));
-  // Load ligi zote kwa batches za 10 ili isi-hang
+  let [dToday,dTom]=await Promise.all([fetchGlobal(today),fetchGlobal(tomorrow)]);
   let fetched=[];
-  for(let i=0;i<leagues.length;i+=10){
-    let batch=leagues.slice(i,i+10);
-    let promises=[];
-    batch.forEach(l=>{promises.push(fetchFast(`https://site.api.espn.com/apis/site/v2/sports/soccer/${l}/scoreboard?dates=${today}`));promises.push(fetchFast(`https://site.api.espn.com/apis/site/v2/sports/soccer/${l}/scoreboard?dates=${tomorrow}`));});
-    let results=await Promise.all(promises);
-    results.forEach((data,idx)=>{
-      if(data&&data.events){
-        let isTomorrow = idx%2===1;
-        data.events.forEach(ev=>{
-          let comp=ev.competitions[0];
-          let home=comp.competitors.find(c=>c.homeAway==='home');let away=comp.competitors.find(c=>c.homeAway==='away');
-          if(!home||!away) return;
-          let isLive=comp.status.type.state==='in';let isDone=comp.status.type.state==='post';
-          let leagueName=ev.leagueName||ev.league?.name||'Football';
-          fetched.push({title:`⚽ ${home.team.displayName} vs ${away.team.displayName}`,time:isLive?`🔴 LIVE - ${comp.status.displayClock||''} | ${home.score} - ${away.score} - ${leagueName}`:isDone?`FT: ${home.score} - ${away.score} - ${leagueName} - Finished`:`${isTomorrow?'Tomorrow':'Today'} ${new Date(ev.date).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'})} - ${leagueName}`,pred:isLive?`LIVE SCORE: ${home.score} - ${away.score}`:isDone?`FINAL: ${home.score} - ${away.score}`:"See Highlights For Prediction - Or Bet On This Game",odds:"Check Odds - Betika / SportPesa",type:isLive?'live':isTomorrow?'tomorrow':'today',status:'api',isLive,verified:true,isPast:isDone,isGlobal:true,league:leagueName});
-        });
-      }
-    });
-    // Onyesha polepole kadri zinavyokuja - usiwaache wangoje zote
-    if(fetched.length>0){allGames=[...fetched,...highlights];document.getElementById('gameCount').innerText=fetched.length+' Games';document.getElementById('status').innerText=`🌍 ${fetched.length} Games Worldwide Zimepatikana! Search Timu Yoyote.`;document.getElementById('lastUpdate').innerText=new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});render();}
+  [[dToday,false],[dTom,true]].forEach(([data,isTom])=>{
+    if(data&&data.events){
+      data.events.forEach(ev=>{
+        let comp=ev.competitions[0];if(!comp) return;
+        let home=comp.competitors.find(c=>c.homeAway==='home');let away=comp.competitors.find(c=>c.homeAway==='away');
+        if(!home||!away) return;
+        let isLive=comp.status.type.state==='in';let isDone=comp.status.type.state==='post';
+        let leagueName=ev.league?.name||'Football';
+        fetched.push({title:`⚽ ${home.team.displayName} vs ${away.team.displayName}`,time:isLive?`🔴 LIVE - ${comp.status.displayClock||''} | ${home.score} - ${away.score} - ${leagueName}`:isDone?`FT: ${home.score} - ${away.score} - ${leagueName}`:`${isTom?'Tomorrow':'Today'} ${new Date(ev.date).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'})} - ${leagueName}`,pred:isLive?`LIVE SCORE: ${home.score} - ${away.score}`:isDone?`FINAL: ${home.score} - ${away.score}`:"See Highlights For Prediction - Or Bet On This Game",odds:"Check Odds - Betika / SportPesa",type:isLive?'live':isTom?'tomorrow':'today',status:'api',isLive,verified:true,isPast:isDone,isGlobal:true,league:leagueName});
+      });
+    }
+  });
+  document.getElementById('lastUpdate').innerText=new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+  if(fetched.length>0){
+    document.getElementById('gameCount').innerText=fetched.length+' Games Today Worldwide';
+    document.getElementById('status').innerText=`🌍 ${fetched.length} Games Worldwide Zimepatikana! Search Timu Yoyote!`;
+    allGames=[...fetched,...highlights];render();
+  } else {
+    document.getElementById('gameCount').innerText='Highlights Only';
+    document.getElementById('status').innerText=`✅ Highlights Ziko Hapa - Global Inajaribu Tena Kila 2 Min`;
   }
-  if(fetched.length===0){document.getElementById('status').innerText=`✅ Highlights Ziko Hapa - Global Games Zinajaribu Tena`;}
 }
 function setTab(tab,btn){currentTab=tab;document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');render();}
 function render(){
   let q=document.getElementById('search').value.toLowerCase().trim();
   let list=allGames.filter(g=>{
     if(currentTab==='highlights'&&!g.isHighlight) return false;
-    if(currentTab==='all'&&(g.type!=='today'&&g.type!=='live')) return false;
+    if(currentTab==='all'&&(g.type!=='today'&&g.type!=='live'&&g.type!=='highlights')) return false;
     if(currentTab==='live'&&!g.isLive) return false;
+    if(currentTab==='today'&&g.type!=='today'&&g.type!=='live') return false;
     if(currentTab==='tomorrow'&&g.type!=='tomorrow') return false;
     if(currentTab==='wwe'&&g.type!=='wwe') return false;
     if(q&&!g.title.toLowerCase().includes(q)&&!(g.league||'').toLowerCase().includes(q)) return false;
     return true;
   });
-  // Sort: Live kwanza, Highlights pili, mengine baadae
   list.sort((a,b)=>{if(a.isLive&&!b.isLive) return -1; if(!a.isLive&&b.isLive) return 1; if(a.isHighlight&&!b.isHighlight) return -1; if(!a.isHighlight&&b.isHighlight) return 1; return 0;});
   let box=document.getElementById('games');
   let notice='';
-  if(currentTab==='live' && list.length===0 && !q){notice=`<div class="notice">⏳ Hakuna Game LIVE Sai. Hizi ni Highlights Za Leo. Finya <b>🌍 All Games Today</b> kuona game zote duniani.</div>`;list=allGames.filter(g=>g.isHighlight);}
-  if(currentTab==='all' && list.length===0 && !q){notice=`<div class="notice">🌍 Global Games Zinapakia... Highlights Ziko Hapa Chini Wakati Zinakujia.</div>`;list=allGames.filter(g=>g.isHighlight);}
-  if(list.length===0){box.innerHTML=`<div style="text-align:center;padding:30px;color:#aaa">${q?`Hakuna game ya "<b>${q}</b>" leo.<br><br>Jaribu: Arsenal, Real, Al Nassr, Gor<br>Au finya Highlights.`:`Hakuna game hapa sai. Finya <b>All Games</b>.`}</div>`;return;}
+  if(currentTab==='live' && list.length===0 && !q){notice=`<div class="notice">⏳ Hakuna Game LIVE Sai. Hizi ni Highlights Za Leo. Finya <b>All</b> kuona game zote duniani.</div>`;list=allGames.filter(g=>g.isHighlight);}
+  if(q && list.length===0){
+    let hl = allGames.filter(g=>g.isHighlight);
+    let inHl = hl.find(g=>g.title.toLowerCase().includes(q));
+    if(inHl){
+      box.innerHTML=`<div class="notice">✅ <b>${q.toUpperCase()}</b> iko kwa Highlights! Game yake inayofuata iko hapa chini 👇</div>`+hl.filter(g=>g.title.toLowerCase().includes(q)).map(g=>`<div class="card highlight"><span class="badge highlight">⭐ HIGHLIGHT</span><span class="badge verified">✅ VERIFIED</span><h3>${g.title}</h3><p>${g.time}</p><p><b>Our Prediction:</b> ${g.pred}</p><p class="odds">Odds: ${g.odds}</p><a class="btn betika" href="https://www.betika.com" target="_blank">BET HERE - BETIKA</a></div>`).join('');
+      return;
+    }
+    box.innerHTML=`<div style="text-align:center;padding:30px;color:#aaa">⏳ <b>${q.toUpperCase()}</b> haina game LEO.<br><br>Game yake inayofuata itaonekana hapa kesho / wiki hii.<br><br>Angalia Highlights za leo hapa chini 👇</div>`+hl.slice(0,3).map(g=>`<div class="card highlight"><span class="badge highlight">⭐ HIGHLIGHT</span><h3>${g.title}</h3><p>${g.time}</p><p><b>Our Prediction:</b> ${g.pred}</p></div>`).join('');
+    return;
+  }
+  if(list.length===0){box.innerHTML=`<div style="text-align:center;padding:30px;color:#aaa">Hakuna game hapa sai. Finya <b>All</b>.</div>`;return;}
   box.innerHTML=notice+list.map(g=>`<div class="card ${g.isLive?'live':''} ${g.isHighlight?'highlight':''} ${g.isGlobal?'global':''}"><span class="badge ${g.isLive?'live':''}">${g.isLive?'🔴 LIVE':g.isPast?'FINISHED':g.isHighlight?'⭐ HIGHLIGHT':'🌍 GLOBAL'}</span> ${g.verified?`<span class="badge verified">✅ VERIFIED</span>`:''}<h3>${g.title}</h3><p>${g.time}</p><p><b>${g.isHighlight?'Our Prediction:':'Tip:'}</b> ${g.pred}</p><p class="odds">Odds: ${g.odds}</p><a class="btn betika" href="https://www.betika.com" target="_blank">BET HERE - BETIKA</a><a class="btn sportpesa" href="https://www.sportpesa.com" target="_blank">BET HERE - SPORTPESA</a><a class="btn odibets" href="https://www.odibets.com" target="_blank">BET HERE - ODIBETS</a></div>`).join('');
 }
 allGames=[...highlights];detectLang();render();loadLive();setInterval(loadLive,120000);
