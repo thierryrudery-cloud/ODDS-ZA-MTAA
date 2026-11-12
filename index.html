@@ -1,152 +1,121 @@
 <!DOCTYPE html>
-<html lang="sw">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ODDS ZA MTAA 🔥 | LIVE</title>
+<title>ODDS ZA MTAA 🔥 | Football Predictions Today, LIVE Scores, Betting Tips & WWE</title>
+<meta name="description" content="ODDS ZA MTAA - Best Football Predictions Today, LIVE Scores, Betting Tips for Chelsea, Arsenal, Real Madrid, Man City, Gor Mahia, WWE. Free Tips Daily.">
+<meta name="keywords" content="football predictions today, betting tips, live scores, chelsea vs arsenal prediction, odds za mtaa, WWE predictions, Gor Mahia tips, Betika tips, SportPesa">
+<meta property="og:title" content="ODDS ZA MTAA 🔥 | Football Predictions Today & LIVE Scores">
+<meta property="og:description" content="Free Football Predictions, LIVE Scores & Betting Tips Daily. Search Your Team Now!">
+<meta property="og:type" content="website">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://thierryrudery-cloud.github.io/ODDS-ZA-MTAA/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"ODDS ZA MTAA","url":"https://thierryrudery-cloud.github.io/ODDS-ZA-MTAA/","description":"Football Predictions Today, LIVE Scores, Betting Tips"}</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 body{background:#111;color:#fff}
-header{background:#FFD700;color:#000;text-align:center;padding:18px 10px;position:sticky;top:0;z-index:10}
-header h1{font-size:26px}
-header p{font-size:13px;margin-top:4px}
-.search-box{padding:12px;background:#111;position:sticky;top:82px;z-index:9}
+header{background:#FFD700;color:#000;text-align:center;padding:16px 10px;position:sticky;top:0;z-index:10}
+header h1{font-size:25px}
+header p{font-size:12px;margin-top:3px}
+#langBar{text-align:center;padding:6px;background:#222;font-size:12px;color:#FFD700}
+#langBar button{background:#333;color:#fff;border:none;padding:4px 8px;border-radius:10px;margin:0 2px;cursor:pointer}
+#langBar button.active{background:#FFD700;color:#000}
+.vip{background:#ff2222;color:#fff;text-align:center;padding:10px;font-weight:bold;font-size:14px}
+.vip a{color:#FFD700;text-decoration:none}
+.search-box{padding:12px;background:#111;position:sticky;top:78px;z-index:9}
 .search-box input{width:100%;padding:13px 16px;border-radius:25px;border:2px solid #FFD700;background:#222;color:#fff;font-size:15px;outline:none}
 .tabs{display:flex;gap:8px;padding:0 12px 10px;overflow-x:auto}
 .tabs button{white-space:nowrap;padding:8px 14px;border-radius:20px;border:1px solid #333;background:#222;color:#fff;cursor:pointer}
 .tabs button.active{background:#FFD700;color:#000;font-weight:bold}
 #status{text-align:center;padding:8px;font-size:13px;color:#FFD700}
-#games{padding:12px;display:flex;flex-direction:column;gap:14px;padding-bottom:40px}
+#games{padding:12px;display:flex;flex-direction:column;gap:14px;padding-bottom:20px}
 .card{background:#1e1e1e;border-left:5px solid #FFD700;border-radius:12px;padding:14px}
 .card.live{border-left-color:#ff2222}
 .badge{display:inline-block;font-size:11px;padding:3px 8px;border-radius:10px;background:#333;margin-bottom:8px}
-.badge.live{background:#ff2222;color:#fff;animation:blink 1s infinite}
-@keyframes blink{50%{opacity:.5}}
+.badge.live{background:#ff2222;color:#fff}
 .card h3{font-size:18px;line-height:1.3}
 .card p{color:#ccc;font-size:14px;margin:6px 0}
 .odds{color:#FFD700;font-weight:bold;margin:8px 0!important}
 .btn{display:block;text-align:center;padding:11px;border-radius:8px;color:#fff;text-decoration:none;font-weight:bold;margin-top:7px}
 .betika{background:#008000}.sportpesa{background:#0000cc}.odibets{background:#ff6600}
-.footer{text-align:center;color:#777;font-size:12px;padding:20px}
+.footer{text-align:center;color:#777;font-size:12px;padding:20px;line-height:1.6}
+.seo-text{padding:0 14px 20px;color:#777;font-size:12px;line-height:1.6}
+.seo-text h2{color:#aaa;font-size:14px;margin-bottom:6px}
 </style>
 </head>
 <body>
 <header>
-<h1>⚽ ODDS ZA MTAA 🔥</h1>
-<p>Predictions Za Mtaa | LIVE Scores | Football | WWE | Global</p>
+<h1 id="hTitle">⚽ ODDS ZA MTAA 🔥</h1>
+<p id="hSub">Football Predictions Today | LIVE Scores | Betting Tips</p>
 </header>
+<div id="langBar">🌍 Language: <button data-lang="sw" onclick="setLang('sw')">Sheng 🇰🇪</button><button data-lang="en" onclick="setLang('en')">English 🇬🇧</button><button data-lang="fr" onclick="setLang('fr')">Français 🇫🇷</button><button data-lang="es" onclick="setLang('es')">Español 🇪🇸</button><button data-lang="pt" onclick="setLang('pt')">Português 🇧🇷</button></div>
+<div class="vip"><span id="vipText">💰 VIP TIPS ZA UHAKIKA? Join WhatsApp</span> 👉 <a id="vipLink" href="https://wa.me/254700000000?text=Nataka%20kujiunga%20VIP%20ODDS%20ZA%20MTAA">CLICK HAPA</a></div>
 <div class="search-box">
-<input id="search" placeholder="Search... Chelsea, Arsenal, Real Madrid, Cody..." oninput="render()">
+<input id="search" placeholder="Search your team... Chelsea, Arsenal, Real Madrid..." oninput="render()">
 </div>
 <div class="tabs">
-<button class="active" onclick="setTab('all',this)">Zote</button>
-<button onclick="setTab('live',this)">🔴 LIVE Sai</button>
-<button onclick="setTab('today',this)">Leo</button>
-<button onclick="setTab('tomorrow',this)">Kesho</button>
-<button onclick="setTab('wwe',this)">WWE</button>
+<button class="active" data-tab="all" onclick="setTab('all',this)"><span data-t="all">All</span></button>
+<button data-tab="live" onclick="setTab('live',this)">🔴 <span data-t="live">LIVE Now</span></button>
+<button data-tab="today" onclick="setTab('today',this)"><span data-t="today">Today</span></button>
+<button data-tab="tomorrow" onclick="setTab('tomorrow',this)"><span data-t="tomorrow">Tomorrow</span></button>
+<button data-tab="wwe" onclick="setTab('wwe',this)">WWE</button>
 </div>
-<div id="status">⏳ Inavuta game za live...</div>
+<div id="status">Loading...</div>
 <div id="games"></div>
-<div class="footer">ODDS ZA MTAA © 2026 | Build na Mtaa, kwa Mtaa | Bet Responsibly 18+</div>
+<div class="seo-text"><h2 id="seoH">Football Predictions Today - Chelsea, Arsenal, Real Madrid, Man City, Gor Mahia & WWE</h2><p id="seoP">Get free daily football predictions, LIVE scores and betting tips. Search your favourite team above and see our expert prediction, odds and best bet for today and tomorrow. Updated every minute.</p></div>
+<div class="footer">ODDS ZA MTAA © 2026 | Built by Mtaa, for Mtaa<br><span id="footBet">Bet Responsibly 18+</span></div>
 <script>
-let allGames=[];
-let currentTab='all';
+const LANGS={
+sw:{title:"⚽ ODDS ZA MTAA 🔥",sub:"Tips Za Mtaa | LIVE Scores | Ukiona Hapa, Ni Uhakika",vip:"💰 VIP TIPS ZA UHAKIKA? Join WhatsApp",search:"Search timu yako... Chelsea, Arsenal, Gor, Cody...",all:"Zote",live:"LIVE Sai",today:"Leo",tomorrow:"Kesho",seoH:"Tips Za Leo - Chelsea, Arsenal, Real Madrid, Gor Mahia & WWE",seoP:"Pata tips za bure kila siku, LIVE scores na predictions za uhakika. Search timu yako hapo juu uone prediction yetu, odds na bet bora ya leo na kesho.",foot:"Bet Responsibly 18+ | Usibet na pesa ya rent 😅",predLabel:"Prediction Yangu:",oddsLabel:"Odds:",bet:"BET HAPA - ",noGame:"Hakuna game ya"},
+en:{title:"⚽ ODDS ZA MTAA 🔥",sub:"Football Predictions Today | LIVE Scores | Betting Tips",vip:"💰 VIP SURE TIPS? Join WhatsApp",search:"Search your team... Chelsea, Arsenal, Real Madrid...",all:"All",live:"LIVE Now",today:"Today",tomorrow:"Tomorrow",seoH:"Football Predictions Today - Chelsea, Arsenal, Real Madrid, Man City & WWE",seoP:"Get free daily football predictions, LIVE scores and betting tips. Search your favourite team above and see our expert prediction, odds and best bet for today and tomorrow.",foot:"Bet Responsibly 18+",predLabel:"Our Prediction:",oddsLabel:"Odds:",bet:"BET HERE - ",noGame:"No game for"},
+fr:{title:"⚽ ODDS ZA MTAA 🔥",sub:"Pronostics Foot Aujourd'hui | Scores EN DIRECT",vip:"💰 TIPS VIP SÛRS? Rejoignez WhatsApp",search:"Recherchez votre équipe... Chelsea, Arsenal...",all:"Tous",live:"EN DIRECT",today:"Aujourd'hui",tomorrow:"Demain",seoH:"Pronostics Foot Aujourd'hui - Chelsea, Arsenal, Real Madrid & WWE",seoP:"Pronostics gratuits chaque jour, scores en direct et conseils de paris. Recherchez votre équipe préférée.",foot:"Pariez Responsablement 18+",predLabel:"Notre Pronostic:",oddsLabel:"Cotes:",bet:"PARIEZ ICI - ",noGame:"Aucun match pour"},
+es:{title:"⚽ ODDS ZA MTAA 🔥",sub:"Pronósticos de Fútbol Hoy | Marcadores EN VIVO",vip:"💰 ¿TIPS VIP SEGUROS? Únete a WhatsApp",search:"Busca tu equipo... Chelsea, Arsenal...",all:"Todos",live:"EN VIVO",today:"Hoy",tomorrow:"Mañana",seoH:"Pronósticos de Fútbol Hoy - Chelsea, Arsenal, Real Madrid & WWE",seoP:"Pronósticos gratis diarios, marcadores en vivo y consejos de apuestas. Busca tu equipo favorito.",foot:"Apuesta Responsablemente 18+",predLabel:"Nuestro Pronóstico:",oddsLabel:"Cuotas:",bet:"APUESTA AQUÍ - ",noGame:"No hay partido para"},
+pt:{title:"⚽ ODDS ZA MTAA 🔥",sub:"Palpites de Futebol Hoje | Placar AO VIVO",vip:"💰 TIPS VIP CERTEIROS? Entre no WhatsApp",search:"Pesquise seu time... Chelsea, Arsenal...",all:"Todos",live:"AO VIVO",today:"Hoje",tomorrow:"Amanhã",seoH:"Palpites de Futebol Hoje - Chelsea, Arsenal, Real Madrid & WWE",seoP:"Palpites grátis diários, placar ao vivo e dicas de apostas. Pesquise seu time favorito.",foot:"Aposte com Responsabilidade 18+",predLabel:"Nosso Palpite:",oddsLabel:"Odds:",bet:"APOSTE AQUI - ",noGame:"Nenhum jogo para"}
+};
+let curLang='en';
+function setLang(l){curLang=l;let t=LANGS[l];document.getElementById('hTitle').innerText=t.title;document.getElementById('hSub').innerText=t.sub;document.getElementById('vipText').innerText=t.vip;document.getElementById('search').placeholder=t.search;document.getElementById('seoH').innerText=t.seoH;document.getElementById('seoP').innerText=t.seoP;document.getElementById('footBet').innerText=t.foot;document.querySelectorAll('[data-t]').forEach(e=>{e.innerText=t[e.dataset.t]});document.querySelectorAll('#langBar button').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));render();}
+// AUTO DETECT COUNTRY -> LANGUAGE
+async function detectLang(){
+  try{
+    let r=await fetch('https://ipapi.co/json/');let d=await r.json();
+    let c=(d.country_code||'').toUpperCase();
+    if(c==='KE'||c==='TZ'||c==='UG') setLang('sw');
+    else if(['FR','BE','CI','SN','ML','CM'].includes(c)) setLang('fr');
+    else if(['ES','MX','AR','CO','CL','PE'].includes(c)) setLang('es');
+    else if(['BR','PT','AO','MZ'].includes(c)) setLang('pt');
+    else setLang('en');
+  }catch(e){ let bl=(navigator.language||'en').slice(0,2); setLang(LANGS[bl]?bl:'en'); }
+}
+let allGames=[];let currentTab='all';
 const manualGames=[
-{title:"👑 WWE: Cody Rhodes vs Randy Orton",time:"Leo 9PM - Crown Jewel Rematch",pred:"CODY TO WIN",odds:"Cody 1.85 | Orton 1.95",type:"wwe",status:"manual"},
-{title:"⚽ Man United vs Arsenal",time:"Jumamosi 6PM - Premier League",pred:"OVER 2.5 GOALS",odds:"Over 1.90 | Under 1.85",type:"today",status:"manual"},
-{title:"⚽ Chelsea vs Tottenham",time:"Jumamosi 5:30PM - Premier League",pred:"CHELSEA TO WIN + BTTS",odds:"Chelsea 2.10 | Draw 3.40 | Spurs 3.20",type:"tomorrow",status:"manual"},
-{title:"⚽ Man City vs Liverpool",time:"Jumapili 7PM - Premier League",pred:"OVER 2.5 GOALS",odds:"Over 1.75 | Under 2.05",type:"tomorrow",status:"manual"},
-{title:"⚽ Real Madrid vs Barcelona",time:"Jumapili 10PM - La Liga",pred:"BTTS YES",odds:"BTTS 1.70",type:"tomorrow",status:"manual"},
+{title:"⚽ Man United vs Arsenal",time:"Today 7PM - Premier League",pred:"OVER 2.5 GOALS 🔥",odds:"Over 1.90 | Under 1.85",type:"today",status:"manual",isLive:false},
+{title:"⚽ Chelsea vs Tottenham",time:"Today 5:30PM - Premier League",pred:"CHELSEA TO WIN + BTTS",odds:"Chelsea 2.10 | Draw 3.40 | Spurs 3.20",type:"today",status:"manual",isLive:false},
+{title:"⚽ Man City vs Liverpool",time:"Tomorrow 7PM - Premier League",pred:"OVER 2.5 GOALS",odds:"Over 1.75 | Under 2.05",type:"tomorrow",status:"manual",isLive:false},
+{title:"⚽ Real Madrid vs Barcelona",time:"Tomorrow 10PM - La Liga",pred:"BTTS YES",odds:"BTTS 1.70",type:"tomorrow",status:"manual",isLive:false},
+{title:"⚽ Gor Mahia vs AFC Leopards",time:"Sunday 3PM - FKF Premier",pred:"GOR TO WIN / DRAW",odds:"Gor 2.00 | Draw 3.00",type:"tomorrow",status:"manual",isLive:false},
+{title:"👑 WWE: Cody Rhodes vs Randy Orton",time:"Today 9PM - Crown Jewel",pred:"CODY TO WIN",odds:"Cody 1.85 | Orton 1.95",type:"wwe",status:"manual",isLive:false},
 ];
 function fmtDate(d){return d.toISOString().slice(0,10).replace(/-/g,'')}
 const leagues=["eng.1","esp.1","ita.1","ger.1","fra.1","ned.1","por.1","uefa.champions","uefa.europa","mex.1","bra.1"];
-async function fetchWithProxy(url){
-  // Jaribu njia 3 - moja lazima ipite
-  const tries=[
-    `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
-    `https://corsproxy.io/?url=${encodeURIComponent(url)}`,
-    url
-  ];
-  for(let u of tries){
-    try{
-      let r=await fetch(u);
-      if(r.ok) return await r.json();
-    }catch(e){}
-  }
-  return null;
-}
+async function fetchWithProxy(url){const tries=[`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,`https://corsproxy.io/?url=${encodeURIComponent(url)}`,url];for(let u of tries){try{let r=await fetch(u);if(r.ok) return await r.json();}catch(e){}}return null;}
 async function loadLive(){
   let t=new Date(), tm=new Date(Date.now()+86400000);
   let dates=[{label:'today',d:fmtDate(t)},{label:'tomorrow',d:fmtDate(tm)}];
   let fetched=[];
-  document.getElementById('status').innerText="⏳ Inavuta game za live... Tafadhali ngoja 10 sec";
-  for(let league of leagues){
-    for(let dt of dates){
-      let url=`https://site.api.espn.com/apis/site/v2/sports/soccer/${league}/scoreboard?dates=${dt.d}`;
-      let data=await fetchWithProxy(url);
-      if(data && data.events){
-        data.events.forEach(ev=>{
-          let comp=ev.competitions[0];
-          let home=comp.competitors.find(c=>c.homeAway==='home');
-          let away=comp.competitors.find(c=>c.homeAway==='away');
-          let isLive=comp.status.type.state==='in';
-          let isDone=comp.status.type.state==='post';
-          fetched.push({
-            title:`⚽ ${home.team.displayName} vs ${away.team.displayName}`,
-            time:isLive?`🔴 LIVE - ${comp.status.displayClock||''} | ${home.score} - ${away.score}`:isDone?`FT: ${home.score} - ${away.score}`:`${dt.label==='today'?'Leo':'Kesho'} ${new Date(ev.date).toLocaleTimeString('sw-KE',{hour:'2-digit',minute:'2-digit'})} - ${ev.league || 'Football'}`,
-            pred:isLive?`SCORE LIVE: ${home.score} - ${away.score}`:isDone?`FULL TIME: ${home.score} - ${away.score}`:"PREDICTION: ANGALIA ODDS KWA BETIKA",
-            odds:"Check Odds Live kwa Betika / SportPesa",
-            type:isLive?'live':dt.label,
-            status:'api', isLive
-          });
-        });
-      }
-    }
-  }
-  // BACKUP 2: TheSportsDB - kama ESPN imefail
-  if(fetched.length===0){
-    try{
-      let d2=await fetchWithProxy(`https://www.thesportsdb.com/api/v1/json/3/eventsday.php?d=${t.toISOString().slice(0,10)}&s=Soccer`);
-      if(d2 && d2.events){
-        d2.events.forEach(ev=>{
-          fetched.push({title:`⚽ ${ev.strHomeTeam} vs ${ev.strAwayTeam}`,time:`Leo ${ev.strTime} - ${ev.strLeague}`,pred:ev.strStatus&&ev.strStatus!=='Not Started'?`LIVE: ${ev.intHomeScore} - ${ev.intAwayScore}`:"PREDICTION: ANGALIA ODDS",odds:"Check Odds Live",type:'today',status:'api',isLive:ev.strStatus==='1H'||ev.strStatus==='2H'});
-        });
-      }
-    }catch(e){}
-  }
-  if(fetched.length===0){
-    document.getElementById('status').innerText="⚠️ Live API inachelewa sai - Inaonyesha game za manual. Refresh baada ya 1 min.";
-    allGames=[...manualGames];
-  }else{
-    document.getElementById('status').innerText=`✅ ${fetched.length} game za LIVE zimepatikana! Search timu yoyote.`;
-    allGames=[...fetched,...manualGames];
-  }
+  for(let league of leagues){for(let dt of dates){let url=`https://site.api.espn.com/apis/site/v2/sports/soccer/${league}/scoreboard?dates=${dt.d}`;let data=await fetchWithProxy(url);if(data&&data.events){data.events.forEach(ev=>{let comp=ev.competitions[0];let home=comp.competitors.find(c=>c.homeAway==='home');let away=comp.competitors.find(c=>c.homeAway==='away');let isLive=comp.status.type.state==='in';let isDone=comp.status.type.state==='post';fetched.push({title:`⚽ ${home.team.displayName} vs ${away.team.displayName}`,time:isLive?`🔴 LIVE - ${comp.status.displayClock||''} | ${home.score} - ${away.score}`:isDone?`FT: ${home.score} - ${away.score}`:`${dt.label==='today'?'Today':'Tomorrow'} ${new Date(ev.date).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'})}`,pred:isLive?`LIVE SCORE: ${home.score} - ${away.score}`:isDone?`FULL TIME: ${home.score} - ${away.score}`:"TIP: CHECK ODDS ON BETIKA",odds:"Check Odds Live - Betika / SportPesa",type:isLive?'live':dt.label,status:'api',isLive});});}}}
+  if(fetched.length>0){document.getElementById('status').innerText=`✅ ${fetched.length} live games found! Search any team.`;allGames=[...fetched,...manualGames];}else{document.getElementById('status').innerText=`✅ Tips are here - Live is retrying... Refresh in 1 min`;allGames=[...manualGames];}
   render();
 }
 function setTab(tab,btn){currentTab=tab;document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');render();}
 function render(){
-  let q=document.getElementById('search').value.toLowerCase();
-  let list=allGames.filter(g=>{
-    if(currentTab==='live'&&!g.isLive) return false;
-    if(currentTab==='today'&&g.type!=='today'&&g.type!=='live') return false;
-    if(currentTab==='tomorrow'&&g.type!=='tomorrow') return false;
-    if(currentTab==='wwe'&&g.type!=='wwe') return false;
-    if(q&&!g.title.toLowerCase().includes(q)) return false;
-    return true;
-  });
+  let t=LANGS[curLang];let q=document.getElementById('search').value.toLowerCase();
+  let list=allGames.filter(g=>{if(currentTab==='live'&&!g.isLive) return false;if(currentTab==='today'&&g.type!=='today'&&g.type!=='live') return false;if(currentTab==='tomorrow'&&g.type!=='tomorrow') return false;if(currentTab==='wwe'&&g.type!=='wwe') return false;if(q&&!g.title.toLowerCase().includes(q)) return false;return true;});
   let box=document.getElementById('games');
-  if(list.length===0){box.innerHTML=`<div style="text-align:center;padding:30px;color:#aaa">Hakuna game ya "<b>${q}</b>" sai.<br><br>Jaribu: Chelsea, Arsenal, Real Madrid<br>Au angalia tab ya Zote.</div>`;return;}
-  box.innerHTML=list.map(g=>`
-    <div class="card ${g.isLive?'live':''}">
-      <span class="badge ${g.isLive?'live':''}">${g.isLive?'🔴 LIVE SAI':g.status==='manual'?'MANUAL / WWE':g.type==='today'?'LEO':'KESHO / LIVE'}</span>
-      <h3>${g.title}</h3><p>${g.time}</p><p><b>Prediction Yangu:</b> ${g.pred}</p><p class="odds">Odds: ${g.odds}</p>
-      <a class="btn betika" href="https://www.betika.com" target="_blank">BET HAPA - BETIKA</a>
-      <a class="btn sportpesa" href="https://www.sportpesa.com" target="_blank">BET HAPA - SPORTPESA</a>
-      <a class="btn odibets" href="https://www.odibets.com" target="_blank">BET HAPA - ODIBETS</a>
-    </div>`).join('');
+  if(list.length===0){box.innerHTML=`<div style="text-align:center;padding:30px;color:#aaa">${t.noGame} "<b>${q}</b>"<br><br>Try: Chelsea, Arsenal, Real Madrid</div>`;return;}
+  box.innerHTML=list.map(g=>`<div class="card ${g.isLive?'live':''}"><span class="badge ${g.isLive?'live':''}">${g.isLive?'🔴 LIVE':g.status==='manual'?'TIP':g.type}</span><h3>${g.title}</h3><p>${g.time}</p><p><b>${t.predLabel}</b> ${g.pred}</p><p class="odds">${t.oddsLabel} ${g.odds}</p><a class="btn betika" href="https://www.betika.com" target="_blank">${t.bet}BETIKA</a><a class="btn sportpesa" href="https://www.sportpesa.com" target="_blank">${t.bet}SPORTPESA</a><a class="btn odibets" href="https://www.odibets.com" target="_blank">${t.bet}ODIBETS</a></div>`).join('');
 }
-loadLive();
-setInterval(loadLive,60000);
+allGames=[...manualGames];detectLang();render();loadLive();setInterval(loadLive,60000);
 </script>
 </body>
 </html>
