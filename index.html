@@ -3,161 +3,116 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ODDS ZA MTAA 🔥 | Tips Za Uhakika Leo</title>
+<title>ODDS ZA MTAA 🔥 | Live Odds & Jackpot Tips</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#0f0f0f;color:#fff;padding-bottom:20px}
-header{background:#FFD700;color:#000;text-align:center;padding:16px 10px;position:sticky;top:0;z-index:10}
-header h1{font-size:26px;line-height:1.1}
-header p{font-size:12px;margin-top:4px}
-.trust{display:flex;justify-content:center;gap:8px;padding:8px;background:#1a1a1a;font-size:11px;color:#ccc;flex-wrap:wrap}
-.trust span{background:#222;padding:4px 8px;border-radius:10px}
-.vip{background:#ff2222;color:#fff;text-align:center;padding:11px;font-weight:bold;font-size:14px}
-.vip a{color:#FFD700;text-decoration:none}
-.search-box{padding:12px;background:#0f0f0f;position:sticky;top:78px;z-index:9}
-.search-box input{width:100%;padding:13px 16px;border-radius:25px;border:2px solid #FFD700;background:#222;color:#fff;font-size:15px;outline:none}
-.tabs{display:flex;gap:8px;padding:0 12px 10px;overflow-x:auto}
-.tabs button{white-space:nowrap;padding:8px 14px;border-radius:20px;border:1px solid #333;background:#222;color:#fff;cursor:pointer}
-.tabs button.active{background:#FFD700;color:#000;font-weight:bold}
-#status{text-align:center;padding:8px;font-size:13px;color:#FFD700}
-#games{padding:12px;display:flex;flex-direction:column;gap:14px}
-.card{background:#1e1e1e;border-left:5px solid #FFD700;border-radius:12px;padding:14px}
-.card.live{border-left-color:#ff2222}
-.badge{display:inline-block;font-size:11px;padding:3px 8px;border-radius:10px;background:#333;margin-bottom:8px}
-.badge.live{background:#ff2222;color:#fff}
-.badge.vipb{background:#FFD700;color:#000;font-weight:bold}
-.card h3{font-size:18px;line-height:1.3}
-.card p{color:#ccc;font-size:14px;margin:6px 0}
-.odds{color:#FFD700;font-weight:bold;margin:8px 0!important}
-.conf{font-size:12px;color:#00ff88}
-.btn{display:block;text-align:center;padding:11px;border-radius:8px;color:#fff;text-decoration:none;font-weight:bold;margin-top:7px;font-size:14px}
-.melbet{background:#FFD700;color:#000}.ke7{background:#008000}.twentytwo{background:#0000cc}
-.footer{text-align:center;color:#777;font-size:12px;padding:20px;line-height:1.7}
-.admin{background:#222;margin:12px;padding:12px;border-radius:10px;font-size:12px;color:#aaa;text-align:center}
+body{background:#1a2332!important;color:#fff;padding-bottom:70px}
+.topbar{background:#1a2332;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20}
+.logo{font-size:20px;font-weight:900;color:#FFD700}.logo span{color:#fff;font-size:12px;display:block;font-weight:400}
+.topbtn{background:#FFD700;color:#000;padding:7px 12px;border-radius:15px;font-weight:bold;font-size:12px;text-decoration:none}
+.sports{display:flex;gap:18px;padding:10px 12px;background:#1a2332;overflow-x:auto;font-weight:bold;white-space:nowrap}
+.sports span{color:#888}.sports span.active{color:#FFD700;border-bottom:3px solid #FFD700;padding-bottom:5px}
+.tabs{display:flex;gap:18px;padding:10px 12px;background:#1a2332;overflow-x:auto;white-space:nowrap;font-weight:bold;position:sticky;top:48px;z-index:15}
+.tabs button{background:none;border:none;color:#ccc;font-weight:bold;font-size:15px;cursor:pointer;white-space:nowrap}.tabs button.active{color:#FFD700}
+.vip-btn{display:block;background:#25D366;color:#fff!important;text-align:center;padding:12px;font-weight:bold;font-size:14px;text-decoration:none}
+.search-box{padding:10px 12px;background:#1a2332}
+.search-box input{width:100%;padding:12px 14px;border-radius:20px;border:1px solid #333;background:#0f1622;color:#fff;outline:none}
+#status{text-align:center;padding:8px;font-size:12px;color:#FFD700;background:#0f1622}
+.league{padding:10px 12px 4px;color:#aaa;font-size:12px;display:flex;justify-content:space-between}
+.card{background:#1a2332;border-bottom:1px solid #2a3648;padding:12px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.teams{flex:1}.teams b{font-size:16px;display:block;line-height:1.4}.teams small{color:#888;font-size:12px}
+.oddsrow{display:flex;gap:6px}.odd{background:#FFD700;color:#000;min-width:62px;text-align:center;padding:10px 6px;border-radius:18px;font-weight:900;font-size:15px;cursor:pointer}
+.odd.x{background:#FFD700}.odd.dim{opacity:.6}
+.pred{margin-top:8px;background:#0f1622;border-left:3px solid #FFD700;padding:8px;border-radius:6px;font-size:13px;line-height:1.5}.pred b{color:#FFD700}.pred .conf{color:#00ff88;font-size:11px}
+.btns{display:flex;gap:6px;margin-top:8px}.btn{flex:1;text-align:center;padding:9px 4px;border-radius:8px;font-size:11px;font-weight:bold;text-decoration:none;color:#fff}.melbet{background:#FFD700!important;color:#000!important}.ke7{background:#008000!important}.twentytwo{background:#0000cc!important}
+.jackpot{background:#FFD700;color:#000;padding:12px;text-align:center;font-weight:900;font-size:16px}
+.bottomnav{position:fixed;bottom:0;left:0;right:0;background:#1a2332;display:flex;justify-content:space-around;padding:10px 0;border-top:1px solid #333;z-index:20}
+.bottomnav a{color:#888;text-decoration:none;font-size:11px;text-align:center}.bottomnav a.active{color:#FFD700}
+.footer{text-align:center;color:#777;font-size:11px;padding:15px;line-height:1.6}
 </style>
 </head>
 <body>
-<header>
-<h1>⚽ ODDS ZA MTAA 🔥</h1>
-<p>Tips Za Mtaa | LIVE Scores | Ukiona Hapa, Ni Uhakika</p>
-</header>
-<div class="trust"><span>✅ 18+ Only</span><span>🔴 LIVE Updates</span><span>📊 2,400+ Wasee Wa Mtaa</span><span>💰 Bet Responsibly</span></div>
-<div class="vip">💰 VIP TIPS ZA UHAKIKA? Join WhatsApp 👉
-  https://whatsapp.com/channel/0029VbDbFKdHFxP838WmYR0h
-<div class="search-box"><input id="search" placeholder="Search timu yako... Chelsea, Arsenal, Gor..." oninput="render()"></div>
+<div class="topbar"><div class="logo">ODDS ZA MTAA<span>Tips Za Uhakika • LIVE</span></div><a class="topbtn" href="https://whatsapp.com/channel/0029VbDbFKdHFxP838WmYR0h" target="_blank">Join Channel</a></div>
+<div class="sports"><span class="active">⚽ Soccer</span><span>Basketball</span><span>E-Soccer</span><span>Tennis</span><span>Jackpot</span></div>
 <div class="tabs">
-<button class="active" onclick="setTab('all',this)">Zote</button>
-<button onclick="setTab('live',this)">🔴 LIVE Sai</button>
-<button onclick="setTab('today',this)">Leo</button>
-<button onclick="setTab('tomorrow',this)">Kesho</button>
-<button onclick="setTab('vip',this)">⭐ VIP Picks</button>
+<button class="active" onclick="setTab('hot',this)">🔥 Hot</button>
+<button onclick="setTab('live',this)">Live</button>
+<button onclick="setTab('today',this)">Today</button>
+<button onclick="setTab('tomorrow',this)">MON</button>
+<button onclick="setTab('tue',this)">TUE</button>
+<button onclick="setTab('wed',this)">WED</button>
+<button onclick="setTab('thu',this)">THU</button>
+<button onclick="setTab('fri',this)">FRI</button>
+<button onclick="setTab('sat',this)">SAT</button>
+<button onclick="setTab('sun',this)">SUN</button>
+<button onclick="setTab('jackpot',this)">🏆 Jackpot</button>
 </div>
-<div id="status">✅ Tips za leo ziko hapa chini - Live zinakuja...</div>
+<a class="vip-btn" href="https://whatsapp.com/channel/0029VbDbFKdHFxP838WmYR0h" target="_blank">💬 PREDICTION ZA LEO ZIKO CHANNEL 👉 CLICK HAPA</a>
+<div class="search-box"><input id="search" placeholder="Search timu... Chelsea, Arsenal, Gor..." oninput="render()"></div>
+<div id="status">✅ Loading game za week yote...</div>
 <div id="games"></div>
-<div class="admin">BOSS: Kubadilisha prediction, badilisha tu hapo kwa MANUAL_GAMES ndani ya code. Site inabadilika yenyewe.</div>
-<div class="footer">ODDS ZA MTAA © 2026 | Build na Mtaa, kwa Mtaa<br>Bet Responsibly 18+ | Usibet na pesa ya rent 😅<br>Gambling can be addictive. Play responsibly.</div>
+<div class="footer">ODDS ZA MTAA © 2026 | 18+ Only | Bet Responsibly<br>Gambling can be addictive. Play responsibly.</div>
+<div class="bottomnav"><a href="#">☰<br>Menu</a><a class="active" href="#">⚽<br>Sports</a><a href="https://whatsapp.com/channel/0029VbDbFKdHFxP838WmYR0h">💬<br>Channel</a><a href="#">⭐<br>Jackpot</a><a href="#">👤<br>Account</a></div>
 <script>
-// ===== HAPA NDIO LINK ZAKO 3 - USIGUSE KAMA HAUJUI =====
-const AFFILIATE = {
-  melbet: "https://refpa3665.com/L?tag=d_6346076m_18757c_&site=6346076&ad=18757",
-  ke7: "https://ke7.com/?urc=214615471",
-  twentytwo: "https://che.fluxbrox.com/redirect.aspx?pid=201596&bid=1756&lpid=1844"
-};
-// ===== HAPA NDIO UNAWEZA KUBADILISHA PREDICTION MANUAL - WEWE NI BOSS =====
-// Ukitaka kubadilisha, badilisha tu pred: na odds: hapa chini
-let MANUAL_GAMES = [
-{title:"⚽ Man United vs Arsenal",time:"Leo 7PM - Premier League",pred:"OVER 2.5 GOALS 🔥",odds:"Over 1.90 | BTTS 1.75",type:"today",isVip:true,conf:"Confidence: 82%"},
-{title:"⚽ Chelsea vs Tottenham",time:"Leo 5:30PM - Premier League",pred:"CHELSEA TO WIN + BTTS",odds:"Chelsea 2.10 | Draw 3.40",type:"today",isVip:false,conf:"Confidence: 76%"},
-{title:"⚽ Man City vs Liverpool",time:"Kesho 7PM - Premier League",pred:"OVER 2.5 GOALS",odds:"Over 1.75 | Under 2.05",type:"tomorrow",isVip:true,conf:"Confidence: 85%"},
-{title:"⚽ Real Madrid vs Barcelona",time:"Kesho 10PM - La Liga",pred:"BTTS YES - Wote Wanafunga",odds:"BTTS 1.70",type:"tomorrow",isVip:false,conf:"Confidence: 79%"},
-{title:"⚽ Gor Mahia vs AFC Leopards",time:"Jumapili 3PM - FKF Premier",pred:"GOR TO WIN / DRAW",odds:"Gor 2.00 | Draw 3.00",type:"tomorrow",isVip:true,conf:"Confidence: 80%"},
-{title:"⚽ Arsenal vs Man City",time:"Kesho 6PM",pred:"BTTS YES",odds:"BTTS 1.68",type:"tomorrow",isVip:false,conf:"Confidence: 74%"},
+const AFFILIATE={melbet:"https://refpa3665.com/L?tag=d_6346076m_18757c_&site=6346076&ad=18757",ke7:"https://ke7.com/?urc=214615471",twentytwo:"https://che.fluxbrox.com/redirect.aspx?pid=201596&bid=1756&lpid=1844"};
+// ===== BOSS: HAPA NDIO UNABADILISHA PREDICTION MANUAL - 18 GAMES, 15 ZA JACKPOT =====
+// Ukibadilisha pred: au home: hapa, site inabadilika yenyewe. Usiguse odds za 1 X 2 kama hujui.
+let MANUAL_GAMES=[
+{home:"Man United",away:"Arsenal",league:"England Premier League",time:"Today 19:00",pred:"OVER 2.5 GOALS 🔥",homeOdd:"2.10",drawOdd:"3.40",awayOdd:"3.20",type:"today",isVip:true,conf:"82%",jackpot:true},
+{home:"Chelsea",away:"Tottenham",league:"England Premier League",time:"Today 17:30",pred:"CHELSEA TO WIN + BTTS",homeOdd:"2.05",drawOdd:"3.50",awayOdd:"3.60",type:"today",isVip:false,conf:"76%",jackpot:true},
+{home:"Gor Mahia",away:"AFC Leopards",league:"FKF Premier League",time:"Today 15:00",pred:"GOR WIN / DRAW - 1X",homeOdd:"2.00",drawOdd:"3.00",awayOdd:"3.80",type:"today",isVip:true,conf:"80%",jackpot:true},
+{home:"Bayern Munich",away:"Cologne",league:"Germany Bundesliga",time:"Today 22:30",pred:"BAYERN WIN + OVER 2.5",homeOdd:"1.08",drawOdd:"8.00",awayOdd:"15.00",type:"today",isVip:false,conf:"88%",jackpot:true},
+{home:"Athletic Bilbao",away:"Espanyol",league:"Spain LaLiga",time:"Today 23:00",pred:"HOME WIN - 1",homeOdd:"1.48",drawOdd:"3.90",awayOdd:"5.80",type:"today",isVip:false,conf:"74%",jackpot:true},
+{home:"Troyes",away:"Le Havre",league:"France Ligue 1",time:"Today 23:05",pred:"UNDER 2.5 GOALS",homeOdd:"2.05",drawOdd:"3.30",awayOdd:"3.45",type:"today",isVip:false,conf:"71%",jackpot:true},
+{home:"Man City",away:"Liverpool",league:"England Premier League",time:"MON 19:00",pred:"OVER 2.5 GOALS + BTTS",homeOdd:"2.20",drawOdd:"3.60",awayOdd:"3.10",type:"tomorrow",isVip:true,conf:"85%",jackpot:true},
+{home:"Real Madrid",away:"Barcelona",league:"Spain LaLiga",time:"MON 22:00",pred:"BTTS YES - Wote Wanafunga",homeOdd:"2.30",drawOdd:"3.40",awayOdd:"2.90",type:"tomorrow",isVip:false,conf:"79%",jackpot:true},
+{home:"Arsenal",away:"Man City",league:"England Premier League",time:"TUE 18:00",pred:"BTTS YES",homeOdd:"2.15",drawOdd:"3.50",awayOdd:"3.30",type:"tue",isVip:false,conf:"74%",jackpot:true},
+{home:"AC Milan",away:"Inter Milan",league:"Italy Serie A",time:"TUE 21:45",pred:"OVER 2.5 GOALS",homeOdd:"2.70",drawOdd:"3.30",awayOdd:"2.50",type:"tue",isVip:true,conf:"77%",jackpot:true},
+{home:"PSG",away:"Marseille",league:"France Ligue 1",time:"WED 21:00",pred:"PSG WIN + OVER 1.5",homeOdd:"1.55",drawOdd:"4.20",awayOdd:"5.50",type:"wed",isVip:false,conf:"81%",jackpot:true},
+{home:"Dortmund",away:"Leverkusen",league:"Germany Bundesliga",time:"WED 20:30",pred:"OVER 2.5 GOALS",homeOdd:"2.40",drawOdd:"3.60",awayOdd:"2.70",type:"wed",isVip:false,conf:"78%",jackpot:true},
+{home:"Ajax",away:"PSV",league:"Netherlands Eredivisie",time:"THU 21:00",pred:"BTTS YES + OVER 2.5",homeOdd:"2.60",drawOdd:"3.70",awayOdd:"2.45",type:"thu",isVip:true,conf:"76%",jackpot:true},
+{home:"Porto",away:"Benfica",league:"Portugal Primeira",time:"FRI 22:00",pred:"DRAW / BTTS",homeOdd:"2.80",drawOdd:"3.20",awayOdd:"2.50",type:"fri",isVip:false,conf:"72%",jackpot:true},
+{home:"Celtic",away:"Rangers",league:"Scotland Premiership",time:"SAT 15:00",pred:"OVER 2.5 GOALS",homeOdd:"2.10",drawOdd:"3.40",awayOdd:"3.20",type:"sat",isVip:true,conf:"75%",jackpot:true},
+{home:"Galatasaray",away:"Fenerbahce",league:"Turkey Super Lig",time:"SUN 19:00",pred:"BTTS YES",homeOdd:"2.50",drawOdd:"3.30",awayOdd:"2.60",type:"sun",isVip:false,conf:"73%",jackpot:false},
+{home:"Al Ahly",away:"Zamalek",league:"Egypt Premier League",time:"SUN 20:00",pred:"UNDER 2.5 / DRAW",homeOdd:"2.20",drawOdd:"2.90",awayOdd:"3.40",type:"sun",isVip:true,conf:"70%",jackpot:false},
+{home:"Kaizer Chiefs",away:"Orlando Pirates",league:"South Africa PSL",time:"SAT 17:30",pred:"DRAW / UNDER 2.5",homeOdd:"2.60",drawOdd:"2.80",awayOdd:"2.70",type:"sat",isVip:false,conf:"68%",jackpot:false},
 ];
-
-let allGames=[];
-let currentTab='all';
-
-function autoPredict(home, away, homeScore, awayScore, isLive){
-  // Prediction ya auto - inachambua score na majina
-  if(isLive){
-    let total = (homeScore||0)+(awayScore||0);
-    if(total>=2) return {pred:"OVER 2.5 INAINGIA - Endelea Kuangalia", odds:"Live Odds - Check Melbet", conf:"LIVE - Inachezwa Sai"};
-    return {pred:"OVER 1.5 GOALS - Game Bado Moto", odds:"Live Odds - Check Ke7", conf:"LIVE - Inachezwa Sai"};
-  }
-  // Game haijaanza - prediction ya kawaida ya mtaa
-  let bigTeams = ["Arsenal","Chelsea","Man City","Liverpool","Real Madrid","Barcelona","Man United","Bayern","PSG"];
-  let isBig = bigTeams.some(t=> home.includes(t) || away.includes(t));
-  if(isBig) return {pred:"OVER 2.5 GOALS 🔥 + BTTS", odds:"Over 1.85 | BTTS 1.70", conf:"Confidence: 78% - Auto Pick"};
-  return {pred:"DOUBLE CHANCE - Home / Draw", odds:"1X 1.45 | Over 1.5", conf:"Confidence: 72% - Auto Pick"};
-}
-
+let allGames=[]; let currentTab='hot';
 function fmtDate(d){return d.toISOString().slice(0,10).replace(/-/g,'')}
-const leagues=["eng.1","esp.1","ita.1","ger.1","fra.1","ned.1","por.1","uefa.champions","uefa.europa","mex.1","bra.1"];
-async function fetchWithProxy(url){
-  const tries=[`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,`https://corsproxy.io/?url=${encodeURIComponent(url)}`,url];
-  for(let u of tries){ try{let r=await fetch(u); if(r.ok) return await r.json();}catch(e){} }
-  return null;
-}
+const leagues=["eng.1","esp.1","ita.1","ger.1","fra.1","ned.1","por.1","uefa.champions"];
+async function fetchWithProxy(url){const tries=[`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,`https://corsproxy.io/?url=${encodeURIComponent(url)}`,url];for(let u of tries){try{let r=await fetch(u);if(r.ok) return await r.json();}catch(e){}}return null;}
 async function loadLive(){
-  let t=new Date(), tm=new Date(Date.now()+86400000);
-  let dates=[{label:'today',d:fmtDate(t)},{label:'tomorrow',d:fmtDate(tm)}];
-  let fetched=[];
-  for(let league of leagues){
-    for(let dt of dates){
-      let url=`https://site.api.espn.com/apis/site/v2/sports/soccer/${league}/scoreboard?dates=${dt.d}`;
-      let data=await fetchWithProxy(url);
-      if(data && data.events){
-        data.events.forEach(ev=>{
-          let comp=ev.competitions[0];
-          let home=comp.competitors.find(c=>c.homeAway==='home');
-          let away=comp.competitors.find(c=>c.homeAway==='away');
-          let isLive=comp.status.type.state==='in';
-          let isDone=comp.status.type.state==='post';
-          let hs = home.score!=null?parseInt(home.score):0;
-          let as = away.score!=null?parseInt(away.score):0;
-          let auto = autoPredict(home.team.displayName, away.team.displayName, hs, as, isLive);
-          fetched.push({title:`⚽ ${home.team.displayName} vs ${away.team.displayName}`,time:isLive?`🔴 LIVE - ${comp.status.displayClock||''} | ${hs} - ${as}`:isDone?`FT: ${hs} - ${as}`:`${dt.label==='today'?'Leo':'Kesho'} ${new Date(ev.date).toLocaleTimeString('sw-KE',{hour:'2-digit',minute:'2-digit'})} - ${comp.league||''}`,pred:isLive?`SCORE LIVE: ${hs} - ${as} | ${auto.pred}`:isDone?`FULL TIME: ${hs} - ${as}`:auto.pred,odds:auto.odds,type:isLive?'live':dt.label,isLive,conf:auto.conf,isVip:false});
-        });
-      }
-    }
-  }
-  if(fetched.length>0){
-    document.getElementById('status').innerText=`✅ ${fetched.length} game za LIVE zimepatikana! Search timu yoyote hapo juu.`;
-    allGames=[...fetched,...MANUAL_GAMES];
-  }else{
-    document.getElementById('status').innerText=`✅ Tips za mtaa ziko hapa - Live zinajaribu tena... Refresh baada ya 1 min`;
-    allGames=[...MANUAL_GAMES];
-  }
+  let fetched=[]; let days=[]; for(let i=0;i<7;i++){let d=new Date(Date.now()+i*86400000); days.push({label:i===0?'today':i===1?'tomorrow':['sun','tomorrow','tue','wed','thu','fri','sat'][d.getDay()]||'today',d:fmtDate(d),dateObj:d});}
+  for(let league of leagues){ for(let day of days){ let url=`https://site.api.espn.com/apis/site/v2/sports/soccer/${league}/scoreboard?dates=${day.d}`; let data=await fetchWithProxy(url); if(data&&data.events){ data.events.forEach(ev=>{ let comp=ev.competitions[0]; let home=comp.competitors.find(c=>c.homeAway==='home'); let away=comp.competitors.find(c=>c.homeAway==='away'); let isLive=comp.status.type.state==='in'; let isDone=comp.status.type.state==='post'; if(isDone) return; let hs=home.score!=null?parseInt(home.score):0; let as=away.score!=null?parseInt(away.score):0; fetched.push({home:home.team.displayName,away:away.team.displayName,league:comp.league||league,time:isLive?`🔴 LIVE ${comp.status.displayClock||''} | ${hs} - ${as}`:`${day.label==='today'?'Today':day.label.toUpperCase()} ${new Date(ev.date).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'})}`,pred:isLive?`LIVE SCORE ${hs} - ${as} | OVER 1.5 GOALS`:`OVER 2.5 GOALS 🔥 + BTTS`,homeOdd:"1.85",drawOdd:"3.60",awayOdd:"4.20",type:isLive?'live':day.label,isLive,conf:isLive?"LIVE Sai":"Auto Pick 78%",isVip:false,jackpot:false}); }); } } }
+  if(fetched.length>0){ document.getElementById('status').innerText=`✅ ${fetched.length} game za LIVE + Week zimepatikana | ${MANUAL_GAMES.length} Tips za Mtaa`; allGames=[...fetched,...MANUAL_GAMES]; } else { document.getElementById('status').innerText=`✅ ${MANUAL_GAMES.length} Tips za Mtaa ziko hapa - Live zinajaribu tena...`; allGames=[...MANUAL_GAMES]; }
   render();
 }
 function setTab(tab,btn){currentTab=tab;document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');render();}
 function render(){
   let q=document.getElementById('search').value.toLowerCase();
   let list=allGames.filter(g=>{
+    if(currentTab==='hot') return true;
     if(currentTab==='live'&&!g.isLive) return false;
-    if(currentTab==='today'&&g.type!=='today'&&g.type!=='live') return false;
-    if(currentTab==='tomorrow'&&g.type!=='tomorrow') return false;
-    if(currentTab==='vip'&&!g.isVip) return false;
-    if(q&&!g.title.toLowerCase().includes(q)) return false;
+    if(currentTab==='jackpot'&&!g.jackpot) return false;
+    if(['today','tomorrow','tue','wed','thu','fri','sat','sun'].includes(currentTab)&&g.type!==currentTab&&g.type!=='live') return false;
+    if(q&&!(g.home.toLowerCase().includes(q)||g.away.toLowerCase().includes(q))) return false;
     return true;
   });
   let box=document.getElementById('games');
-  if(list.length===0){box.innerHTML=`<div style="text-align:center;padding:30px;color:#aaa">Hakuna game ya "<b>${q}</b>" sai.<br><br>Jaribu: Chelsea, Arsenal, Gor<br>Au finya tab ya Zote.</div>`;return;}
-  box.innerHTML=list.map(g=>`
-    <div class="card ${g.isLive?'live':''}">
-      <span class="badge ${g.isLive?'live':''}">${g.isLive?'🔴 LIVE SAI':g.isVip?'⭐ VIP PICK':'TIP YA MTAA'}</span>
-      <span class="badge vipb">${g.type==='today'?'LEO':g.type==='tomorrow'?'KESHO':'LIVE'}</span>
-      <h3>${g.title}</h3><p>${g.time}</p><p><b>Prediction Yangu:</b> ${g.pred}</p><p class="odds">Odds: ${g.odds}</p><p class="conf">${g.conf||''}</p>
-      <p style="font-size:12px;margin-top:10px">CHAGUA SITE YAKO YA KUBET 👇</p>
-      <a class="btn melbet" href="${AFFILIATE.melbet}" target="_blank">🟡 BET NA MELBET - BONUS KUBWA</a>
-      <a class="btn ke7" href="${AFFILIATE.ke7}" target="_blank">🟢 BET NA KE7 - M-PESA HARAKA</a>
-      <a class="btn twentytwo" href="${AFFILIATE.twentytwo}" target="_blank">🔵 BET NA 22BET - ODDS KUBWA</a>
+  if(currentTab==='jackpot'){ box.innerHTML=`<div class="jackpot">🏆 JACKPOT YA WEEK HII - 15 GAMES<br><span style="font-size:12px;font-weight:400">Chagua zote, weka kwa slip moja!</span></div>`+box.innerHTML; }
+  if(list.length===0){box.innerHTML=`<div style="text-align:center;padding:30px;color:#aaa">Hakuna game hapa sai.<br>Jaribu tab ya Hot.</div>`;return;}
+  let html=list.map(g=>`
+    <div class="card">
+      <div class="league"><span>⚽ ${g.league}</span><span>${g.isVip?'⭐ VIP':'+ Markets'}</span></div>
+      <div class="row"><div class="teams"><b>${g.home}</b><b>${g.away}</b><small>Starts at ${g.time}</small></div>
+      <div class="oddsrow"><a class="odd" href="${AFFILIATE.ke7}" target="_blank">1<br>${g.homeOdd}</a><a class="odd" href="${AFFILIATE.ke7}" target="_blank">X<br>${g.drawOdd}</a><a class="odd" href="${AFFILIATE.ke7}" target="_blank">2<br>${g.awayOdd}</a></div></div>
+      <div class="pred"><b>Prediction:</b> ${g.pred}<br><span class="conf">Confidence: ${g.conf}</span> ${g.isVip?'• ⭐ VIP PICK':''}</div>
+      <div class="btns"><a class="btn melbet" href="${AFFILIATE.melbet}" target="_blank">MELBET</a><a class="btn ke7" href="${AFFILIATE.ke7}" target="_blank">KE7</a><a class="btn twentytwo" href="${AFFILIATE.twentytwo}" target="_blank">22BET</a></div>
     </div>`).join('');
+  if(currentTab==='jackpot'){ box.innerHTML=`<div class="jackpot">🏆 JACKPOT YA WEEK HII - 15 GAMES<br><span style="font-size:12px;font-weight:400">Chagua zote, weka kwa slip moja!</span></div>`+html; } else { box.innerHTML=html; }
 }
-allGames=[...MANUAL_GAMES];
-render();
-loadLive();
-setInterval(loadLive,60000);
+allGames=[...MANUAL_GAMES]; render(); loadLive(); setInterval(loadLive,60000);
 </script>
 </body>
 </html>
