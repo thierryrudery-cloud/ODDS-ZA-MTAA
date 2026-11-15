@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="sw">
 <head>
 <meta charset="UTF-8">
@@ -33,11 +33,11 @@ body{background:#1a2332;color:#fff;padding-bottom:70px}
 .countbar{background:#FFD700;color:#000;text-align:center;padding:8px;font-weight:900;font-size:13px}
 .wwe-banner{background:#c40000;color:#fff;text-align:center;padding:10px;font-weight:900;font-size:14px}
 .live-badge{background:#ff0000;color:#fff;font-size:11px;font-weight:900;padding:3px 8px;border-radius:10px}
+.soon-badge{background:#FFD700;color:#000;font-size:11px;font-weight:900;padding:3px 8px;border-radius:10px}
 .ft-badge{background:#555;color:#fff;font-size:11px;font-weight:900;padding:3px 8px;border-radius:10px}
 #adminPanel{display:none;background:#0f1622;border:2px solid #FFD700;margin:10px 12px;padding:12px;border-radius:10px}
 #adminPanel input,#adminPanel select{width:100%;padding:10px;margin:5px 0;border-radius:8px;border:1px solid #333;background:#1a2332;color:#fff}
 #adminPanel button{width:100%;padding:12px;background:#FFD700;color:#000;font-weight:900;border:none;border-radius:8px;margin-top:6px}
-.update-btn{background:#25D366;color:#fff;text-align:center;display:block;padding:8px;border-radius:8px;font-size:12px;font-weight:bold;text-decoration:none;margin-top:6px}
 </style>
 </head>
 <body>
@@ -45,7 +45,7 @@ body{background:#1a2332;color:#fff;padding-bottom:70px}
 <div class="sports"><span class="active" onclick="setSport('soccer',this)">⚽ Soccer</span><span onclick="setSport('basketball',this)">🏀 Basketball</span><span onclick="setSport('wwe',this)">🤼 WWE</span><span onclick="setSport('jackpot',this)">🏆 Jackpot</span></div>
 <div class="tabs"><button class="active" onclick="setTab('hot',this)">🔥 Hot</button><button onclick="setTab('live',this)">🔴 Live</button><button onclick="setTab('today',this)">Today</button><button onclick="setTab('tomorrow',this)">MON</button><button onclick="setTab('tue',this)">TUE</button><button onclick="setTab('wed',this)">WED</button><button onclick="setTab('thu',this)">THU</button><button onclick="setTab('fri',this)">FRI</button><button onclick="setTab('sat',this)">SAT</button><button onclick="setTab('sun',this)">SUN</button><button onclick="setTab('finished',this)">✅ Finished</button><button onclick="setTab('jackpot',this)">🏆 Jackpot</button></div>
 <a class="vip-btn" href="https://whatsapp.com/channel/0029VbDbFKdHFxP838WmYR0h" target="_blank">💬 PREDICTION ZA LEO + WWE + JACKPOT ZIKO CHANNEL 👉 CLICK HAPA</a>
-<div id="adminPanel"><h3 style="color:#FFD700">🔧 ADMIN - WEWE PEKEE</h3><p style="font-size:12px;color:#aaa">Chagua game, weka score uliyoiona, bonyeza Update. Wasee wataona score mara moja. Kisha niambie hapa WhatsApp nikuiweke permanent.</p><select id="adminGame"></select><input id="adminScore" placeholder="Score mfano: 2-1"><input id="adminPred" placeholder="Prediction mpya kama game inaenda vibaya - mfano: CASH OUT SAI"><button onclick="adminUpdate()">UPDATE SCORE / PREDICTION</button><button onclick="alert('Sasa copy hii update tuma kwa Channel ili wasee wajue umebadilisha')" style="background:#25D366;color:#fff">NIMEMALIZA - NITUME KWA CHANNEL</button></div>
+<div id="adminPanel"><h3 style="color:#FFD700">🔧 ADMIN - WEWE PEKEE</h3><p style="font-size:12px;color:#aaa">Chagua game, weka score, bonyeza Update.</p><select id="adminGame"></select><input id="adminScore" placeholder="Score mfano: 2-1"><input id="adminPred" placeholder="Prediction mpya kama game inaenda vibaya"><button onclick="adminUpdate()">UPDATE SCORE / PREDICTION</button></div>
 <div class="search-box"><input id="search" placeholder="Search Kenya, Roman, Penta, Gor..." oninput="render()"></div>
 <div class="countbar" id="countbar">🔥 WEEK HII YOTE - LOADING...</div>
 <div id="games"></div>
@@ -62,6 +62,8 @@ var MANUAL_GAMES=[
 {home:"Gor Mahia",away:"AFC Leopards",league:"FKF Premier League - Kenya",time:"Today 15:00",hour:15.0,pred:"GOR WIN / DRAW - 1X",h:"2.00",d:"3.00",a:"3.80",type:"today",vip:1,conf:"80%",jack:0,sport:"soccer",score:""},
 {home:"Kenya",away:"Gabon",league:"World Cup Qualifiers - Africa",time:"Today 16:00",hour:16.0,pred:"KENYA WIN / DRAW - 1X + UNDER 3.5",h:"2.30",d:"3.10",a:"3.00",type:"today",vip:1,conf:"78%",jack:1,sport:"soccer",score:""},
 {home:"Nigeria",away:"South Africa",league:"World Cup Qualifiers - Africa",time:"Today 18:00",hour:18.0,pred:"OVER 1.5 GOALS + BTTS",h:"2.10",d:"3.20",a:"3.50",type:"today",vip:1,conf:"75%",jack:1,sport:"soccer",score:""},
+{home:"Ghana",away:"Mali",league:"World Cup Qualifiers - Africa",time:"Today 20:00",hour:20.0,pred:"GHANA WIN / DRAW - 1X + UNDER 3.5",h:"2.05",d:"3.10",a:"3.60",type:"today",vip:1,conf:"74%",jack:0,sport:"soccer",score:""},
+{home:"Senegal",away:"Egypt",league:"World Cup Qualifiers - Africa",time:"Today 20:30",hour:20.5,pred:"UNDER 2.5 GOALS",h:"2.40",d:"3.00",a:"3.00",type:"today",vip:0,conf:"71%",jack:0,sport:"soccer",score:""},
 {home:"England",away:"Serbia",league:"World Cup Qualifiers - Europe",time:"Today 21:45",hour:21.75,pred:"ENGLAND WIN + OVER 1.5",h:"1.45",d:"4.20",a:"6.50",type:"today",vip:1,conf:"82%",jack:1,sport:"soccer",score:""},
 {home:"Spain",away:"Turkey",league:"World Cup Qualifiers - Europe",time:"Today 21:45",hour:21.75,pred:"OVER 2.5 GOALS",h:"1.55",d:"4.10",a:"5.80",type:"today",vip:1,conf:"84%",jack:1,sport:"soccer",score:""},
 {home:"Argentina",away:"Uruguay",league:"World Cup Qualifiers - South America",time:"MON 02:00",hour:99,pred:"ARGENTINA WIN + UNDER 3.5",h:"1.70",d:"3.60",a:"5.00",type:"tomorrow",vip:1,conf:"78%",jack:0,sport:"soccer",score:""},
@@ -103,6 +105,13 @@ function getMinute(g){
   var m=nowMin-startMin; if(m<0){m=0;} if(m>90){m=90;}
   return m+"'";
 }
+function getCountdown(g){
+  var now=new Date(); var nowMin=now.getHours()*60+now.getMinutes();
+  var startMin=Math.floor(g.hour)*60+Math.round((g.hour-Math.floor(g.hour))*60);
+  var diff=startMin-nowMin; if(diff<0){return '';} var h=Math.floor(diff/60); var m=diff%60;
+  if(h===0){return 'Inaanza baadaye '+m+' min';}
+  return 'Inaanza baadaye '+h+'h '+m+'m';
+}
 function toggleMenu(){var m=document.getElementById('menuPopup');m.style.display=(m.style.display==='block'?'none':'block');}
 function closeMenu(){document.getElementById('menuPopup').style.display='none';}
 function setSport(sport,el){currentSport=sport;var all=document.querySelectorAll('.sports span');for(var i=0;i<all.length;i++){all[i].classList.remove('active');}if(el){el.classList.add('active');}render();}
@@ -127,7 +136,15 @@ function render(){
       if(currentSport==='wwe' && g.sport!=='wwe'){continue;}
       if(currentSport==='jackpot' && !g.jack){continue;}
       if(currentTab==='jackpot' && !g.jack){continue;}
-      if(currentTab==='live' && st!=='live'){continue;}
+      // FIX LIVE 0: Live inaonyesha LIVE + game inaanza karibuni (ndani ya masaa 2)
+      if(currentTab==='live'){
+        if(st==='live'){list.push(g); continue;}
+        if(st==='upcoming' && g.type==='today'){
+          var nowH=new Date().getHours()+new Date().getMinutes()/60;
+          if(g.hour-nowH>=0 && g.hour-nowH<=2){list.push(g); continue;}
+        }
+        continue;
+      }
       if(currentTab==='finished' && st!=='finished'){continue;}
       if(currentTab==='hot' && st==='finished'){continue;}
       if(currentTab==='today' && st==='finished' && g.sport==='soccer'){continue;}
@@ -137,26 +154,19 @@ function render(){
     }
     var box=document.getElementById('games');
     document.getElementById('countbar').innerText='🔥 THIS WEEK - '+list.length+' Games - LIVE '+liveCount;
-    if(list.length===0){box.innerHTML='<div style="text-align:center;padding:30px;color:#aaa">Hakuna game hapa sai. Jaribu Hot au siku nyingine.</div>';return;}
+    if(list.length===0){
+      // Kama bado 0, onyesha Next Live badala ya tupu
+      box.innerHTML='<div style="text-align:center;padding:30px;color:#aaa">Hakuna LIVE sai. Game inayofuata ni England vs Serbia 21:45.<br>Bonyeza Today kuona zote.</div>';return;
+    }
     var html='';
     if(currentSport==='wwe'){html+='<div class="wwe-banner">🤼 WWE PREDICTIONS - SURVIVOR SERIES NOV 28 - LEGIT</div>';}
     for(var j=0;j<list.length;j++){
       var g=list[j]; var st=getGameStatus(g); var min=getMinute(g);
       var badge=''; var scoreHtml='';
       if(st==='live'){badge='<span class="live-badge">🔴 LIVE '+min+'</span>'; if(g.score){scoreHtml='<div class="score-line">⚽ SCORE: '+g.score+' • '+min+'</div>';}else{scoreHtml='<div class="score-line">⚽ LIVE '+min+' • Score kwa Channel</div>';}}
-      if(st==='finished'){badge='<span class="ft-badge">✅ FT</span>'; if(g.score){scoreHtml='<div class="score-line">✅ FULL TIME: '+g.score+'</div>';}else{scoreHtml='<div class="score-line">✅ FT - Matokeo kwa Channel</div>';}}
+      else if(st==='finished'){badge='<span class="ft-badge">✅ FT</span>'; if(g.score){scoreHtml='<div class="score-line">✅ FULL TIME: '+g.score+'</div>';}else{scoreHtml='<div class="score-line">✅ FT - Matokeo kwa Channel</div>';}}
+      else if(currentTab==='live'){badge='<span class="soon-badge">⏳ '+getCountdown(g)+'</span>';}
       html += '<div class="card"><div class="league"><span>'+g.league+'</span><span>'+badge+' '+(g.vip?'⭐ VIP':'+ Markets')+'</span></div><div class="row"><div class="teams"><b>'+g.home+'</b><b>'+g.away+'</b><small>Starts at '+g.time+'</small>'+scoreHtml+'</div><div class="oddsrow"><a class="odd" href="'+AFFILIATE.ke7+'" target="_blank">1<br>'+g.h+'</a><a class="odd" href="'+AFFILIATE.ke7+'" target="_blank">X<br>'+g.d+'</a><a class="odd" href="'+AFFILIATE.ke7+'" target="_blank">2<br>'+g.a+'</a></div></div><div class="pred"><b>Prediction:</b> '+g.pred+'<br><span class="conf">Confidence: '+g.conf+'</span></div><div class="btns"><a class="btn melbet" href="'+AFFILIATE.melbet+'" target="_blank">MELBET</a><a class="btn ke7" href="'+AFFILIATE.ke7+'" target="_blank">KE7</a><a class="btn twentytwo" href="'+AFFILIATE.twentytwo+'" target="_blank">22BET</a></div></div>';
     }
     if(currentTab==='jackpot'){box.innerHTML='<div class="jackpot">🏆 JACKPOT YA WEEK HII</div>'+html;}else{box.innerHTML=html;}
-  }catch(e){ document.getElementById('games').innerHTML='<div style="padding:20px;text-align:center">Error: '+e.message+'</div>'; }
-}
-if(window.location.search.indexOf('admin=1')!==-1){
-  document.getElementById('adminPanel').style.display='block';
-  var sel=document.getElementById('adminGame');
-  for(var k=0;k<allGames.length;k++){var o=document.createElement('option');o.value=k;o.text=allGames[k].home+' vs '+allGames[k].away;sel.appendChild(o);}
-}
-render();
-setInterval(render,60000);
-</script>
-</body>
-</html>
+  }catch(e){ document.getElementById('games').innerHTML='<div style="padding:20px;text-align:cente
