@@ -45,7 +45,7 @@ body{background:#1a2332;color:#fff;padding-bottom:70px}
 <div class="sports"><span class="active" onclick="setSport('soccer',this)">⚽ Soccer</span><span onclick="setSport('basketball',this)">🏀 Basketball</span><span onclick="setSport('wwe',this)">🤼 WWE</span><span onclick="setSport('jackpot',this)">🏆 Jackpot</span></div>
 <div class="tabs"><button class="active" onclick="setTab('hot',this)">🔥 Hot</button><button onclick="setTab('live',this)">🔴 Live</button><button onclick="setTab('today',this)">Today</button><button onclick="setTab('tomorrow',this)">MON</button><button onclick="setTab('tue',this)">TUE</button><button onclick="setTab('wed',this)">WED</button><button onclick="setTab('thu',this)">THU</button><button onclick="setTab('fri',this)">FRI</button><button onclick="setTab('sat',this)">SAT</button><button onclick="setTab('sun',this)">SUN</button><button onclick="setTab('finished',this)">✅ Finished</button><button onclick="setTab('jackpot',this)">🏆 Jackpot</button></div>
 <a class="vip-btn" href="https://whatsapp.com/channel/0029VbDbFKdHFxP838WmYR0h" target="_blank">💬 PREDICTION ZA LEO + WWE + JACKPOT ZIKO CHANNEL 👉 CLICK HAPA</a>
-<div id="adminPanel"><h3 style="color:#FFD700">🔧 ADMIN - WEWE PEKEE</h3><p style="font-size:12px;color:#aaa">Chagua game, weka score, bonyeza Update.</p><select id="adminGame"></select><input id="adminScore" placeholder="Score mfano: 2-1"><input id="adminPred" placeholder="Prediction mpya kama game inaenda vibaya"><button onclick="adminUpdate()">UPDATE SCORE / PREDICTION</button></div>
+<div id="adminPanel"><h3 style="color:#FFD700">🔧 ADMIN - WEWE PEKEE</h3><select id="adminGame"></select><input id="adminScore" placeholder="Score mfano: 2-1"><input id="adminPred" placeholder="Prediction mpya kama game inaenda vibaya"><button onclick="adminUpdate()">UPDATE SCORE / PREDICTION</button></div>
 <div class="search-box"><input id="search" placeholder="Search Kenya, Roman, Penta, Gor..." oninput="render()"></div>
 <div class="countbar" id="countbar">🔥 WEEK HII YOTE - LOADING...</div>
 <div id="games"></div>
@@ -122,7 +122,7 @@ function adminUpdate(){
   var pr=document.getElementById('adminPred').value;
   if(sc){allGames[idx].score=sc;}
   if(pr){allGames[idx].pred=pr+' ⚠️ UPDATE YA MTAA';}
-  render(); alert('Imeupdate! Sasa tuma kwa Channel wasee wajue.');
+  render(); alert('Imeupdate!');
 }
 function render(){
   try{
@@ -136,7 +136,6 @@ function render(){
       if(currentSport==='wwe' && g.sport!=='wwe'){continue;}
       if(currentSport==='jackpot' && !g.jack){continue;}
       if(currentTab==='jackpot' && !g.jack){continue;}
-      // FIX LIVE 0: Live inaonyesha LIVE + game inaanza karibuni (ndani ya masaa 2)
       if(currentTab==='live'){
         if(st==='live'){list.push(g); continue;}
         if(st==='upcoming' && g.type==='today'){
@@ -152,21 +151,32 @@ function render(){
       if(q && g.home.toLowerCase().indexOf(q)===-1 && g.away.toLowerCase().indexOf(q)===-1 && g.league.toLowerCase().indexOf(q)===-1){continue;}
       list.push(g);
     }
+    // BLUNDER FIX: Kama Live ni 0 kwa hiyo sport, onyesha Next Live ya hiyo sport - kamwe isiwe 0
+    if(currentTab==='live' && list.length===0){
+      var fallback=[];
+      for(var f=0;f<allGames.length;f++){
+        var fg=allGames[f];
+        if(currentSport==='soccer' && fg.sport!=='soccer'){continue;}
+        if(currentSport==='basketball' && fg.sport!=='basketball'){continue;}
+        if(currentSport==='wwe' && fg.sport!=='wwe'){continue;}
+        if(getGameStatus(fg)==='upcoming'){fallback.push(fg); if(fallback.length>=3){break;}}
+      }
+      list=fallback;
+      document.getElementById('countbar').innerText='⏳ HAKUNA LIVE SAI - HIZI NDO NEXT LIVE - '+list.length+' Games';
+      var box2=document.getElementById('games');
+      var html2='<div style="background:#FFD700;color:#000;text-align:center;padding:10px;font-weight:900;font-size:13px">⏳ HAKUNA LIVE SAI KWA '+currentSport.toUpperCase()+' - HIZI NDO ZINAAANZA KARIBUNI</div>';
+      for(var j2=0;j2<list.length;j2++){
+        var g2=list[j2];
+        html2 += '<div class="card"><div class="league"><span>'+g2.league+'</span><span><span class="soon-badge">⏳ NEXT LIVE</span></span></div><div class="row"><div class="teams"><b>'+g2.home+'</b><b>'+g2.away+'</b><small>Starts at '+g2.time+'</small></div><div class="oddsrow"><a class="odd" href="'+AFFILIATE.ke7+'" target="_blank">1<br>'+g2.h+'</a><a class="odd" href="'+AFFILIATE.ke7+'" target="_blank">X<br>'+g2.d+'</a><a class="odd" href="'+AFFILIATE.ke7+'" target="_blank">2<br>'+g2.a+'</a></div></div><div class="pred"><b>Prediction:</b> '+g2.pred+'<br><span class="conf">Confidence: '+g2.conf+'</span></div><div class="btns"><a class="btn melbet" href="'+AFFILIATE.melbet+'" target="_blank">MELBET</a><a class="btn ke7" href="'+AFFILIATE.ke7+'" target="_blank">KE7</a><a class="btn twentytwo" href="'+AFFILIATE.twentytwo+'" target="_blank">22BET</a></div></div>';
+      }
+      box2.innerHTML=html2; return;
+    }
     var box=document.getElementById('games');
     document.getElementById('countbar').innerText='🔥 THIS WEEK - '+list.length+' Games - LIVE '+liveCount;
-    if(list.length===0){
-      // Kama bado 0, onyesha Next Live badala ya tupu
-      box.innerHTML='<div style="text-align:center;padding:30px;color:#aaa">Hakuna LIVE sai. Game inayofuata ni England vs Serbia 21:45.<br>Bonyeza Today kuona zote.</div>';return;
-    }
+    if(list.length===0){box.innerHTML='<div style="text-align:center;padding:30px;color:#aaa">Hakuna game. Bonyeza Hot.</div>';return;}
     var html='';
     if(currentSport==='wwe'){html+='<div class="wwe-banner">🤼 WWE PREDICTIONS - SURVIVOR SERIES NOV 28 - LEGIT</div>';}
     for(var j=0;j<list.length;j++){
       var g=list[j]; var st=getGameStatus(g); var min=getMinute(g);
       var badge=''; var scoreHtml='';
-      if(st==='live'){badge='<span class="live-badge">🔴 LIVE '+min+'</span>'; if(g.score){scoreHtml='<div class="score-line">⚽ SCORE: '+g.score+' • '+min+'</div>';}else{scoreHtml='<div class="score-line">⚽ LIVE '+min+' • Score kwa Channel</div>';}}
-      else if(st==='finished'){badge='<span class="ft-badge">✅ FT</span>'; if(g.score){scoreHtml='<div class="score-line">✅ FULL TIME: '+g.score+'</div>';}else{scoreHtml='<div class="score-line">✅ FT - Matokeo kwa Channel</div>';}}
-      else if(currentTab==='live'){badge='<span class="soon-badge">⏳ '+getCountdown(g)+'</span>';}
-      html += '<div class="card"><div class="league"><span>'+g.league+'</span><span>'+badge+' '+(g.vip?'⭐ VIP':'+ Markets')+'</span></div><div class="row"><div class="teams"><b>'+g.home+'</b><b>'+g.away+'</b><small>Starts at '+g.time+'</small>'+scoreHtml+'</div><div class="oddsrow"><a class="odd" href="'+AFFILIATE.ke7+'" target="_blank">1<br>'+g.h+'</a><a class="odd" href="'+AFFILIATE.ke7+'" target="_blank">X<br>'+g.d+'</a><a class="odd" href="'+AFFILIATE.ke7+'" target="_blank">2<br>'+g.a+'</a></div></div><div class="pred"><b>Prediction:</b> '+g.pred+'<br><span class="conf">Confidence: '+g.conf+'</span></div><div class="btns"><a class="btn melbet" href="'+AFFILIATE.melbet+'" target="_blank">MELBET</a><a class="btn ke7" href="'+AFFILIATE.ke7+'" target="_blank">KE7</a><a class="btn twentytwo" href="'+AFFILIATE.twentytwo+'" target="_blank">22BET</a></div></div>';
-    }
-    if(currentTab==='jackpot'){box.innerHTML='<div class="jackpot">🏆 JACKPOT YA WEEK HII</div>'+html;}else{box.innerHTML=html;}
-  }catch(e){ document.getElementById('games').innerHTML='<div style="padding:20px;text-align:cente
+      if(st==='live'){badge='<span class="live-badge">🔴 LIVE '+min+'</spa
