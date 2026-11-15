@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="sw">
 <head>
 <meta charset="UTF-8">
@@ -20,6 +20,7 @@ body{background:#1a2332;color:#fff;padding-bottom:70px}
 .card{background:#1a2332;border-bottom:1px solid #2a3648;padding:12px}
 .row{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .teams{flex:1}.teams b{font-size:16px;display:block;line-height:1.4}.teams small{color:#888;font-size:12px}
+.score-line{font-size:18px;font-weight:900;color:#FFD700;margin:4px 0}
 .oddsrow{display:flex;gap:6px}.odd{background:#FFD700;color:#000;min-width:62px;text-align:center;padding:10px 6px;border-radius:18px;font-weight:900;font-size:15px;text-decoration:none}
 .pred{margin-top:8px;background:#0f1622;border-left:3px solid #FFD700;padding:8px;border-radius:6px;font-size:13px;line-height:1.5}.pred b{color:#FFD700}.pred .conf{color:#00ff88;font-size:11px}
 .btns{display:flex;gap:6px;margin-top:8px}.btn{flex:1;text-align:center;padding:9px 4px;border-radius:8px;font-size:11px;font-weight:bold;text-decoration:none;color:#fff}.melbet{background:#FFD700;color:#000}.ke7{background:#008000}.twentytwo{background:#0000cc}
@@ -32,6 +33,11 @@ body{background:#1a2332;color:#fff;padding-bottom:70px}
 .countbar{background:#FFD700;color:#000;text-align:center;padding:8px;font-weight:900;font-size:13px}
 .wwe-banner{background:#c40000;color:#fff;text-align:center;padding:10px;font-weight:900;font-size:14px}
 .live-badge{background:#ff0000;color:#fff;font-size:11px;font-weight:900;padding:3px 8px;border-radius:10px}
+.ft-badge{background:#555;color:#fff;font-size:11px;font-weight:900;padding:3px 8px;border-radius:10px}
+#adminPanel{display:none;background:#0f1622;border:2px solid #FFD700;margin:10px 12px;padding:12px;border-radius:10px}
+#adminPanel input,#adminPanel select{width:100%;padding:10px;margin:5px 0;border-radius:8px;border:1px solid #333;background:#1a2332;color:#fff}
+#adminPanel button{width:100%;padding:12px;background:#FFD700;color:#000;font-weight:900;border:none;border-radius:8px;margin-top:6px}
+.update-btn{background:#25D366;color:#fff;text-align:center;display:block;padding:8px;border-radius:8px;font-size:12px;font-weight:bold;text-decoration:none;margin-top:6px}
 </style>
 </head>
 <body>
@@ -39,8 +45,9 @@ body{background:#1a2332;color:#fff;padding-bottom:70px}
 <div class="sports"><span class="active" onclick="setSport('soccer',this)">⚽ Soccer</span><span onclick="setSport('basketball',this)">🏀 Basketball</span><span onclick="setSport('wwe',this)">🤼 WWE</span><span onclick="setSport('jackpot',this)">🏆 Jackpot</span></div>
 <div class="tabs"><button class="active" onclick="setTab('hot',this)">🔥 Hot</button><button onclick="setTab('live',this)">🔴 Live</button><button onclick="setTab('today',this)">Today</button><button onclick="setTab('tomorrow',this)">MON</button><button onclick="setTab('tue',this)">TUE</button><button onclick="setTab('wed',this)">WED</button><button onclick="setTab('thu',this)">THU</button><button onclick="setTab('fri',this)">FRI</button><button onclick="setTab('sat',this)">SAT</button><button onclick="setTab('sun',this)">SUN</button><button onclick="setTab('finished',this)">✅ Finished</button><button onclick="setTab('jackpot',this)">🏆 Jackpot</button></div>
 <a class="vip-btn" href="https://whatsapp.com/channel/0029VbDbFKdHFxP838WmYR0h" target="_blank">💬 PREDICTION ZA LEO + WWE + JACKPOT ZIKO CHANNEL 👉 CLICK HAPA</a>
+<div id="adminPanel"><h3 style="color:#FFD700">🔧 ADMIN - WEWE PEKEE</h3><p style="font-size:12px;color:#aaa">Chagua game, weka score uliyoiona, bonyeza Update. Wasee wataona score mara moja. Kisha niambie hapa WhatsApp nikuiweke permanent.</p><select id="adminGame"></select><input id="adminScore" placeholder="Score mfano: 2-1"><input id="adminPred" placeholder="Prediction mpya kama game inaenda vibaya - mfano: CASH OUT SAI"><button onclick="adminUpdate()">UPDATE SCORE / PREDICTION</button><button onclick="alert('Sasa copy hii update tuma kwa Channel ili wasee wajue umebadilisha')" style="background:#25D366;color:#fff">NIMEMALIZA - NITUME KWA CHANNEL</button></div>
 <div class="search-box"><input id="search" placeholder="Search Kenya, Roman, Penta, Gor..." oninput="render()"></div>
-<div class="countbar" id="countbar">🔥 WEEK HII YOTE - MON HADI SUN</div>
+<div class="countbar" id="countbar">🔥 WEEK HII YOTE - LOADING...</div>
 <div id="games"></div>
 <div class="footer">ODDS ZA MTAA © 2026 | 18+ Only | Bet Responsibly<br>All Leagues • WWE • Soccer • Jackpot • Survivor Series Nov 28</div>
 <div id="menuPopup"><a href="#" onclick="closeMenu();setSport('wwe',document.querySelectorAll('.sports span')[2]);return false;">🤼 WWE - Survivor Series</a><a href="#" onclick="closeMenu();setTab('jackpot',document.querySelector('.tabs button'));return false;">🏆 Jackpot</a><a href="https://whatsapp.com/channel/0029VbDbFKdHFxP838WmYR0h" target="_blank">💬 Join WhatsApp Channel</a><a href="#" onclick="closeMenu();return false;">❌ Funga</a></div>
@@ -48,64 +55,39 @@ body{background:#1a2332;color:#fff;padding-bottom:70px}
 <script>
 var AFFILIATE={melbet:"https://refpa3665.com/L?tag=d_6346076m_18757c_&site=6346076&ad=18757",ke7:"https://ke7.com/?urc=214615471",twentytwo:"https://che.fluxbrox.com/redirect.aspx?pid=201596&bid=1756&lpid=1844"};
 var MANUAL_GAMES=[
-// TODAY - SUN 15 NOV
-{home:"Kenya Police",away:"Posta Rangers",league:"Kenya Premier League",time:"Today 13:45",hour:13.75,pred:"UNDER 2.5 GOALS + 1X",h:"1.72",d:"3.15",a:"4.60",type:"today",vip:1,conf:"72%",jack:0,sport:"soccer"},
-{home:"Tusker",away:"Shabana",league:"Kenya Premier League",time:"Today 14:00",hour:14.0,pred:"TUSKER WIN / DRAW - 1X",h:"1.87",d:"2.90",a:"4.60",type:"today",vip:1,conf:"74%",jack:0,sport:"soccer"},
-{home:"Muranga Seal",away:"Mathare United",league:"Kenya Premier League",time:"Today 15:00",hour:15.0,pred:"OVER 1.5 GOALS",h:"2.05",d:"2.87",a:"3.40",type:"today",vip:0,conf:"68%",jack:0,sport:"soccer"},
-{home:"Kakamega Homeboyz",away:"KCB",league:"Kenya Premier League",time:"Today 15:00",hour:15.0,pred:"DRAW / BTTS",h:"2.62",d:"2.90",a:"2.62",type:"today",vip:0,conf:"70%",jack:0,sport:"soccer"},
-{home:"Gor Mahia",away:"AFC Leopards",league:"FKF Premier League - Kenya",time:"Today 15:00",hour:15.0,pred:"GOR WIN / DRAW - 1X",h:"2.00",d:"3.00",a:"3.80",type:"today",vip:1,conf:"80%",jack:0,sport:"soccer"},
-{home:"Kenya",away:"Gabon",league:"World Cup Qualifiers - Africa",time:"Today 16:00",hour:16.0,pred:"KENYA WIN / DRAW - 1X + UNDER 3.5",h:"2.30",d:"3.10",a:"3.00",type:"today",vip:1,conf:"78%",jack:1,sport:"soccer"},
-{home:"Nigeria",away:"South Africa",league:"World Cup Qualifiers - Africa",time:"Today 18:00",hour:18.0,pred:"OVER 1.5 GOALS + BTTS",h:"2.10",d:"3.20",a:"3.50",type:"today",vip:1,conf:"75%",jack:1,sport:"soccer"},
-{home:"England",away:"Serbia",league:"World Cup Qualifiers - Europe",time:"Today 21:45",hour:21.75,pred:"ENGLAND WIN + OVER 1.5",h:"1.45",d:"4.20",a:"6.50",type:"today",vip:1,conf:"82%",jack:1,sport:"soccer"},
-{home:"Spain",away:"Turkey",league:"World Cup Qualifiers - Europe",time:"Today 21:45",hour:21.75,pred:"OVER 2.5 GOALS",h:"1.55",d:"4.10",a:"5.80",type:"today",vip:1,conf:"84%",jack:1,sport:"soccer"},
-// MON - KESHO
-{home:"Argentina",away:"Uruguay",league:"World Cup Qualifiers - South America",time:"MON 02:00",hour:99,pred:"ARGENTINA WIN + UNDER 3.5",h:"1.70",d:"3.60",a:"5.00",type:"tomorrow",vip:1,conf:"78%",jack:0,sport:"soccer"},
-{home:"Brazil",away:"Colombia",league:"World Cup Qualifiers - South America",time:"MON 03:00",hour:99,pred:"BRAZIL WIN / BTTS",h:"1.85",d:"3.50",a:"4.30",type:"tomorrow",vip:0,conf:"74%",jack:0,sport:"soccer"},
-{home:"USA",away:"Mexico",league:"CONCACAF Qualifiers",time:"MON 04:00",hour:99,pred:"BTTS YES + OVER 2.5",h:"2.40",d:"3.20",a:"2.90",type:"tomorrow",vip:1,conf:"71%",jack:0,sport:"soccer"},
-{home:"Japan",away:"South Korea",league:"World Cup Qualifiers - Asia",time:"MON 13:00",hour:99,pred:"JAPAN WIN",h:"1.80",d:"3.50",a:"4.50",type:"tomorrow",vip:0,conf:"76%",jack:0,sport:"soccer"},
-{home:"Sofapaka",away:"Bandari",league:"Kenya Premier League",time:"MON 15:00",hour:99,pred:"UNDER 2.5 GOALS",h:"2.10",d:"3.00",a:"3.50",type:"tomorrow",vip:0,conf:"68%",jack:0,sport:"soccer"},
-// TUE - WEEK HII
-{home:"Bulls",away:"Heat",league:"NBA - Basketball",time:"TUE 03:30",hour:99,pred:"OVER 205.5 POINTS",h:"2.00",d:"12.00",a:"1.80",type:"tue",vip:0,conf:"65%",jack:0,sport:"basketball"},
-{home:"Arsenal",away:"Chelsea",league:"England Premier League",time:"TUE 22:00",hour:99,pred:"OVER 2.5 GOALS + BTTS",h:"2.30",d:"3.40",a:"2.90",type:"tue",vip:1,conf:"79%",jack:0,sport:"soccer"},
-{home:"Inter Milan",away:"Juventus",league:"Italy Serie A",time:"TUE 21:45",hour:99,pred:"BTTS YES",h:"2.40",d:"3.20",a:"2.90",type:"tue",vip:0,conf:"74%",jack:0,sport:"soccer"},
-{home:"Al Hilal",away:"Al Ittihad",league:"Saudi Pro League",time:"TUE 20:00",hour:99,pred:"OVER 2.5 GOALS",h:"2.20",d:"3.40",a:"3.10",type:"tue",vip:0,conf:"72%",jack:0,sport:"soccer"},
-// WED
-{home:"Lakers",away:"Warriors",league:"NBA - Basketball",time:"WED 04:00",hour:99,pred:"LAKERS WIN + OVER 210",h:"1.90",d:"13.00",a:"1.90",type:"wed",vip:1,conf:"70%",jack:0,sport:"basketball"},
-{home:"Real Madrid",away:"Sevilla",league:"Spain LaLiga",time:"WED 22:00",hour:99,pred:"REAL WIN + OVER 2.5",h:"1.55",d:"4.20",a:"5.80",type:"wed",vip:1,conf:"81%",jack:0,sport:"soccer"},
-{home:"Bayern Munich",away:"Leverkusen",league:"Germany Bundesliga",time:"WED 21:30",hour:99,pred:"OVER 3.5 GOALS",h:"1.85",d:"3.90",a:"4.00",type:"wed",vip:0,conf:"78%",jack:0,sport:"soccer"},
-{home:"PSG",away:"Lyon",league:"France Ligue 1",time:"WED 21:00",hour:99,pred:"PSG WIN + OVER 1.5",h:"1.50",d:"4.30",a:"6.00",type:"wed",vip:0,conf:"80%",jack:0,sport:"soccer"},
-// THU
-{home:"Celtics",away:"Knicks",league:"NBA - Basketball",time:"THU 02:30",hour:99,pred:"CELTICS WIN",h:"1.70",d:"14.00",a:"2.15",type:"thu",vip:0,conf:"71%",jack:0,sport:"basketball"},
-{home:"Man City",away:"Newcastle",league:"England Premier League",time:"THU 22:00",hour:99,pred:"CITY WIN + OVER 2.5",h:"1.60",d:"4.00",a:"5.50",type:"thu",vip:1,conf:"82%",jack:0,sport:"soccer"},
-{home:"Napoli",away:"Roma",league:"Italy Serie A",time:"THU 21:45",hour:99,pred:"OVER 2.5 GOALS",h:"2.20",d:"3.30",a:"3.20",type:"thu",vip:0,conf:"73%",jack:0,sport:"soccer"},
-{home:"Ajax",away:"Feyenoord",league:"Netherlands Eredivisie",time:"THU 20:00",hour:99,pred:"BTTS YES + OVER 2.5",h:"2.50",d:"3.60",a:"2.55",type:"thu",vip:0,conf:"75%",jack:0,sport:"soccer"},
-// FRI
-{home:"Nuggets",away:"Suns",league:"NBA - Basketball",time:"FRI 04:00",hour:99,pred:"OVER 215 POINTS",h:"1.95",d:"12.00",a:"1.85",type:"fri",vip:0,conf:"69%",jack:0,sport:"basketball"},
-{home:"Al Nassr",away:"Al Hilal",league:"Saudi Pro League",time:"FRI 20:00",hour:99,pred:"OVER 2.5 GOALS + BTTS",h:"2.60",d:"3.40",a:"2.50",type:"fri",vip:1,conf:"78%",jack:0,sport:"soccer"},
-{home:"Al Ahly",away:"Zamalek",league:"Egypt Premier League",time:"FRI 20:00",hour:99,pred:"UNDER 2.5 / DRAW",h:"2.20",d:"2.90",a:"3.40",type:"fri",vip:1,conf:"70%",jack:0,sport:"soccer"},
-{home:"Kaizer Chiefs",away:"Orlando Pirates",league:"South Africa PSL",time:"FRI 17:30",hour:99,pred:"DRAW / UNDER 2.5",h:"2.60",d:"2.80",a:"2.70",type:"fri",vip:0,conf:"68%",jack:0,sport:"soccer"},
-// SAT
-{home:"Man United",away:"Arsenal",league:"England Premier League",time:"SAT 19:00",hour:99,pred:"OVER 2.5 GOALS",h:"2.10",d:"3.40",a:"3.20",type:"sat",vip:1,conf:"82%",jack:0,sport:"soccer"},
-{home:"Celtic",away:"Rangers",league:"Scotland Premiership",time:"SAT 15:00",hour:99,pred:"OVER 2.5 GOALS",h:"2.10",d:"3.40",a:"3.20",type:"sat",vip:1,conf:"75%",jack:0,sport:"soccer"},
-{home:"Bayern Munich",away:"Dortmund",league:"Germany Bundesliga",time:"SAT 19:30",hour:99,pred:"OVER 3.5 GOALS",h:"1.90",d:"3.80",a:"3.80",type:"sat",vip:1,conf:"81%",jack:0,sport:"soccer"},
-{home:"Porto",away:"Benfica",league:"Portugal Primeira",time:"SAT 22:00",hour:99,pred:"DRAW / BTTS",h:"2.80",d:"3.20",a:"2.50",type:"sat",vip:0,conf:"72%",jack:0,sport:"soccer"},
-// SUN
-{home:"Man City",away:"Liverpool",league:"England Premier League",time:"SUN 19:00",hour:99,pred:"OVER 2.5 GOALS + BTTS",h:"2.20",d:"3.60",a:"3.10",type:"sun",vip:1,conf:"85%",jack:0,sport:"soccer"},
-{home:"Real Madrid",away:"Barcelona",league:"Spain LaLiga",time:"SUN 22:00",hour:99,pred:"BTTS YES",h:"2.30",d:"3.40",a:"2.90",type:"sun",vip:0,conf:"79%",jack:0,sport:"soccer"},
-{home:"AC Milan",away:"Inter Milan",league:"Italy Serie A",time:"SUN 21:45",hour:99,pred:"OVER 2.5 GOALS",h:"2.70",d:"3.30",a:"2.50",type:"sun",vip:1,conf:"77%",jack:0,sport:"soccer"},
-{home:"PSG",away:"Marseille",league:"France Ligue 1",time:"SUN 21:00",hour:99,pred:"PSG WIN + OVER 1.5",h:"1.55",d:"4.20",a:"5.50",type:"sun",vip:0,conf:"81%",jack:0,sport:"soccer"},
-{home:"Lakers",away:"Celtics",league:"NBA - Basketball",time:"SUN 03:00",hour:99,pred:"OVER 210.5 POINTS",h:"1.90",d:"13.00",a:"1.90",type:"sun",vip:1,conf:"72%",jack:0,sport:"basketball"},
-// WWE - LEGIT
-{home:"The Bloodline",away:"The 946",league:"WWE - Mens WarGames - Survivor Series",time:"NOV 28 - Houston",hour:99,pred:"BLOODLINE WIN - ROMAN PIN",h:"1.60",d:"10.00",a:"2.30",type:"sat",vip:1,conf:"78% Legit",jack:0,sport:"wwe"},
-{home:"Team Flair",away:"Team Cargill",league:"WWE - Womens WarGames - Survivor Series",time:"NOV 28 - Houston",hour:99,pred:"TEAM FLAIR WIN",h:"1.70",d:"10.00",a:"2.10",type:"sat",vip:1,conf:"72% Legit",jack:0,sport:"wwe"},
-{home:"Team USA",away:"Team Mexico",league:"WWE - 5v5 Elimination - Survivor Series",time:"NOV 28 - Houston",hour:99,pred:"TEAM USA WIN - Penta ata-shine",h:"1.65",d:"11.00",a:"2.20",type:"sat",vip:1,conf:"70% Legit",jack:0,sport:"wwe"},
-{home:"Liv Morgan (c)",away:"Becky Lynch",league:"WWE - Womens World Title - Survivor Series",time:"NOV 28 - Houston",hour:99,pred:"LIV MORGAN RETAINS",h:"1.60",d:"12.00",a:"2.30",type:"sat",vip:1,conf:"75% Legit",jack:0,sport:"wwe"},
-{home:"Penta",away:"Cash-In Watch",league:"WWE - MITB Briefcase - BADO ANASHIKILIA",time:"BADO HAJACASH-IN",hour:99,pred:"PENTA BADO HAJACASH-IN - Anangoja moment bora",h:"1.50",d:"15.00",a:"2.50",type:"today",vip:1,conf:"100% Confirmed",jack:0,sport:"wwe"},
-{home:"Penta and JeVon Evans",away:"The Vision",league:"WWE - World Tag Titles - RAW",time:"MON - RAW",hour:99,pred:"PENTA AND EVANS RETAIN",h:"1.75",d:"10.00",a:"2.05",type:"tomorrow",vip:0,conf:"68% Legit",jack:0,sport:"wwe"}
+{home:"Kenya Police",away:"Posta Rangers",league:"Kenya Premier League",time:"Today 13:45",hour:13.75,pred:"UNDER 2.5 GOALS + 1X",h:"1.72",d:"3.15",a:"4.60",type:"today",vip:1,conf:"72%",jack:0,sport:"soccer",score:""},
+{home:"Tusker",away:"Shabana",league:"Kenya Premier League",time:"Today 14:00",hour:14.0,pred:"TUSKER WIN / DRAW - 1X",h:"1.87",d:"2.90",a:"4.60",type:"today",vip:1,conf:"74%",jack:0,sport:"soccer",score:""},
+{home:"Muranga Seal",away:"Mathare United",league:"Kenya Premier League",time:"Today 15:00",hour:15.0,pred:"OVER 1.5 GOALS",h:"2.05",d:"2.87",a:"3.40",type:"today",vip:0,conf:"68%",jack:0,sport:"soccer",score:""},
+{home:"Kakamega Homeboyz",away:"KCB",league:"Kenya Premier League",time:"Today 15:00",hour:15.0,pred:"DRAW / BTTS",h:"2.62",d:"2.90",a:"2.62",type:"today",vip:0,conf:"70%",jack:0,sport:"soccer",score:""},
+{home:"Gor Mahia",away:"AFC Leopards",league:"FKF Premier League - Kenya",time:"Today 15:00",hour:15.0,pred:"GOR WIN / DRAW - 1X",h:"2.00",d:"3.00",a:"3.80",type:"today",vip:1,conf:"80%",jack:0,sport:"soccer",score:""},
+{home:"Kenya",away:"Gabon",league:"World Cup Qualifiers - Africa",time:"Today 16:00",hour:16.0,pred:"KENYA WIN / DRAW - 1X + UNDER 3.5",h:"2.30",d:"3.10",a:"3.00",type:"today",vip:1,conf:"78%",jack:1,sport:"soccer",score:""},
+{home:"Nigeria",away:"South Africa",league:"World Cup Qualifiers - Africa",time:"Today 18:00",hour:18.0,pred:"OVER 1.5 GOALS + BTTS",h:"2.10",d:"3.20",a:"3.50",type:"today",vip:1,conf:"75%",jack:1,sport:"soccer",score:""},
+{home:"England",away:"Serbia",league:"World Cup Qualifiers - Europe",time:"Today 21:45",hour:21.75,pred:"ENGLAND WIN + OVER 1.5",h:"1.45",d:"4.20",a:"6.50",type:"today",vip:1,conf:"82%",jack:1,sport:"soccer",score:""},
+{home:"Spain",away:"Turkey",league:"World Cup Qualifiers - Europe",time:"Today 21:45",hour:21.75,pred:"OVER 2.5 GOALS",h:"1.55",d:"4.10",a:"5.80",type:"today",vip:1,conf:"84%",jack:1,sport:"soccer",score:""},
+{home:"Argentina",away:"Uruguay",league:"World Cup Qualifiers - South America",time:"MON 02:00",hour:99,pred:"ARGENTINA WIN + UNDER 3.5",h:"1.70",d:"3.60",a:"5.00",type:"tomorrow",vip:1,conf:"78%",jack:0,sport:"soccer",score:""},
+{home:"Brazil",away:"Colombia",league:"World Cup Qualifiers - South America",time:"MON 03:00",hour:99,pred:"BRAZIL WIN / BTTS",h:"1.85",d:"3.50",a:"4.30",type:"tomorrow",vip:0,conf:"74%",jack:0,sport:"soccer",score:""},
+{home:"USA",away:"Mexico",league:"CONCACAF Qualifiers",time:"MON 04:00",hour:99,pred:"BTTS YES + OVER 2.5",h:"2.40",d:"3.20",a:"2.90",type:"tomorrow",vip:1,conf:"71%",jack:0,sport:"soccer",score:""},
+{home:"Japan",away:"South Korea",league:"World Cup Qualifiers - Asia",time:"MON 13:00",hour:99,pred:"JAPAN WIN",h:"1.80",d:"3.50",a:"4.50",type:"tomorrow",vip:0,conf:"76%",jack:0,sport:"soccer",score:""},
+{home:"Sofapaka",away:"Bandari",league:"Kenya Premier League",time:"MON 15:00",hour:99,pred:"UNDER 2.5 GOALS",h:"2.10",d:"3.00",a:"3.50",type:"tomorrow",vip:0,conf:"68%",jack:0,sport:"soccer",score:""},
+{home:"Bulls",away:"Heat",league:"NBA - Basketball",time:"TUE 03:30",hour:99,pred:"OVER 205.5 POINTS",h:"2.00",d:"12.00",a:"1.80",type:"tue",vip:0,conf:"65%",jack:0,sport:"basketball",score:""},
+{home:"Arsenal",away:"Chelsea",league:"England Premier League",time:"TUE 22:00",hour:99,pred:"OVER 2.5 GOALS + BTTS",h:"2.30",d:"3.40",a:"2.90",type:"tue",vip:1,conf:"79%",jack:0,sport:"soccer",score:""},
+{home:"Inter Milan",away:"Juventus",league:"Italy Serie A",time:"TUE 21:45",hour:99,pred:"BTTS YES",h:"2.40",d:"3.20",a:"2.90",type:"tue",vip:0,conf:"74%",jack:0,sport:"soccer",score:""},
+{home:"Lakers",away:"Warriors",league:"NBA - Basketball",time:"WED 04:00",hour:99,pred:"LAKERS WIN + OVER 210",h:"1.90",d:"13.00",a:"1.90",type:"wed",vip:1,conf:"70%",jack:0,sport:"basketball",score:""},
+{home:"Real Madrid",away:"Sevilla",league:"Spain LaLiga",time:"WED 22:00",hour:99,pred:"REAL WIN + OVER 2.5",h:"1.55",d:"4.20",a:"5.80",type:"wed",vip:1,conf:"81%",jack:0,sport:"soccer",score:""},
+{home:"Bayern Munich",away:"Leverkusen",league:"Germany Bundesliga",time:"WED 21:30",hour:99,pred:"OVER 3.5 GOALS",h:"1.85",d:"3.90",a:"4.00",type:"wed",vip:0,conf:"78%",jack:0,sport:"soccer",score:""},
+{home:"Celtics",away:"Knicks",league:"NBA - Basketball",time:"THU 02:30",hour:99,pred:"CELTICS WIN",h:"1.70",d:"14.00",a:"2.15",type:"thu",vip:0,conf:"71%",jack:0,sport:"basketball",score:""},
+{home:"Man City",away:"Newcastle",league:"England Premier League",time:"THU 22:00",hour:99,pred:"CITY WIN + OVER 2.5",h:"1.60",d:"4.00",a:"5.50",type:"thu",vip:1,conf:"82%",jack:0,sport:"soccer",score:""},
+{home:"Nuggets",away:"Suns",league:"NBA - Basketball",time:"FRI 04:00",hour:99,pred:"OVER 215 POINTS",h:"1.95",d:"12.00",a:"1.85",type:"fri",vip:0,conf:"69%",jack:0,sport:"basketball",score:""},
+{home:"Al Nassr",away:"Al Hilal",league:"Saudi Pro League",time:"FRI 20:00",hour:99,pred:"OVER 2.5 GOALS + BTTS",h:"2.60",d:"3.40",a:"2.50",type:"fri",vip:1,conf:"78%",jack:0,sport:"soccer",score:""},
+{home:"Man United",away:"Arsenal",league:"England Premier League",time:"SAT 19:00",hour:99,pred:"OVER 2.5 GOALS",h:"2.10",d:"3.40",a:"3.20",type:"sat",vip:1,conf:"82%",jack:0,sport:"soccer",score:""},
+{home:"Man City",away:"Liverpool",league:"England Premier League",time:"SUN 19:00",hour:99,pred:"OVER 2.5 GOALS + BTTS",h:"2.20",d:"3.60",a:"3.10",type:"sun",vip:1,conf:"85%",jack:0,sport:"soccer",score:""},
+{home:"Real Madrid",away:"Barcelona",league:"Spain LaLiga",time:"SUN 22:00",hour:99,pred:"BTTS YES",h:"2.30",d:"3.40",a:"2.90",type:"sun",vip:0,conf:"79%",jack:0,sport:"soccer",score:""},
+{home:"The Bloodline",away:"The 946",league:"WWE - Mens WarGames - Survivor Series",time:"NOV 28 - Houston",hour:99,pred:"BLOODLINE WIN - ROMAN PIN",h:"1.60",d:"10.00",a:"2.30",type:"sat",vip:1,conf:"78% Legit",jack:0,sport:"wwe",score:""},
+{home:"Team Flair",away:"Team Cargill",league:"WWE - Womens WarGames - Survivor Series",time:"NOV 28 - Houston",hour:99,pred:"TEAM FLAIR WIN",h:"1.70",d:"10.00",a:"2.10",type:"sat",vip:1,conf:"72% Legit",jack:0,sport:"wwe",score:""},
+{home:"Penta",away:"Cash-In Watch",league:"WWE - MITB Briefcase - BADO ANASHIKILIA",time:"BADO HAJACASH-IN",hour:99,pred:"PENTA BADO HAJACASH-IN",h:"1.50",d:"15.00",a:"2.50",type:"today",vip:1,conf:"100% Confirmed",jack:0,sport:"wwe",score:""}
 ];
 var allGames = MANUAL_GAMES.slice();
-var currentTab = 'hot';
-var currentSport = 'soccer';
+var currentTab = 'hot'; var currentSport = 'soccer';
 function getGameStatus(g){
   if(g.sport==='wwe' || g.hour===99){return 'upcoming';}
   if(g.type!=='today'){return 'upcoming';}
@@ -114,10 +96,25 @@ function getGameStatus(g){
   if(nowHour >= g.hour+2){return 'finished';}
   return 'upcoming';
 }
+function getMinute(g){
+  if(getGameStatus(g)!=='live'){return '';}
+  var now=new Date(); var nowMin=now.getHours()*60+now.getMinutes();
+  var startMin=Math.floor(g.hour)*60+Math.round((g.hour-Math.floor(g.hour))*60);
+  var m=nowMin-startMin; if(m<0){m=0;} if(m>90){m=90;}
+  return m+"'";
+}
 function toggleMenu(){var m=document.getElementById('menuPopup');m.style.display=(m.style.display==='block'?'none':'block');}
 function closeMenu(){document.getElementById('menuPopup').style.display='none';}
 function setSport(sport,el){currentSport=sport;var all=document.querySelectorAll('.sports span');for(var i=0;i<all.length;i++){all[i].classList.remove('active');}if(el){el.classList.add('active');}render();}
 function setTab(tab,btn){currentTab=tab;var all=document.querySelectorAll('.tabs button');for(var i=0;i<all.length;i++){all[i].classList.remove('active');}if(btn){btn.classList.add('active');}render();}
+function adminUpdate(){
+  var idx=document.getElementById('adminGame').value;
+  var sc=document.getElementById('adminScore').value;
+  var pr=document.getElementById('adminPred').value;
+  if(sc){allGames[idx].score=sc;}
+  if(pr){allGames[idx].pred=pr+' ⚠️ UPDATE YA MTAA';}
+  render(); alert('Imeupdate! Sasa tuma kwa Channel wasee wajue.');
+}
 function render(){
   try{
     var q=document.getElementById('search').value.toLowerCase();
@@ -132,7 +129,6 @@ function render(){
       if(currentTab==='jackpot' && !g.jack){continue;}
       if(currentTab==='live' && st!=='live'){continue;}
       if(currentTab==='finished' && st!=='finished'){continue;}
-      // FIX: Hot inaonyesha upcoming + live, lakini sio finished. Kwa Basketball/WWE, Hot inaonyesha zote kwa sababu hazina saa ya leo
       if(currentTab==='hot' && st==='finished'){continue;}
       if(currentTab==='today' && st==='finished' && g.sport==='soccer'){continue;}
       if((currentTab==='today'||currentTab==='tomorrow'||currentTab==='tue'||currentTab==='wed'||currentTab==='thu'||currentTab==='fri'||currentTab==='sat'||currentTab==='sun') && g.type!==currentTab){continue;}
@@ -140,17 +136,24 @@ function render(){
       list.push(g);
     }
     var box=document.getElementById('games');
-    document.getElementById('countbar').innerText='🔥 WEEK HII YOTE - '+list.length+' Games - LIVE '+liveCount;
+    document.getElementById('countbar').innerText='🔥 THIS WEEK - '+list.length+' Games - LIVE '+liveCount;
     if(list.length===0){box.innerHTML='<div style="text-align:center;padding:30px;color:#aaa">Hakuna game hapa sai. Jaribu Hot au siku nyingine.</div>';return;}
     var html='';
     if(currentSport==='wwe'){html+='<div class="wwe-banner">🤼 WWE PREDICTIONS - SURVIVOR SERIES NOV 28 - LEGIT</div>';}
     for(var j=0;j<list.length;j++){
-      var g=list[j]; var st=getGameStatus(g);
-      var badge=''; if(st==='live'){badge='<span class="live-badge">🔴 LIVE</span>';}
-      html += '<div class="card"><div class="league"><span>'+g.league+'</span><span>'+badge+' '+(g.vip?'⭐ VIP':'+ Markets')+'</span></div><div class="row"><div class="teams"><b>'+g.home+'</b><b>'+g.away+'</b><small>Starts at '+g.time+'</small></div><div class="oddsrow"><a class="odd" href="'+AFFILIATE.ke7+'" target="_blank">1<br>'+g.h+'</a><a class="odd" href="'+AFFILIATE.ke7+'" target="_blank">X<br>'+g.d+'</a><a class="odd" href="'+AFFILIATE.ke7+'" target="_blank">2<br>'+g.a+'</a></div></div><div class="pred"><b>Prediction:</b> '+g.pred+'<br><span class="conf">Confidence: '+g.conf+'</span></div><div class="btns"><a class="btn melbet" href="'+AFFILIATE.melbet+'" target="_blank">MELBET</a><a class="btn ke7" href="'+AFFILIATE.ke7+'" target="_blank">KE7</a><a class="btn twentytwo" href="'+AFFILIATE.twentytwo+'" target="_blank">22BET</a></div></div>';
+      var g=list[j]; var st=getGameStatus(g); var min=getMinute(g);
+      var badge=''; var scoreHtml='';
+      if(st==='live'){badge='<span class="live-badge">🔴 LIVE '+min+'</span>'; if(g.score){scoreHtml='<div class="score-line">⚽ SCORE: '+g.score+' • '+min+'</div>';}else{scoreHtml='<div class="score-line">⚽ LIVE '+min+' • Score kwa Channel</div>';}}
+      if(st==='finished'){badge='<span class="ft-badge">✅ FT</span>'; if(g.score){scoreHtml='<div class="score-line">✅ FULL TIME: '+g.score+'</div>';}else{scoreHtml='<div class="score-line">✅ FT - Matokeo kwa Channel</div>';}}
+      html += '<div class="card"><div class="league"><span>'+g.league+'</span><span>'+badge+' '+(g.vip?'⭐ VIP':'+ Markets')+'</span></div><div class="row"><div class="teams"><b>'+g.home+'</b><b>'+g.away+'</b><small>Starts at '+g.time+'</small>'+scoreHtml+'</div><div class="oddsrow"><a class="odd" href="'+AFFILIATE.ke7+'" target="_blank">1<br>'+g.h+'</a><a class="odd" href="'+AFFILIATE.ke7+'" target="_blank">X<br>'+g.d+'</a><a class="odd" href="'+AFFILIATE.ke7+'" target="_blank">2<br>'+g.a+'</a></div></div><div class="pred"><b>Prediction:</b> '+g.pred+'<br><span class="conf">Confidence: '+g.conf+'</span></div><div class="btns"><a class="btn melbet" href="'+AFFILIATE.melbet+'" target="_blank">MELBET</a><a class="btn ke7" href="'+AFFILIATE.ke7+'" target="_blank">KE7</a><a class="btn twentytwo" href="'+AFFILIATE.twentytwo+'" target="_blank">22BET</a></div></div>';
     }
     if(currentTab==='jackpot'){box.innerHTML='<div class="jackpot">🏆 JACKPOT YA WEEK HII</div>'+html;}else{box.innerHTML=html;}
   }catch(e){ document.getElementById('games').innerHTML='<div style="padding:20px;text-align:center">Error: '+e.message+'</div>'; }
+}
+if(window.location.search.indexOf('admin=1')!==-1){
+  document.getElementById('adminPanel').style.display='block';
+  var sel=document.getElementById('adminGame');
+  for(var k=0;k<allGames.length;k++){var o=document.createElement('option');o.value=k;o.text=allGames[k].home+' vs '+allGames[k].away;sel.appendChild(o);}
 }
 render();
 setInterval(render,60000);
