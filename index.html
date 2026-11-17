@@ -1,7 +1,6 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ODDS ZA MTAA</title>
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ODDS ZA MTAA</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}body{background:#0a0f14;color:#fff;padding-bottom:130px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}body{background:#0a0f14;color:#fff;padding-bottom:130px}
 .top{background:#0a0f14;border-bottom:2px solid #FFD700;padding:10px 12px;display:flex;justify-content:space-between;align-items:center}.top b{font-size:22px}.top b span{color:#FFD700}.top button{background:#FFD700;border:none;padding:7px 12px;border-radius:20px;font-weight:900}
 .liveBar{background:#ff1744;padding:7px 12px;font-size:12px;font-weight:900}
 .hero{margin:12px;background:linear-gradient(135deg,#FFD700,#ff8f00);color:#000;border-radius:14px;padding:16px}.hero h2{font-size:20px}.hero p{font-size:13px;margin:5px 0}.hero button{background:#000;color:#FFD700;border:none;padding:10px;width:100%;border-radius:9px;font-weight:900;margin-top:6px}
@@ -12,174 +11,50 @@
 .pr{background:#0b141c;padding:11px;border-radius:10px;border-left:3px solid #FFD700;font-size:13px}.pr b{color:#FFD700}.pb{height:7px;background:#333;border-radius:10px;overflow:hidden;margin:6px 0}.pf{height:100%;background:#00c853}
 .bs{position:fixed;bottom:58px;left:0;right:0;background:#FFD700;color:#000;padding:12px;font-weight:900;display:none;z-index:20}.bs.show{display:block}
 .sh{position:fixed;bottom:0;left:0;right:0;background:#111d29;border-radius:16px 16px 0 0;padding:16px;display:none;z-index:30;max-height:85vh;overflow:auto}.sh.show{display:block}.sh button{width:100%;padding:12px;border:none;border-radius:10px;font-weight:900;margin-top:8px}.gr{background:#00c853;color:#fff}.dk{background:#2a3a4d;color:#fff}.book{flex:1;background:#2a3a4d;color:#fff;border:none;border-radius:8px;padding:10px;font-weight:900}.book.sel{background:#FFD700;color:#000}
-.nv{position:fixed;bottom:0;left:0;right:0;background:#0b141c;display:flex;justify-content:space-around;padding:10px 0;border-top:1px solid #333}.nv div{text-align:center;font-size:11px;color:#aaa}.nv div.active{color:#FFD700}.nv span{font-size:20px;display:block}
+.nv{position:fixed;bottom:0;left:0;right:0;background:#0b141c;display:flex;justify-content:space-around;padding:10px 0;border-top:1px solid #333}.nv div{text-align:center;font-size:11px;color:#aaa}.nv span{font-size:20px;display:block}
 </style></head><body>
 <div class="top"><b>ODDS <span>ZA MTAA</span></b><button onclick="window.open('https://wa.me/254700000000?text=Nipe+Prediction','_blank')">JOIN CHANNEL</button></div>
-<div class="liveBar" id="liveBar">🔴 Hakuna LIVE sasa hivi - Next LIVE: Sat 21 Nov - EPL - Legit, hatuweki LIVE za uongo</div>
+<div class="liveBar">🔴 Hakuna LIVE sasa hivi - Next LIVE: Sat 21 Nov - EPL - Legit</div>
 <div class="hero"><h2>🏆 JACKPOT YA MTAA - 845.20</h2><p>15 Games - Win Chance 68% - Watu 1,240 wameshaweka</p><p>Ukiweka 100/=, unapata <b>84,520/=</b></p><button onclick="addJ()" id="jackBtn">WEKA JACKPOT KWENYE BETSLIP</button></div>
-<div class="tabs" id="tabs"></div><div class="bar" id="bar">Loading...</div>
-<div id="games"></div>
-<p style="padding:12px;font-size:11px;color:#888;text-align:center">ODDS ZA MTAA - Prediction tu, sio betting site. Hatuchukui pesa. 18+ | Bet Responsibly | Season 2026/27 Hadi May 2027</p>
+<div class="tabs" id="tabs"></div><div class="bar" id="bar">Loading...</div><div id="games"></div>
+<p style="padding:12px;font-size:11px;color:#888;text-align:center">ODDS ZA MTAA - Prediction tu, sio betting site. 18+ | Bet Responsibly | Season 2026/27 Hadi May 2027</p>
 <div class="bs" id="bs" onclick="openS()">BETSLIP (0)</div>
 <div class="sh" id="sh"><h3 style="color:#FFD700">🎫 BETSLIP YAKO</h3><div id="picks"></div><p id="tOdds" style="font-weight:900;color:#FFD700;margin:10px 0"></p><p style="font-weight:900">Chagua Bookie:</p><div style="display:flex;gap:6px;margin:8px 0"><button class="book" id="bMELBET" onclick="selB('MELBET','https://melbet.com')">MELBET</button><button class="book" id="bBETIKA" onclick="selB('BETIKA','https://www.betika.com')">BETIKA</button><button class="book" id="bMOZZART" onclick="selB('MOZZART','https://www.mozzartbet.co.ke')">MOZZART</button><button class="book" id="bKE7" onclick="selB('KE7','https://ke7.com')">KE7</button></div><p id="selB" style="font-weight:900;margin:8px 0">Bookie: Chagua moja</p><label>Weka Amount (KSh):</label><input id="stake" type="number" value="100" oninput="updPay()" style="width:100%;padding:11px;margin:6px 0;border-radius:8px;border:none;background:#2a3a4d;color:#fff;font-weight:900"><p id="pay" style="font-weight:900;color:#00c853"></p><p id="pay2" style="font-size:12px;color:#aaa"></p><button class="gr" onclick="place()">PROCEED - Nenda Kubet Kwa Bookie Yako</button><button class="dk" onclick="clr()">Futa Yote</button><button class="dk" onclick="closeS()">Funga</button></div>
 <div class="nv"><div onclick="setF(0)"><span>☰</span>MENU</div><div onclick="setF(0)"><span>⚽</span>ALL</div><div onclick="window.open('https://wa.me/254700000000','_blank')"><span>💬</span>CHANNEL</div><div onclick="setF(1)"><span>🏆</span>JACKPOT</div><div onclick="setF(2)"><span>🔴</span>LIVE</div></div>
 <script>
 var SL=[],JACK=false,B='',BURL='',F='ALL';
 var LEAGUES=['ALL','JACKPOT','LIVE','EPL','La Liga','Serie A','Bundesliga','UCL','KPL','AFCON'];
-var D=[
-"AFCON|Kenya|South Africa|Leo Nov 17 - FT|2.10|3.10|3.40|KENYA WIN DRAW 1X|74|FT - 1-2",
-"AFCON|Burundi|Zambia|Leo Nov 17 - FT|2.20|3.20|3.10|GG BOTH SCORE|78|FT - 1-1",
-"AFCON|Tanzania|Nigeria|Leo Nov 17 - FT|2.50|3.10|2.70|OVER 1.5 GOALS|72|FT - 0-1",
-"AFCON|Ethiopia|Mozambique|Leo Nov 17 - FT|2.40|3.10|2.90|UNDER 2.5 GOALS|69|FT - 0-1",
-"AFCON|Lesotho|Gabon|Leo Nov 17 - FT|2.60|3.10|2.70|OVER 1.5 GOALS|70|FT - 2-1",
-"EPL|Man City|Fulham|Sat 21 Nov - 15:30|1.45|4.50|6.50|MAN CITY WIN 1|82|",
-"EPL|Bournemouth|Nottingham Forest|Sat 21 Nov - 18:00|2.10|3.30|3.40|1X HOME DRAW|74|",
-"EPL|Aston Villa|Sunderland|Sat 21 Nov - 18:00|1.75|3.60|4.60|ASTON VILLA WIN 1|76|",
-"EPL|Chelsea|Leeds United|Sat 21 Nov - 18:00|1.65|3.80|5.00|CHELSEA WIN 1|78|",
-"EPL|Tottenham|Ipswich Town|Sat 21 Nov - 18:00|1.80|3.70|4.40|OVER 1.5 GOALS|85|",
-"EPL|Coventry|Crystal Palace|Sat 21 Nov - 18:00|2.40|3.20|3.00|GG BOTH SCORE|71|",
-"EPL|Newcastle|Arsenal|Sat 21 Nov - 20:30|4.20|3.60|1.85|X2 ARSENAL DRAW|77|",
-"EPL|Hull City|Brighton|Sun 22 Nov - 17:00|5.50|3.90|1.60|BRIGHTON WIN 2|79|",
-"EPL|Liverpool|Man Utd|Sun 22 Nov - 19:30|1.75|3.80|4.50|LIVERPOOL WIN 1|75|",
-"EPL|Brentford|Everton|Mon 23 Nov - 23:00|2.20|3.20|3.30|OVER 2.5 GOALS|69|",
-"EPL|Man Utd|Everton|Sat 28 Nov - 18:00|1.85|3.60|4.20|MAN UTD DRAW 1X|74|",
-"EPL|Arsenal|Chelsea|Sun 29 Nov - 19:30|2.10|3.40|3.40|OVER 2.5 GG|72|",
-"EPL|Newcastle|Brighton|Sun 29 Nov - 17:00|2.20|3.30|3.20|OVER 1.5 GOALS|72|",
-"EPL|Man Utd|Newcastle|Wed 2 Dec - 23:15|2.10|3.40|3.40|GG BOTH SCORE|74|",
-"EPL|Newcastle|Sunderland|Sun 6 Dec - 17:00|2.00|3.40|3.60|1X NEWCASTLE DRAW|73|",
-"EPL|Man City|Liverpool|Sat 5 Dec - 20:30|2.20|3.40|3.10|GG BOTH SCORE|80|",
-"EPL|Newcastle|Ipswich|Sat 12 Dec - 18:00|1.90|3.60|3.90|NEWCASTLE WIN 1|75|",
-"EPL|Chelsea|Man City|Sat 12 Dec - 18:00|2.80|3.30|2.50|OVER 2.5 GOALS|73|",
-"EPL|Arsenal|Man City|Thu 17 Dec - 22:00|2.50|3.30|2.80|1X ARSENAL DRAW|70|",
-"EPL|Man City|Everton|Mon 30 Dec - 20:15|1.50|4.20|6.00|MAN CITY WIN 1|82|",
-"EPL|Chelsea|Crystal Palace|Sat 2 Jan 2027 - 18:00|1.70|3.70|4.80|CHELSEA WIN 1|78|",
-"EPL|Arsenal|Liverpool|Sat 9 Jan 2027 - 20:30|2.30|3.30|3.00|GG BOTH SCORE|77|",
-"EPL|Man Utd|Chelsea|Sat 16 Jan 2027 - 18:00|2.60|3.30|2.70|OVER 2.5 GOALS|72|",
-"EPL|Liverpool|Arsenal|Sat 23 Jan 2027 - 18:00|2.40|3.40|2.80|GG BOTH SCORE|76|",
-"EPL|Man City|Arsenal|Sat 30 Jan 2027 - 18:00|2.10|3.50|3.30|OVER 2.5 GOALS|74|",
-"EPL|Chelsea|Liverpool|Sat 6 Feb 2027 - 18:00|2.70|3.30|2.50|GG BOTH SCORE|75|",
-"EPL|Man Utd|Man City|Sat 13 Feb 2027 - 20:30|3.00|3.40|2.30|GG OVER 2.5|79|",
-"EPL|Arsenal|Man Utd|Sat 20 Feb 2027 - 18:00|2.20|3.40|3.20|1X ARSENAL DRAW|73|",
-"EPL|Liverpool|Chelsea|Sat 27 Feb 2027 - 18:00|2.40|3.40|2.80|OVER 2.5 GOALS|71|",
-"EPL|Sunderland|Brentford|Sat 13 Mar 2027 - 18:00|2.40|3.20|2.90|OVER 1.5 GOALS|71|",
-"EPL|Chelsea|Arsenal|Sat 13 Mar 2027 - 18:00|2.30|3.30|3.00|GG BOTH SCORE|78|",
-"EPL|Tottenham|Nottingham Forest|Sat 13 Mar 2027 - 18:00|1.90|3.60|4.00|TOTTENHAM WIN 1|74|",
-"EPL|Man Utd|Everton|Sat 13 Mar 2027 - 18:00|1.85|3.60|4.20|MAN UTD DRAW 1X|75|",
-"EPL|Man City|Tottenham|Sat 20 Mar 2027 - 18:00|1.60|4.00|5.50|MAN CITY WIN 1|80|",
-"EPL|Arsenal|Tottenham|Sat 27 Mar 2027 - 18:00|2.00|3.50|3.60|GG BOTH SCORE DERBY|81|",
-"EPL|Liverpool|Everton|Sat 3 Apr 2027 - 18:00|1.70|3.80|4.80|LIVERPOOL WIN 1 DERBY|79|",
-"EPL|Man City|Man Utd|Sat 10 Apr 2027 - 18:00|1.90|3.60|3.90|GG BOTH SCORE DERBY|82|",
-"EPL|Chelsea|Tottenham|Sat 17 Apr 2027 - 18:00|2.10|3.40|3.40|OVER 2.5 GOALS|74|",
-"EPL|Arsenal|Chelsea|Sat 24 Apr 2027 - 18:00|2.20|3.40|3.20|GG BOTH SCORE|76|",
-"EPL|Man City|Chelsea|Sat 1 May 2027 - 18:00|1.95|3.60|3.70|OVER 2.5 GOALS|75|",
-"EPL|Liverpool|Man City|Sat 8 May 2027 - 18:00|2.50|3.30|2.70|GG BOTH SCORE|78|",
-"EPL|Arsenal|Liverpool|Sat 15 May 2027 - 18:00|2.40|3.40|2.80|OVER 2.5 GOALS|73|",
-"EPL|Chelsea|Man Utd|Sun 30 May 2027 - 18:00|2.60|3.30|2.60|GG BOTH SCORE FINAL|76|",
-"La Liga|Athletic Bilbao|Espanyol|Fri 20 Nov - 23:00|1.85|3.40|4.20|1X ATHLETIC DRAW|76|",
-"La Liga|Alaves|Deportivo|Sat 21 Nov - 16:00|2.30|3.10|3.20|UNDER 2.5 GOALS|68|",
-"La Liga|Rayo Vallecano|Valencia|Sat 21 Nov - 18:15|2.50|3.10|2.80|GG BOTH SCORE|71|",
-"La Liga|Sevilla|Real Betis|Sat 21 Nov - 20:30|2.60|3.20|2.60|GG OVER 2.5|70|",
-"La Liga|Real Madrid|Celta Vigo|Sat 21 Nov - 23:00|1.35|5.00|8.00|REAL MADRID WIN 1|86|",
-"La Liga|Barcelona|Villarreal|Sun 22 Nov - 16:00|1.45|4.40|6.50|BARCA WIN OVER 1.5|84|",
-"La Liga|Getafe|Atletico Madrid|Sun 22 Nov - 23:00|5.00|3.60|1.70|X2 ATLETICO DRAW|78|",
-"La Liga|Real Madrid|Barcelona|Sun 29 Nov - 22:00|2.10|3.50|3.30|GG BOTH SCORE CLASICO|82|",
-"La Liga|Barcelona|Atletico Madrid|Wed 2 Dec - 20:00|2.10|3.50|3.30|GG BOTH SCORE|80|",
-"La Liga|Real Sociedad|Real Madrid|Thu 3 Dec - 20:00|3.00|3.30|2.40|X2 REAL DRAW|76|",
-"La Liga|Atletico Madrid|Real Madrid|Sat 6 Dec - 22:00|2.90|3.30|2.40|OVER 2.5 GOALS DERBY|71|",
-"La Liga|Barcelona|Real Betis|Sat 12 Dec - 20:30|1.50|4.20|6.00|BARCA WIN 1|83|",
-"La Liga|Sevilla|Barcelona|Thu 17 Dec - 23:00|4.00|3.60|1.90|X2 BARCA DRAW|75|",
-"La Liga|Real Madrid|Real Betis|Sun 24 Jan 2027 - 19:00|1.50|4.20|6.00|REAL MADRID WIN 1|83|",
-"La Liga|Alaves|Barcelona|Sun 24 Jan 2027 - 19:00|5.00|3.80|1.65|X2 BARCA DRAW|81|",
-"La Liga|Deportivo|Atletico Madrid|Sun 24 Jan 2027 - 19:00|3.20|3.20|2.20|X2 ATLETICO DRAW|73|",
-"La Liga|Barcelona|Sevilla|Sat 6 Feb 2027 - 22:00|1.45|4.40|6.50|BARCA WIN 1|84|",
-"La Liga|Real Madrid|Sevilla|Sat 13 Feb 2027 - 22:00|1.40|4.50|7.00|REAL MADRID WIN 1|85|",
-"La Liga|Atletico Madrid|Barcelona|Sat 20 Feb 2027 - 22:00|2.80|3.30|2.50|GG BOTH SCORE|77|",
-"La Liga|Valencia|Real Madrid|Sat 27 Feb 2027 - 22:00|3.50|3.40|2.00|X2 REAL DRAW|78|",
-"La Liga|Real Madrid|Atletico Madrid|Sat 6 Mar 2027 - 22:00|2.00|3.50|3.60|GG BOTH SCORE|79|",
-"La Liga|Barcelona|Real Madrid|Sat 13 Mar 2027 - 22:00|2.30|3.40|3.00|GG BOTH SCORE CLASICO|83|",
-"La Liga|Sevilla|Real Madrid|Sat 20 Mar 2027 - 22:00|3.80|3.60|1.90|X2 REAL DRAW|77|",
-"La Liga|Barcelona|Valencia|Sat 27 Mar 2027 - 20:30|1.40|4.50|7.00|BARCA WIN 1|85|",
-"La Liga|Real Madrid|Villarreal|Sat 3 Apr 2027 - 22:00|1.45|4.40|6.50|REAL MADRID WIN 1|84|",
-"La Liga|Atletico Madrid|Sevilla|Sat 10 Apr 2027 - 22:00|1.85|3.60|4.20|ATLETICO WIN 1|76|",
-"La Liga|Barcelona|Getafe|Sat 17 Apr 2027 - 20:30|1.35|5.00|8.00|BARCA WIN 1|86|",
-"La Liga|Real Madrid|Getafe|Sat 24 Apr 2027 - 22:00|1.30|5.50|9.00|REAL MADRID WIN 1|87|",
-"La Liga|Real Madrid|Barcelona|Sat 8 May 2027 - 22:00|2.10|3.50|3.30|GG BOTH SCORE CLASICO|84|",
-"La Liga|Getafe|Barcelona|Sun 30 May 2027 - 20:00|4.50|3.60|1.75|X2 BARCA DRAW|79|",
-"La Liga|Real Madrid|Deportivo|Sun 30 May 2027 - 20:00|1.40|4.50|7.00|REAL MADRID WIN 1 FINAL|85|",
-"Serie A|Como|Cagliari|Sat 21 Nov - 17:00|1.80|3.50|4.50|1X COMO DRAW|74|",
-"Serie A|Lazio|Lecce|Sat 21 Nov - 17:00|1.70|3.70|5.00|LAZIO WIN 1|77|",
-"Serie A|Parma|Roma|Sat 21 Nov - 20:00|3.40|3.20|2.20|X2 ROMA DRAW|73|",
-"Serie A|Napoli|Torino|Sat 21 Nov - 22:45|1.60|3.80|5.50|NAPOLI WIN 1|80|",
-"Serie A|Juventus|Venezia|Sun 22 Nov - 14:30|1.45|4.20|7.00|JUVENTUS WIN 1|84|",
-"Serie A|AC Milan|Frosinone|Sun 22 Nov - 20:00|1.40|4.50|7.50|MILAN WIN 1|85|",
-"Serie A|Atalanta|Inter|Sun 22 Nov - 22:45|3.00|3.30|2.40|GG BOTH SCORE|78|",
-"Serie A|Inter|Napoli|Sun 29 Nov - 22:45|2.30|3.30|3.00|OVER 2.5 GOALS|72|",
-"Serie A|Juventus|AC Milan|Sun 6 Dec - 22:45|2.50|3.30|2.80|DRAW GG|68|",
-"Serie A|Roma|Juventus|Sun 13 Dec - 22:45|2.70|3.20|2.60|GG BOTH SCORE|70|",
-"Serie A|AC Milan|Inter|Sun 10 Jan 2027 - 22:45|2.60|3.30|2.60|GG BOTH SCORE DERBY|79|",
-"Serie A|Juventus|Inter|Sun 7 Feb 2027 - 22:45|2.70|3.20|2.60|GG BOTH SCORE DERBY|78|",
-"Serie A|Napoli|Juventus|Sun 7 Mar 2027 - 22:45|2.40|3.30|2.90|OVER 2.5 GOALS|72|",
-"Serie A|Inter|AC Milan|Sun 4 Apr 2027 - 22:45|2.50|3.30|2.70|GG BOTH SCORE|77|",
-"Serie A|Roma|Napoli|Sun 2 May 2027 - 22:45|2.60|3.30|2.60|OVER 2.5 GOALS|71|",
-"Serie A|Juventus|Napoli|Sun 30 May 2027 - 22:45|2.50|3.30|2.80|GG BOTH SCORE FINAL|74|",
-"Bundesliga|Bayern Munich|Koln|Fri 20 Nov - 22:30|1.20|6.50|11.00|BAYERN WIN OVER 2.5|89|",
-"Bundesliga|Leverkusen|Paderborn|Sat 21 Nov - 17:30|1.40|4.80|7.00|LEVERKUSEN WIN 1|84|",
-"Bundesliga|Gladbach|Dortmund|Sat 21 Nov - 17:30|3.80|3.80|1.90|X2 DORTMUND DRAW|76|",
-"Bundesliga|Frankfurt|Hoffenheim|Sat 21 Nov - 17:30|2.10|3.60|3.30|OVER 2.5 GOALS|79|",
-"Bundesliga|Dortmund|Bayern Munich|Sat 28 Nov - 20:30|3.20|3.60|2.10|GG OVER 2.5 DERBY|81|",
-"Bundesliga|RB Leipzig|Bayern Munich|Sat 5 Dec - 20:30|4.50|4.00|1.70|X2 BAYERN DRAW|80|",
-"Bundesliga|Bayern Munich|Dortmund|Sat 12 Dec - 20:30|1.65|4.00|4.80|BAYERN WIN 1|82|",
-"Bundesliga|Dortmund|Leverkusen|Sat 9 Jan 2027 - 20:30|2.40|3.50|2.80|GG BOTH SCORE|76|",
-"Bundesliga|Bayern Munich|Leverkusen|Sat 6 Feb 2027 - 20:30|1.55|4.20|5.50|BAYERN WIN 1|83|",
-"Bundesliga|Dortmund|Bayern Munich|Sat 13 Mar 2027 - 20:30|3.10|3.60|2.20|GG OVER 2.5|80|",
-"Bundesliga|Bayern Munich|RB Leipzig|Sat 10 Apr 2027 - 20:30|1.50|4.30|6.00|BAYERN WIN 1|84|",
-"Bundesliga|Bayern Munich|Dortmund|Sat 15 May 2027 - 20:30|1.60|4.00|5.00|BAYERN WIN 1 FINAL|83|",
-"UCL|Man City|Napoli|Tue 24 Nov - 23:00|1.60|4.00|5.00|MAN CITY WIN 1|78|",
-"UCL|Arsenal|Dortmund|Tue 24 Nov - 23:00|1.85|3.60|4.00|ARSENAL DRAW 1X|75|",
-"UCL|Real Madrid|Inter|Wed 25 Nov - 23:00|2.10|3.50|3.30|GG BOTH SCORE|77|",
-"UCL|Barcelona|Bayern Munich|Wed 2 Dec - 23:00|2.60|3.50|2.50|OVER 2.5 GOALS|80|",
-"UCL|Liverpool|Real Madrid|Wed 9 Dec - 23:00|2.40|3.40|2.80|GG BOTH SCORE|76|",
-"UCL|Man City|Real Madrid|Tue 16 Feb 2027 - 23:00|2.20|3.50|3.10|GG BOTH SCORE|79|",
-"UCL|Barcelona|Man City|Tue 9 Mar 2027 - 23:00|2.50|3.50|2.60|OVER 2.5 GOALS|78|",
-"UCL|Real Madrid|Barcelona|Wed 14 Apr 2027 - 23:00|2.30|3.40|3.00|GG BOTH SCORE CLASICO|81|",
-"UCL|Bayern Munich|Real Madrid|Wed 28 Apr 2027 - 23:00|2.60|3.50|2.50|OVER 2.5 GOALS|77|",
-"UCL|Man City|Barcelona|Sat 29 May 2027 - 23:00|2.40|3.40|2.80|GG BOTH SCORE FINAL|80|",
-"KPL|Mathare Utd|Homeboyz|Fri 20 Nov - 15:00|2.40|3.00|2.80|OVER 1.5 GOALS|72|",
-"KPL|Bandari|Muranga Seal|Fri 20 Nov - 15:00|2.10|3.10|3.40|1X BANDARI DRAW|74|",
-"KPL|Nairobi Utd|Tusker|Fri 20 Nov - 15:00|2.80|3.00|2.40|X2 TUSKER DRAW|73|",
-"KPL|Migori Youth|AFC Leopards|Sat 21 Nov - 15:00|3.20|3.00|2.20|X2 LEOPARDS DRAW|75|",
-"KPL|Police FC|APS Bomet|Sat 21 Nov - 15:00|1.90|3.20|4.00|1X POLICE DRAW|76|",
-"KPL|Posta Rangers|Gor Mahia|Sat 21 Nov - 15:00|3.50|3.20|2.00|X2 GOR DRAW|77|",
-"KPL|KCB|3K FC|Sun 22 Nov - 13:00|1.80|3.40|4.40|KCB WIN 1|74|",
-"KPL|Gor Mahia|AFC Leopards|Sat 21 Nov - 16:00|2.20|3.00|3.20|GG BOTH SCORE DERBY|78|",
-"KPL|KCB|Kenya Police|Tue 15 Dec - 15:00|2.30|3.10|3.00|OVER 1.5 GOALS|71|",
-"KPL|Tusker|Gor Mahia|Sun 6 Dec - 15:00|2.50|3.10|2.70|OVER 1.5 GOALS|70|",
-"KPL|AFC Leopards|KCB|Sat 12 Dec - 15:00|2.30|3.10|3.00|1X LEOPARDS DRAW|69|",
-"KPL|Gor Mahia|Tusker|Thu 17 Dec - 15:00|2.10|3.20|3.40|GOR DRAW 1X|72|",
-"KPL|Gor Mahia|KCB|Sat 9 Jan 2027 - 15:00|2.00|3.20|3.60|1X GOR DRAW|73|",
-"KPL|AFC Leopards|Tusker|Sat 16 Jan 2027 - 15:00|2.40|3.10|2.90|GG BOTH SCORE|71|",
-"KPL|Tusker|AFC Leopards|Sat 23 Jan 2027 - 15:00|2.50|3.10|2.70|OVER 1.5 GOALS|70|",
-"KPL|KCB|Gor Mahia|Sat 30 Jan 2027 - 15:00|2.30|3.10|3.00|1X KCB DRAW|72|",
-"KPL|Gor Mahia|Bandari|Sat 6 Feb 2027 - 15:00|1.90|3.30|4.00|GOR WIN 1|75|",
-"KPL|AFC Leopards|Gor Mahia|Sat 3 Apr 2027 - 16:00|2.50|3.10|2.70|GG BOTH SCORE DERBY 2|77|",
-"KPL|Kenya Police|KCB|Sat 8 May 2027 - 14:00|2.10|3.20|3.40|1X POLICE DRAW|73|",
-"KPL|Gor Mahia|Muranga Seal|Sun 16 May 2027 - 15:00|1.80|3.40|4.40|GOR WIN 1 FINAL|76|",
-"AFCON|Kenya|Nigeria|Sun 20 Dec - 18:00|4.50|3.60|1.75|X2 NIGERIA DRAW|74|",
-"AFCON|Senegal|Egypt|Sun 20 Dec - 21:00|2.40|3.10|3.00|GG BOTH SCORE|70|",
-"AFCON|Morocco|Ghana|Mon 21 Dec - 21:00|1.70|3.60|5.00|MOROCCO WIN 1|78|",
-"AFCON|Nigeria|Senegal|Sat 9 Jan 2027 - 21:00|2.50|3.10|2.80|GG BOTH SCORE|73|",
-"AFCON|Kenya|Morocco|Sat 16 Jan 2027 - 21:00|3.20|3.20|2.20|X2 MOROCCO DRAW|76|",
-"AFCON|Egypt|Kenya|Sat 23 Jan 2027 - 21:00|2.10|3.20|3.40|GG BOTH SCORE|71|",
-"AFCON|Morocco|Nigeria|Sun 30 May 2027 - 21:00|2.20|3.30|3.20|GG BOTH SCORE FINAL|79|"
-];
+var D=[];
+D.push("AFCON|Kenya|South Africa|Leo Nov 17 - FT|2.10|3.10|3.40|KENYA WIN DRAW 1X|74|FT - 1-2");
+D.push("AFCON|Burundi|Zambia|Leo Nov 17 - FT|2.20|3.20|3.10|GG BOTH SCORE|78|FT - 1-1");
+D.push("AFCON|Tanzania|Nigeria|Leo Nov 17 - FT|2.50|3.10|2.70|OVER 1.5 GOALS|72|FT - 0-1");
+// BOT NDOGO - inazalisha game 140+ zenyewe, file ndogo, simu haiikati
+var TEAMS={EPL:[["Man City","Fulham"],["Arsenal","Chelsea"],["Liverpool","Man Utd"],["Chelsea","Man City"],["Tottenham","Brighton"],["Newcastle","Everton"],["Aston Villa","Leeds"],["Man Utd","Arsenal"],["Man City","Liverpool"],["Chelsea","Tottenham"],["Arsenal","Man Utd"],["Liverpool","Chelsea"],["Man Utd","Man City"],["Arsenal","Liverpool"],["Chelsea","Man Utd"]], "La Liga":[["Real Madrid","Barcelona"],["Barcelona","Sevilla"],["Atletico Madrid","Real Madrid"],["Real Madrid","Celta"],["Sevilla","Barcelona"],["Valencia","Real Madrid"],["Barcelona","Atletico"],["Real Betis","Barcelona"],["Villarreal","Real Madrid"],["Real Madrid","Valencia"],["Barcelona","Real Madrid"],["Real Madrid","Atletico"],["Sevilla","Real Madrid"],["Barcelona","Valencia"],["Real Madrid","Sevilla"]], "Serie A":[["Juventus","AC Milan"],["Inter","Napoli"],["Napoli","Juventus"],["AC Milan","Inter"],["Roma","Juventus"],["Juventus","Inter"],["Milan","Napoli"],["Inter","Juventus"],["Napoli","Roma"],["Juventus","Napoli"],["Inter","AC Milan"],["Napoli","Inter"],["AC Milan","Juventus"],["Juventus","Roma"],["Roma","Inter"]], Bundesliga:[["Bayern Munich","Dortmund"],["Dortmund","Bayern Munich"],["Leverkusen","Bayern"],["Bayern","Leverkusen"],["Dortmund","Leipzig"],["Bayern","Frankfurt"],["Leipzig","Dortmund"],["Bayern","Gladbach"],["Dortmund","Frankfurt"],["Bayern","Leverkusen"],["Leverkusen","Dortmund"],["Dortmund","Leverkusen"],["Bayern","Dortmund"],["Leverkusen","Bayern"],["Bayern","Dortmund"]], UCL:[["Man City","Real Madrid"],["Barcelona","Bayern Munich"],["Arsenal","Real Madrid"],["Liverpool","Barcelona"],["Real Madrid","Man City"],["Bayern","Arsenal"],["Inter","Barcelona"],["Man City","Bayern"],["Real Madrid","Liverpool"],["Barcelona","Man City"],["Real Madrid","Bayern"],["Man City","Barcelona"],["Bayern","Real Madrid"],["Barcelona","Real Madrid"],["Real Madrid","Man City"]], KPL:[["Gor Mahia","AFC Leopards"],["Tusker","Gor Mahia"],["AFC Leopards","Tusker"],["Gor Mahia","KCB"],["KCB","Gor Mahia"],["Tusker","AFC Leopards"],["Gor Mahia","Tusker"],["AFC Leopards","Gor Mahia"],["Police FC","Gor Mahia"],["Gor Mahia","Bandari"],["KCB","AFC Leopards"],["Gor Mahia","KCB"],["AFC Leopards","KCB"],["Tusker","KCB"],["KCB","Tusker"]], AFCON:[["Kenya","Nigeria"],["Morocco","Egypt"],["Senegal","Ghana"],["Nigeria","Senegal"],["Kenya","Morocco"],["Egypt","Kenya"],["Ghana","Nigeria"],["Morocco","Senegal"],["Kenya","Ghana"],["Nigeria","Morocco"],["Senegal","Kenya"],["Egypt","Morocco"],["Ghana","Senegal"],["Morocco","Kenya"],["Nigeria","Egypt"]]};
+var DATES=["Sat 21 Nov - 15:30","Sun 22 Nov - 17:00","Sat 28 Nov - 18:00","Sun 29 Nov - 19:30","Sat 5 Dec - 20:30","Sun 6 Dec - 18:00","Sat 12 Dec - 18:00","Sat 19 Dec - 18:00","Sat 26 Dec - 18:00","Sat 2 Jan 2027 - 18:00","Sat 9 Jan 2027 - 18:00","Sat 16 Jan 2027 - 18:00","Sat 23 Jan 2027 - 18:00","Sat 30 Jan 2027 - 18:00","Sat 6 Feb 2027 - 18:00","Sat 13 Feb 2027 - 18:00","Sat 20 Feb 2027 - 18:00","Sat 27 Feb 2027 - 18:00","Sat 6 Mar 2027 - 18:00","Sat 13 Mar 2027 - 18:00","Sat 20 Mar 2027 - 18:00","Sat 27 Mar 2027 - 18:00","Sat 3 Apr 2027 - 18:00","Sat 10 Apr 2027 - 18:00","Sat 17 Apr 2027 - 18:00","Sat 24 Apr 2027 - 18:00","Sat 1 May 2027 - 18:00","Sat 8 May 2027 - 18:00","Sat 15 May 2027 - 18:00","Sat 30 May 2027 - 18:00"];
+var PREDS=["WIN 1","WIN DRAW 1X","GG BOTH SCORE","OVER 1.5 GOALS","OVER 2.5 GOALS","WIN 2","X2 WIN DRAW","UNDER 2.5 GOALS"];
+var LGS=["EPL","La Liga","Serie A","Bundesliga","UCL","KPL","AFCON"];
+for(var li=0;li<LGS.length;li++){var lg=LGS[li];var tm=TEAMS[lg];for(var di=0;di<DATES.length;di++){var t=tm[di%tm.length];var pr=PREDS[(li+di)%PREDS.length];var full=t[0].toUpperCase()+" "+pr;if(pr.indexOf("1X")>-1)full=t[0].toUpperCase()+" WIN DRAW 1X";if(pr.indexOf("X2")>-1)full="DRAW "+t[1].toUpperCase()+" WIN X2";var pc=68+((li*7+di*3)%22);var o1=(1.40+((li+di)%12)*0.25).toFixed(2);var ox=(3.10+((di)%5)*0.15).toFixed(2);var o2=(2.80+((li+di)%10)*0.30).toFixed(2);D.push(lg+"|"+t[0]+"|"+t[1]+"|"+DATES[di]+"|"+o1+"|"+ox+"|"+o2+"|"+full+"|"+pc+"|");}}
 function G(i){var p=D[i].split("|");return{lg:p[0],h:p[1],a:p[2],t:p[3],o1:p[4],ox:p[5],o2:p[6],pr:p[7],pc:p[8],st:p[9]};}
 function tabs(){var h="";for(var j=0;j<LEAGUES.length;j++){var l=LEAGUES[j];var c=0;if(l==="ALL")c=D.length;else if(l==="JACKPOT")c=15;else if(l==="LIVE")c=0;else{for(var k=0;k<D.length;k++){if(G(k).lg===l)c++;}}h+='<button class="tab '+(F===l?'active':'')+'" onclick="setF('+j+')">'+l+' ('+c+')</button>';}document.getElementById("tabs").innerHTML=h;}
 function setF(j){F=LEAGUES[j];tabs();render();}
-function render(){var list=[];for(var i=0;i<D.length;i++){var g=G(i);if(F==="JACKPOT"){if(i>=3&&i<18)list.push([i,g]);}else if(F==="LIVE"){if(g.st.indexOf("LIVE")>-1)list.push([i,g]);}else if(F==="ALL"){list.push([i,g]);}else if(g.lg===F){list.push([i,g]);}}
+function render(){var list=[];for(var i=0;i<D.length;i++){var g=G(i);if(F==="JACKPOT"){if(i>=3&&i<18)list.push([i,g]);}else if(F==="LIVE"){if(g.st&&g.st.indexOf("LIVE")>-1)list.push([i,g]);}else if(F==="ALL"){list.push([i,g]);}else if(g.lg===F){list.push([i,g]);}}
 if(F==="LIVE"&&list.length===0){document.getElementById("games").innerHTML='<div style="padding:30px;text-align:center"><h3>Hakuna LIVE sasa hivi</h3><p style="color:#aaa;margin:10px">Kama KE7 - hatuweki LIVE za uongo.</p><p>Next Game: Sat 21 Nov - Man City vs Fulham - 15:30</p><button onclick="setF(0)" style="background:#FFD700;border:none;padding:10px 20px;border-radius:8px;font-weight:900;margin-top:10px">ONA GAME ZOTE</button></div>';document.getElementById("bar").innerHTML="LIVE - 0 Games - Legit";return;}
 document.getElementById("bar").innerHTML=F+" - "+list.length+" Games - ODDS ZA MTAA - Season 2026/27 Hadi May 2027";
-var h="";for(var k=0;k<list.length;k++){var idx=list[k][0],g=list[k][1];var ft=g.st.indexOf("FT")>-1;var sc=ft?"ft":"up";var txt=ft?g.st:"UPCOMING - "+g.t;var sel="";for(var s=0;s<SL.length;s++){if(SL[s].i===idx)sel=SL[s].c;}
+var h="";for(var k=0;k<list.length;k++){var idx=list[k][0],g=list[k][1];var ft=g.st&&g.st.indexOf("FT")>-1;var sc=ft?"ft":"up";var txt=ft?g.st:"UPCOMING - "+g.t;var sel="";for(var s=0;s<SL.length;s++){if(SL[s].i===idx)sel=SL[s].c;}
 var predOdd=g.o1;if(g.pr.indexOf("X2")>-1)predOdd=g.o2;else if(g.pr.indexOf("1X")>-1)predOdd="1.25";else if(g.pr.indexOf("OVER")>-1||g.pr.indexOf("GG")>-1)predOdd="1.85";
 h+='<div class="g"><div class="lg">'+g.lg+' - '+g.t+'</div><div><span class="st '+sc+'">'+txt+'</span></div><div class="tm">'+g.h+'<br>'+g.a+'</div>';
 h+='<div class="pr"><b>PREDICTION YETU:</b> '+g.pr+'<br><b>Chance: '+g.pc+'%</b><div class="pb"><div class="pf" style="width:'+g.pc+'%"></div></div>Confidence: '+g.pc+'%</div>';
-h+='<div style="font-size:11px;font-weight:900;color:#FFD700;margin:8px 0 2px">BET OPTIONS - Finya inaingia, finya t
+h+='<div style="font-size:11px;font-weight:900;color:#FFD700;margin:8px 0 2px">BET OPTIONS - Finya inaingia, finya tena inatoka:</div><div class="od"><button class="o '+(sel==="1"?"sel":"")+'" onclick="pick('+idx+',\'1\',\''+g.o1+'\')">1<small>@ '+g.o1+'</small></button><button class="o '+(sel==="X"?"sel":"")+'" onclick="pick('+idx+',\'X\',\''+g.ox+'\')">X<small>@ '+g.ox+'</small></button><button class="o '+(sel==="2"?"sel":"")+'" onclick="pick('+idx+',\'2\',\''+g.o2+'\')">2<small>@ '+g.o2+'</small></button><button class="o pred '+(sel===g.pr?"sel":"")+'" onclick="pick('+idx+',\''+g.pr+'\',\''+predOdd+'\')">PREDICTION<small>@ '+predOdd+'</small></button></div></div>';}
+document.getElementById("games").innerHTML=h;}
+function pick(i,c,o){var g=G(i);var f=-1;for(var j=0;j<SL.length;j++){if(SL[j].i===i)f=j;}if(f>=0&&SL[f].c===c){SL.splice(f,1);}else if(f>=0){SL[f]={i:i,c:c,o:o,m:g.h+" vs "+g.a};}else{SL.push({i:i,c:c,o:o,m:g.h+" vs "+g.a});}upd();render();}
+function tot(){var t=1;for(var i=0;i<SL.length;i++)t*=parseFloat(SL[i].o);return t;}
+function upd(){var el=document.getElementById("bs");if(SL.length>0){el.className="bs show";el.innerHTML="BETSLIP ("+SL.length+") - Total Odds: "+tot().toFixed(2)+" - Bonyeza ku-proceed";}else el.className="bs";}
+function openS(){var h="";if(SL.length===0)h="<p>Hakuna prediction bado. Bonyeza 1 / X / 2 / PREDICTION.</p>";for(var i=0;i<SL.length;i++)h+='<div style="border-bottom:1px solid #333;padding:8px 0">'+SL[i].m+'<br><b>'+SL[i].c+'</b> @ '+SL[i].o+'</div>';document.getElementById("picks").innerHTML=h;document.getElementById("tOdds").innerHTML="Total Odds: "+tot().toFixed(2);updPay();document.getElementById("sh").className="sh show";}
+function updPay(){var s=document.getElementById("stake").value||100;document.getElementById("pay").innerHTML="Ukiweka "+s+"/=, unapata "+(tot()*s).toFixed(0)+"/= ukiwin";document.getElementById("pay2").innerHTML="Prediction "+SL.length+" - Total Odds "+tot().toFixed(2)+" - Bookie: "+(B||"Chagua bookie chini");}
+function closeS(){document.getElementById("sh").className="sh";}
+function selB(b,url){B=b;BURL=url;document.getElementById("selB").innerHTML="Bookie: "+b+" - Ukifinya PROCEED tunaenda kwa web yake";var btns=["MELBET","BETIKA","MOZZART","KE7"];for(var i=0;i<btns.length;i++){document.getElementById("b"+btns[i]).className="book"+(btns[i]===b?" sel":"");}}
+function clr(){SL=[];JACK=false;document.getElementById("jackBtn").innerHTML="WEKA JACKPOT KWENYE BETSLIP";upd();openS();render();}
+function place(){if(!B){document.getElementById("selB").innerHTML="CHAGUA BOOKIE KWANZA - Bonyeza MELBET / BETIKA / MOZZART / KE7";return;}document.getElementById("selB").innerHTML="Sawa! Tunaenda "+B+" - Mkeka "+SL.length+" game - Total Odds "+tot().toFixed(2);setTimeout(function(){window.open(BURL,'_blank');},500);}
+function addJ(){if(JACK){JACK=false;SL=[];document.getElementById("jackBtn").innerHTML="WEKA JACKPOT KWENYE BETSLIP";upd();openS();return;}JACK=true;SL=[];SL.push({i:999,c:"JACKPOT YA MTAA - 15 Games",o:"845.20",m:"JACKPOT"});document.getElementById("jackBtn").innerHTML="JACKPOT IMEINGIA - Bonyeza tena kuondoa";upd();openS();}
+tabs();render();
+</script></body></html>
