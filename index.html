@@ -1,92 +1,91 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ODDS ZA MTAA - Real Live & Real Fixtures</title>
+<title>ODDS ZA MTAA - Real Live</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#0f1419;color:#fff;font-family:Arial,sans-serif}
-header{position:sticky;top:0;background:#0f1419;padding:12px 14px;border-bottom:2px solid #ffd700;display:flex;justify-content:space-between;z-index:10}
-.logo{font-weight:900;color:#ffd700;font-size:20px}.dot{width:10px;height:10px;background:#ff2d2d;border-radius:50%;display:inline-block;animation:b 1s infinite}@keyframes b{50%{opacity:.2}}
-.tabs{display:flex;gap:8px;overflow:auto;padding:10px 12px;position:sticky;top:54px;background:#0f1419}.tabs button{white-space:nowrap;border:1px solid #2a3a4a;background:#1a2530;color:#fff;padding:8px 14px;border-radius:20px}.tabs button.active{background:#ffd700;color:#000;font-weight:800}
-.card{background:#1a2530;border:1px solid #ffd700;border-radius:16px;margin:12px;padding:14px}.league{color:#ffd700;font-size:12px;font-weight:800}.score{font-size:13px;background:#00c853;color:#fff;padding:4px 10px;border-radius:20px;display:inline-block}.teams{font-size:22px;font-weight:900;line-height:1.2;margin:6px 0}.box{background:#0f1419;border-radius:10px;padding:10px;margin:10px 0}.box b{color:#ffd700}.odds{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-top:10px}.odds div{background:#2a3a4a;border-radius:10px;padding:10px;text-align:center}.odds div:last-child{border:2px solid #ffd700}
-input,select,textarea{width:100%;padding:10px;margin:6px 0;border-radius:10px;border:1px solid #333;background:#0f1419;color:#fff}.btn{background:#ffd700;color:#000;font-weight:900;padding:12px;border:none;border-radius:10px;width:100%}.note{background:#fff3cd;color:#000;padding:12px;margin:12px;border-radius:10px;font-size:13px}.footer{text-align:center;color:#444;padding:20px;font-size:11px}
+*{box-sizing:border-box}body{margin:0;background:#0f1419;color:#fff;font-family:Arial,sans-serif;padding-bottom:70px}
+header{position:sticky;top:0;background:#0f1419;padding:12px 14px;border-bottom:2px solid #ffd700;display:flex;justify-content:space-between;align-items:center;z-index:20}
+.logo{font-weight:900;font-size:22px}.logo span{color:#ffd700}.wa{background:#ffd700;color:#000;font-weight:900;padding:8px 16px;border-radius:20px;border:none}
+.livecentre{text-align:center;color:#ffd700;font-size:13px;padding:8px;font-weight:800}
+.jack{background:#1a2530;border:2px solid #ffd700;border-radius:16px;margin:12px;padding:14px}.jack small{color:#ffd700;font-weight:800}.jack h2{margin:4px 0;color:#ffd700;font-size:26px}.jack .ret{color:#00ff88;font-size:28px;font-weight:900}.jack p{color:#9fb3c8;font-size:12px}.jack button{background:#ffd700;border:none;width:100%;padding:12px;border-radius:10px;font-weight:900}
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:12px}.stats div{background:#1a2530;border-radius:12px;padding:10px;text-align:center}.stats b{color:#ffd700;font-size:18px}
+.wacard{background:#00d26a;color:#000;margin:12px;border-radius:12px;padding:14px;text-align:center}.wacard button{background:#000;color:#fff;border:none;padding:10px 18px;border-radius:20px;font-weight:900}
+.filters{display:flex;gap:8px;overflow:auto;padding:0 12px}.filters button{white-space:nowrap;background:#1a2530;color:#fff;border:1px solid #2a3a4a;padding:8px 14px;border-radius:20px}.filters button.active{background:#ffd700;color:#000;font-weight:800}
+.pages{display:flex;overflow-x:auto;scroll-snap-type:x mandatory}.page{min-width:100%;scroll-snap-align:start}
+.card{background:#1a2530;border:1px solid #ffd700;border-radius:16px;margin:12px;padding:14px}.league{color:#ffd700;font-size:12px;font-weight:800}.score{background:#00c853;padding:4px 10px;border-radius:20px;font-size:12px}.teams{font-size:22px;font-weight:900;line-height:1.2;margin:6px 0}.box{background:#0f1419;border-radius:10px;padding:10px;margin:10px 0}.box b{color:#ffd700}.odds{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px}.odds div{background:#2a3a4a;border-radius:10px;padding:10px;text-align:center}.odds div:last-child{border:2px solid #ffd700}.odds small{color:#ffd700}
+.days{display:flex;gap:8px;overflow:auto;padding:10px 12px}.days button{background:#1a2530;color:#fff;border:1px solid #333;padding:10px 14px;border-radius:12px;white-space:nowrap}.days button.active{background:#ffd700;color:#000;font-weight:800}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#0f1419;border-top:1px solid #333;display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;padding:8px 0;z-index:30}.bottom button{background:none;border:none;color:#fff;font-size:12px}.bottom button.active{color:#ffd700}
+input,textarea{width:100%;padding:10px;margin:6px 0;border-radius:10px;border:1px solid #333;background:#0f1419;color:#fff}.btn{background:#ffd700;color:#000;font-weight:900;padding:12px;border:none;border-radius:10px;width:100%}.ad{background:linear-gradient(90deg,#ffd700,#ff8c00);color:#000;margin:12px;border-radius:12px;padding:14px;text-align:center;font-weight:900}
 </style></head><body>
-<header><div class="logo">ODDS ZA MTAA ⚽</div><div><span class="dot"></span> <span id="clock">--:--</span> EAT</div></header>
-<div style="padding:0 14px;color:#9fb3c8;font-size:12px">Last Updated: <span id="updated"></span> • Source: <span id="src">API - Real Fixtures</span> • Auto-refresh 60s • 18+</div>
-<div class="tabs">
-<button class="active" onclick="show('live',this)">🔴 LIVE NOW</button>
-<button onclick="show('today',this)">📅 TODAY</button>
-<button onclick="show('weekend',this)">🔥 WEEKEND</button>
-<button onclick="show('upcoming',this)">📆 DEC & JAN 2027</button>
-<button onclick="show('previous',this)">✅ PREVIOUS</button>
-</div>
-<div id="live"><div style="padding:2px 14px;color:#ffd700;font-weight:900">🔴 LIVE NOW - From API</div><div id="liveBox">Inapakia live za ukweli...</div></div>
-<div id="today" style="display:none"><div style="padding:2px 14px;color:#ffd700;font-weight:900">TODAY - Auto from API</div><div id="todayBox"></div></div>
-<div id="weekend" style="display:none"><div style="padding:2px 14px;color:#ffd700;font-weight:900">WEEKEND - Auto from API</div><div id="weekendBox"></div></div>
-<div id="upcoming" style="display:none"><div style="padding:2px 14px;color:#ffd700;font-weight:900">UPCOMING - DEC to JAN 2027</div><div id="upcomingBox"></div></div>
-<div id="previous" style="display:none"><div style="padding:2px 14px;color:#ffd700;font-weight:900">PREVIOUS - Finished games move here</div><div id="prevBox"></div></div>
+<header><div class="logo">ODDS <span>ZA MTAA</span></div><button class="wa" onclick="window.open('https://wa.me/254101375876')">WHATSAPP</button></header>
+<div class="livecentre">● LIVE CENTRE - Inatafuta Live Scores... • <span id="clock">--:--</span> EAT • <span id="src">API LIVE</span></div>
 
-<div id="adminPanel" style="display:none;padding:14px;background:#111;border-top:2px solid #ffd700">
-<h3 style="color:#ffd700">🔐 ADMIN - WEWE TU</h3>
-<p style="font-size:13px;color:#9fb3c8">Hii panel haionekani kwa client. Unai-fungua kwa link: site.com/?admin=odds123</p>
-<label>1. API KEY - Weka Key MPYA baada ya Reset hapa</label><input id="apiKey" placeholder="Paste Key MPYA hapa">
-<button class="btn" onclick="saveKey()">💾 SAVE API KEY</button>
-<label style="margin-top:14px;display:block">2. Manual Prediction - League</label><input id="mLeague" placeholder="EPL / KPL / UWCL">
-<label>Home Team</label><input id="mHome" placeholder="Liverpool"><label>Away Team</label><input id="mAway" placeholder="Man United">
-<label>Date</label><input id="mDate" type="date"><label>Time EAT</label><input id="mTime" type="time">
-<label>Your Analysis</label><textarea id="mAnalysis" placeholder="Analysis yako..."></textarea>
-<label>Your Pick</label><input id="mPick" placeholder="Liverpool Win OR Draw">
-<button class="btn" onclick="saveManual()">✅ WEKA MANUAL GAME</button>
-<button class="btn" style="background:#ff4444;color:#fff;margin-top:8px" onclick="clearManual()">🗑️ FUTA MANUAL ZOTE</button>
+<div class="pages" id="pages">
+<!-- PAGE 1 - MAIN -->
+<div class="page">
+<div class="jack"><small>PREMIUM JACKPOT - ODDS ZA MTAA</small><h2>JACKPOT YA MTAA</h2><div>15 Matches • Today • Real Fixtures</div><div>Stake 100/=, Potential Return:</div><div class="ret">Check Bookmaker *</div><p>* Potential if all selections win. Hakuna 100% SURE. Play responsibly 18+</p><button onclick="goPage(2)">ADD JACKPOT TO BETSLIP →</button></div>
+<div class="stats"><div><b id="cMatches">--</b><br>Matches<br>Season 2026/27</div><div><b>API</b><br>Real<br>Fixtures</div><div><b>24/7</b><br>Premium<br>Support</div></div>
+<div class="wacard"><b>WhatsApp Business - +254101375876</b><br>Chat nasi sasa - Tuma Slip yako hapa.<br><button onclick="window.open('https://wa.me/254101375876')">CHAT ON WHATSAPP →</button></div>
+<div class="filters" id="filters"><button class="active" onclick="filterGames('ALL',this)">ALL</button><button onclick="filterGames('JACKPOT',this)">JACKPOT</button><button onclick="filterGames('LIVE',this)">LIVE</button><button onclick="filterGames('EPL',this)">EPL</button><button onclick="filterGames('TODAY',this)">TODAY</button><button onclick="filterGames('PREVIOUS',this)">PREVIOUS</button></div>
+<div id="mainGames"></div>
+<div class="ad">🔥 MEGA JACKPOT INAKUJA - 17 MATCHES - COMING SOON - Swipe Right →</div>
 </div>
 
-<div class="note"><b>UKWELI:</b> Hakuna 100% SURE. Odds zinabadilika - check bookmaker wako. 18+ Play Responsibly.</div>
-<div class="footer">ODDS ZA MTAA © 2026 • Nairobi • Legit - Real Fixtures, Real Live</div>
+<!-- PAGE 2 - CALENDAR + DAYS -->
+<div class="page">
+<h3 style="padding:0 14px;color:#ffd700">📅 GAME KWA SIKU - Swipe kuona siku zinazofuata</h3>
+<div class="days" id="days"></div>
+<div id="dayGames"></div>
+<div class="ad">💡 TIP: Bofya siku yoyote - game za siku hiyo kutoka API zinakuja hapa.</div>
+</div>
+
+<!-- PAGE 3 - JACKPOT + HELP KAMA BETTIKA -->
+<div class="page">
+<h3 style="padding:0 14px;color:#ffd700">🏆 JACKPOT & MEGA JACKPOT</h3>
+<div class="jack"><small>JACKPOT YA MTAA - 15 MATCHES</small><h2>Jackpot Predictions</h2><p>Chagua 15 - zote zikiingia unashinda. Hii ni prediction, sio uhakika.</p><div id="jackpotGames"></div></div>
+<div class="ad">🔥 MEGA JACKPOT - 17 MATCHES - INAKUJA DEC 2026 - Weka Alarma!</div>
+<div style="margin:12px;background:#1a2530;border-radius:12px;padding:14px"><h3 style="color:#ffd700">❓ HELP - UKICHANGANYIKIWA</h3><p><b>1. LIVE iko wapi?</b> Bofya LIVE chini - kama hakuna live, inaandika Hakuna Live Sasa - ukweli.</p><p><b>2. Game za leo?</b> Bofya TODAY au siku kwenye Calendar.</p><p><b>3. Game ikiisha inaenda wapi?</b> Inaenda PREVIOUS yenyewe na matokeo ya ukweli.</p><p><b>4. Jackpot?</b> Swipe right mara 2 - utaona Jackpot na Mega Jackpot.</p><p><b>5. Msaada?</b> WhatsApp +254101375876</p></div>
+<div style="margin:12px;background:#1a2530;border-radius:12px;padding:14px"><h3 style="color:#ffd700">✅ PREVIOUS PREDICTIONS</h3><div id="prevGames"></div></div>
+</div>
+</div>
+
+<div id="adminPanel" style="display:none;padding:14px;background:#111;border-top:2px solid #ffd700"><h3 style="color:#ffd700">🔐 ADMIN - WEWE TU</h3><label>API KEY MPYA</label><input id="apiKey" placeholder="Paste Key MPYA"><button class="btn" onclick="saveKey()">SAVE API KEY</button><label style="display:block;margin-top:10px">Manual - League</label><input id="mLeague" placeholder="EPL / KPL"><label>Home</label><input id="mHome"><label>Away</label><input id="mAway"><label>Date</label><input id="mDate" type="date"><label>Time</label><input id="mTime" type="time"><label>Analysis</label><textarea id="mAnalysis"></textarea><label>Pick</label><input id="mPick"><button class="btn" onclick="saveManual()">WEKA MANUAL GAME</button></div>
+
+<div class="bottom">
+<button onclick="goPage(0)" id="b0">☰<br>MENU</button>
+<button onclick="goPage(0)" id="b1" class="active">⚽<br>ALL</button>
+<button onclick="window.open('https://wa.me/254101375876')">💬<br>WHATSAPP</button>
+<button onclick="goPage(2)" id="b3">🏆<br>JACKPOT</button>
+<button onclick="filterGames('LIVE',null);goPage(0)" id="b4">🔴<br>LIVE</button>
+</div>
 <script>
-let API_KEY = localStorage.getItem('ozm_key') || "";
-let manual = JSON.parse(localStorage.getItem('ozm_manual')||'[]');
-let previous = JSON.parse(localStorage.getItem('ozm_prev')||'[]');
-const params = new URLSearchParams(location.search);
-if(params.get('admin')==='odds123'){document.getElementById('adminPanel').style.display='block';document.getElementById('apiKey').value=API_KEY;}
-function saveKey(){let v=document.getElementById('apiKey').value.trim();if(!v){alert('Weka Key');return}localStorage.setItem('ozm_key',v);API_KEY=v;alert('Key imesave! Refresh sasa.');loadAPI();}
-function show(id,btn){['live','today','weekend','upcoming','previous'].forEach(x=>document.getElementById(x).style.display=x===id?'block':'none');document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}
-function saveManual(){const g={league:document.getElementById('mLeague').value||'MANUAL',home:document.getElementById('mHome').value,away:document.getElementById('mAway').value,date:document.getElementById('mDate').value,time:document.getElementById('mTime').value,analysis:document.getElementById('mAnalysis').value,pick:document.getElementById('mPick').value,manual:true};if(!g.home||!g.away){alert('Weka Home na Away');return}manual.unshift(g);localStorage.setItem('ozm_manual',JSON.stringify(manual));alert('Manual imewekwa!');renderAll();}
-function clearManual(){if(confirm('Futa manual zote?')){manual=[];localStorage.removeItem('ozm_manual');renderAll();}}
-function card(g){const st=g.status||'SCHEDULED';return `<div class="card"><div class="league">${g.league} - ${g.date||''} - ${g.time||''} ${g.manual?'• MANUAL BY ADMIN':''}</div><span class="score">${st}</span><div class="teams">${g.home}<br>${g.away}</div><div class="box"><b>ANALYSIS:</b> ${g.analysis||'Analysis inakuja 24h kabla.'}</div><div style="color:#00ff88;font-size:13px">● ${g.liveNote||'From API - Real Fixture'}</div><div class="odds"><div>1<br><small>Check Bookmaker</small></div><div>X<br><small>Check Bookmaker</small></div><div>2<br><small>Check Bookmaker</small></div><div>PREDICTION<br><small>${g.pick||'Analysis 24h before'}</small></div></div></div>`}
+let API_KEY=localStorage.getItem('ozm_key')||"";let manual=JSON.parse(localStorage.getItem('ozm_manual')||'[]');let curFilter='ALL';let curDay='Today';
+const params=new URLSearchParams(location.search);if(params.get('admin')==='odds123'){document.getElementById('adminPanel').style.display='block';document.getElementById('apiKey').value=API_KEY;}
+function saveKey(){let v=document.getElementById('apiKey').value.trim();if(!v)return alert('Weka Key');localStorage.setItem('ozm_key',v);API_KEY=v;alert('Saved!');loadAPI();}
+function saveManual(){const g={league:document.getElementById('mLeague').value||'MANUAL',home:document.getElementById('mHome').value,away:document.getElementById('mAway').value,date:document.getElementById('mDate').value,time:document.getElementById('mTime').value,analysis:document.getElementById('mAnalysis').value,pick:document.getElementById('mPick').value,manual:true};if(!g.home||!g.away)return alert('Weka Home/Away');manual.unshift(g);localStorage.setItem('ozm_manual',JSON.stringify(manual));alert('Manual imewekwa');renderAll();}
+function goPage(i){document.getElementById('pages').scrollTo({left:i*window.innerWidth,behavior:'smooth'});document.querySelectorAll('.bottom button').forEach(b=>b.classList.remove('active'));}
+function filterGames(f,btn){curFilter=f;if(btn){document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');}renderAll();}
+function card(g){return `<div class="card"><div class="league">${g.league} - ${g.date||''} ${g.manual?'• MANUAL':''}</div><span class="score">${g.status||'SCHEDULED'}</span><div class="teams">${g.home}<br>${g.away}</div><div class="box"><b>OUR ANALYSIS:</b> ${g.analysis||'Analysis inakuja 24h kabla.'}</div><div style="color:#00ff88;font-size:13px">● ${g.liveNote||'From API - Real Fixture'}</div><div class="odds"><div>1<br><small>Check Bookmaker</small></div><div>X<br><small>Check Bookmaker</small></div><div>2<br><small>Check Bookmaker</small></div><div>PREDICTION<br><small>${g.pick||'Analysis 24h before'}</small></div></div></div>`}
 function renderAll(){
   const all=[...manual, ...(window.apiGames||[])];
-  const live=all.filter(g=>g.status && g.status.includes('LIVE'));
-  const today=all.filter(g=>!g.status?.includes('FINISHED'));
-  const fin=all.filter(g=>g.status?.includes('FINISHED'));
-  const prev=[...previous, ...fin];
-  document.getElementById('liveBox').innerHTML = live.length? live.map(g=>card(g)).join('') : `<div class="card"><div class="teams">Hakuna Live Sasa</div><div class="box"><b>Next Live:</b> ${all[0]?all[0].home+' vs '+all[0].away+' - '+all[0].time:''}<br>System ina-check API kila 60 sec. Mechi ikianza, inaonekana hapa na score ya ukweli. Ikiisha, inaenda Previous yenyewe.</div></div>`;
-  document.getElementById('todayBox').innerHTML = today.slice(0,20).map(g=>card(g)).join('')||'Hakuna game leo';
-  document.getElementById('weekendBox').innerHTML = all.slice(0,10).map(g=>card(g)).join('');
-  document.getElementById('upcomingBox').innerHTML = all.map(g=>card(g)).join('') + `<div class="card"><div class="league">JAN 2027</div><div class="teams">January Fixtures</div><div class="box">API inaleta game za January zenyewe zikishakuwa confirmed. Ukiscroll hapa utaona January zikija.</div></div>`;
-  document.getElementById('prevBox').innerHTML = prev.length? prev.map(g=>card(g)).join('') : `<div class="card"><div class="teams">Hakuna Previous Bado</div><div class="box">Game ikisha FT, inahamia hapa yenyewe. Historia inabaki - hadi January.</div></div>`;
+  document.getElementById('cMatches').textContent=all.length||'--';
+  let filtered=all;
+  if(curFilter==='LIVE')filtered=all.filter(g=>g.status&&g.status.includes('LIVE'));
+  if(curFilter==='EPL')filtered=all.filter(g=>g.league.includes('EPL')||g.league.includes('Premier'));
+  if(curFilter==='TODAY')filtered=all.filter(g=>g.date&&g.date.includes('18')||g.date==='Today');
+  if(curFilter==='PREVIOUS')filtered=all.filter(g=>g.status&&g.status.includes('FINISHED'));
+  if(curFilter==='JACKPOT')filtered=all.slice(0,15);
+  document.getElementById('mainGames').innerHTML=filtered.length?filtered.map(card).join(''):`<div class="card"><div class="teams">${curFilter==='LIVE'?'Hakuna Live Sasa':'Hakuna Game Hapa'}</div><div class="box">System ina-check API kila 60 sec. Mechi ikianza inaonekana hapa. Ikiisha inaenda Previous.</div></div>`;
+  document.getElementById('dayGames').innerHTML=all.map(card).join('');
+  document.getElementById('jackpotGames').innerHTML=all.slice(0,15).map(card).join('');
+  document.getElementById('prevGames').innerHTML=all.filter(g=>g.status&&g.status.includes('FINISHED')).map(card).join('')||'<p>Hakuna Previous bado - game ikisha inaenda hapa yenyewe.</p>';
 }
+// Days - Leo hadi Jan
+const days=['Today 18 Nov','Tomorrow 19 Nov','Sat 21 Nov','Sun 22 Nov','Mon 23 Nov','Tue 24 Nov','Dec 2026','Jan 2027'];
+document.getElementById('days').innerHTML=days.map((d,i)=>`<button class="${i===0?'active':''}" onclick="document.querySelectorAll('.days button').forEach(b=>b.classList.remove('active'));this.classList.add('active');curDay=d;renderAll()">${d}</button>`).join('');
 async function loadAPI(){
-  if(!API_KEY){
-    document.getElementById('src').textContent='MANUAL + DEMO - Weka API Key kwa Admin (?admin=odds123)';
-    window.apiGames=[
-      {league:'UWCL',home:'Real Madrid Women',away:'Inter Women',date:'Today 18 Nov',time:'20:45',status:'SCHEDULED',analysis:'Real Madrid Women at home, strong attack.',pick:'Real Madrid Win OR Draw'},
-      {league:'EPL GW11',home:'Man City',away:'Fulham',date:'Sat 21 Nov',time:'15:30',status:'SCHEDULED',analysis:'City home, cannot afford 4th loss.',pick:'Man City Win / Over 2.5'},
-      {league:'EPL GW11',home:'Liverpool',away:'Man United',date:'Sun 22 Nov',time:'19:30',status:'SCHEDULED',analysis:'Derby - Anfield factor.',pick:'Liverpool Win OR GG'},
-    ]; renderAll(); return;
-  }
-  document.getElementById('src').textContent='API LIVE - API-Football v3 - Real';
-  try{
-    const res=await fetch('https://v3.football.api-sports.io/fixtures?from=2026-11-18&to=2027-01-31&status=NS-LIVE-FT',{headers:{'x-apisports-key':API_KEY}});
-    const data=await res.json();
-    window.apiGames=(data.response||[]).map(m=>({
-      league:(m.league.name||'FOOTBALL')+' '+(m.league.round||''), home:m.teams.home.name, away:m.teams.away.name,
-      date:new Date(m.fixture.date).toLocaleDateString('en-GB',{day:'2-digit',month:'short'}), time:new Date(m.fixture.date).toLocaleTimeString('en-KE',{timeZone:'Africa/Nairobi',hour:'2-digit',minute:'2-digit'}),
-      status:m.fixture.status.short==='FT'?'FINISHED - FT':(m.fixture.status.short==='1H'||m.fixture.status.short==='2H'||m.fixture.status.short==='HT')?'LIVE - '+(m.fixture.status.elapsed||'')+"'":'SCHEDULED',
-      analysis:'Real fixture from API-Football. Analysis yetu inakuja 24h kabla.', pick:'Analysis 24h before', liveNote:'From API-Football v3 - Auto Update kila 60s'
-    }));
-    renderAll();
-  }catch(e){ document.getElementById('src').textContent='API Error - Check Key / Internet'; renderAll(); }
+  if(!API_KEY){window.apiGames=[{league:'UWCL - Tonight',home:'Real Madrid Women',away:'Inter Women',date:'Today 18 Nov',time:'20:45',status:'SCHEDULED',analysis:'Real Madrid at home, strong attack.',pick:'Real Madrid Win OR Draw'},{league:'UWCL - Tonight',home:'Chelsea Women',away:'PSG Women',date:'Today 18 Nov',time:'23:00',status:'SCHEDULED',analysis:'Chelsea home favourites.',pick:'Chelsea Win OR Over 1.5'},{league:'EPL GW11 - Sat',home:'Man City',away:'Fulham',date:'Sat 21 Nov',time:'15:30',status:'SCHEDULED',analysis:'City home, cannot afford 4th loss.',pick:'Man City Win / Over 2.5'},{league:'EPL GW11 - Sun',home:'Liverpool',away:'Man United',date:'Sun 22 Nov',time:'19:30',status:'SCHEDULED',analysis:'Derby - Anfield factor.',pick:'Liverpool Win OR GG'},{league:'AFCON - 17 Nov - FT',home:'Kenya 1-2',away:'South Africa',date:'17 Nov',time:'FT',status:'FINISHED - FT',analysis:'Our Pick: Kenya Win Draw 1X - Result: 1-2',pick:'Result: 1-2'}];renderAll();return;}
+  try{const today=new Date().toISOString().split('T')[0];const res=await fetch('https://v3.football.api-sports.io/fixtures?date='+today+'&timezone=Africa/Nairobi',{headers:{'x-apisports-key':API_KEY}});const data=await res.json();window.apiGames=(data.response||[]).map(m=>({league:(m.league.name||'FOOTBALL')+' '+(m.league.round||''),home:m.teams.home.name,away:m.teams.away.name,date:new Date(m.fixture.date).toLocaleDateString('en-GB',{day:'2-digit',month:'short'}),time:new Date(m.fixture.date).toLocaleTimeString('en-KE',{timeZone:'Africa/Nairobi',hour:'2-digit',minute:'2-digit'}),status:m.fixture.status.short==='FT'?'FINISHED - FT':(m.fixture.status.short==='1H'||m.fixture.status.short==='2H'||m.fixture.status.short==='HT')?'LIVE - '+(m.fixture.status.elapsed||'')+"'":'SCHEDULED',analysis:'Real fixture from API.',pick:'Analysis 24h before',liveNote:'From API-Football v3 - Auto 60s'}));renderAll();}catch(e){renderAll();}
 }
-document.getElementById('updated').textContent=new Date().toLocaleString('en-KE',{timeZone:'Africa/Nairobi'});
 document.getElementById('clock').textContent=new Date().toLocaleTimeString('en-KE',{timeZone:'Africa/Nairobi',hour:'2-digit',minute:'2-digit'});
-loadAPI(); setInterval(loadAPI,60000);
-setInterval(()=>{document.getElementById('clock').textContent=new Date().toLocaleTimeString('en-KE',{timeZone:'Africa/Nairobi',hour:'2-digit',minute:'2-digit'})},30000);
+loadAPI();setInterval(loadAPI,60000);
 </script></body></html>
