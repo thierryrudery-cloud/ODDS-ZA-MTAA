@@ -76,7 +76,7 @@ input,textarea{width:100%;padding:10px;margin:6px 0;border-radius:10px;border:1p
 <h3 style="color:#ffd700">✍️ MANUAL GAME</h3>
 <label>League</label><input id="mLeague" placeholder="EPL / KPL"><label>Home</label><input id="mHome"><label>Away</label><input id="mAway"><label>Date</label><input id="mDate" type="date"><label>Time</label><input id="mTime" type="time"><label>Analysis Yako</label><textarea id="mAnalysis" placeholder="Mfano: Man City wako nyumbani..."></textarea><label>Pick</label><input id="mPick" placeholder="Man City Win OR Draw"><button class="btn" onclick="saveManual()">WEKA MANUAL GAME</button>
 <button class="btnRed" onclick="clearManual()">🗑️ FUTA MANUAL ZOTE</button>
-<p style="color:#9fb3c8;font-size:12px">Link ya Dosi: site yako + <b>?admin=odds123</b><br>Usiitume kwa client!</p>
+<p style="color:#9fb3c8;font-size:12px">Link ya Dosi: https://thierryrudery-cloud.github.io/ODDS-ZA-MTAA/?admin=1<br>Usiitume kwa client! Link ya client: https://thierryrudery-cloud.github.io/ODDS-ZA-MTAA/</p>
 </div>
 <div class="bottom">
 <button onclick="openMenu()">☰<br>MENU</button>
@@ -181,5 +181,4 @@ function renderAll(){
     var jackHTML=""; var jack = upcoming.slice(0,15); for(var i=0;i<jack.length;i++) jackHTML += card(jack[i]);
     var elJack = safeGet('jackpotGames'); if(elJack) elJack.innerHTML = jackHTML || '<p>Hakuna Jackpot zijazo.</p>';
     var prevHTML=""; for(var i=0;i<finished.length;i++) prevHTML += card(finished[i]);
-    var elPrev = safeGet('prevGames'); if(elPrev) elPrev.innerHTML = prevHTML || '<p>Hakuna Previous bado.</p>';
-  }catch(e){ var elMain2=safeGet('mainGames'); 
+    var elPrev = safeGet('prevGames'); if(elPrev) elPrev.innerHTML
