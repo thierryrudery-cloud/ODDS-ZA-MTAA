@@ -19,19 +19,19 @@ header{position:sticky;top:0;background:#0f1419;padding:12px 14px;border-bottom:
 .bottom{position:fixed;bottom:0;left:0;right:0;background:#0f1419;border-top:1px solid #333;display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;padding:8px 0;z-index:30}.bottom button{background:none;border:none;color:#fff;font-size:12px}.bottom button.active{color:#ffd700}
 input,textarea{width:100%;padding:10px;margin:6px 0;border-radius:10px;border:1px solid #333;background:#0f1419;color:#fff}.btn{background:#ffd700;color:#000;font-weight:900;padding:12px;border:none;border-radius:10px;width:100%;margin:6px 0}.btn2{background:#00d26a;color:#000;font-weight:900;padding:12px;border:none;border-radius:10px;width:100%;margin:6px 0}.btnRed{background:#ff4444;color:#fff;font-weight:900;padding:12px;border:none;border-radius:10px;width:100%;margin:6px 0}.ad{background:linear-gradient(90deg,#ffd700,#ff8c00);color:#000;margin:12px;border-radius:12px;padding:14px;text-align:center;font-weight:900}
 .menubtn{width:100%;padding:12px;margin:6px 0;background:#1a2530;color:#fff;border:1px solid #ffd700;border-radius:10px;text-align:left;font-size:14px}
-.monBox{background:#0f1419;border:1px solid #ffd700;border-radius:12px;padding:12px;margin:8px 0}.monBox b{color:#ffd700}.ok{color:#00ff88}.bad{color:#ff4444}
+.monBox{background:#0f1419;border:1px solid #ffd700;border-radius:12px;padding:12px;margin:8px 0}.monBox b{color:#ffd700}
 </style></head><body>
 <div id="menuDrawer" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.95);z-index:99;padding:20px;overflow:auto">
 <h2 style="color:#ffd700">ODDS ZA MTAA - MENU</h2>
 <button class="menubtn" onclick="closeMenu();goPage(0);filterGames('ALL',null)">🏠 HOME - ALL GAMES ZIJAZO</button>
 <button class="menubtn" onclick="closeMenu();filterGames('LIVE',null);goPage(0)">🔴 LIVE NOW</button>
-<button class="menubtn" onclick="closeMenu();goPage(1)">📅 CALENDAR - SIKU ZOTE</button>
+<button class="menubtn" onclick="closeMenu();goPage(1)">📅 CALENDAR</button>
 <button class="menubtn" onclick="closeMenu();goPage(2)">🏆 JACKPOT & MEGA JACKPOT</button>
-<button class="menubtn" onclick="closeMenu();filterGames('PREVIOUS',null);goPage(0)">✅ PREVIOUS PREDICTIONS - ZILIZOKWISHA</button>
-<button class="menubtn" onclick="closeMenu();goPage(2)">❓ HELP - UKICHANGANYIKIWA</button>
-<button class="menubtn" onclick="alert('ODDS ZA MTAA - Kampuni ya Nairobi. Tunatoa analysis ya mpira ya ukweli. Hatuhakikishi ushindi. 18+ only.')">ℹ️ ABOUT US</button>
-<button class="menubtn" onclick="alert('PRIVACY: Hatuchukui password yako, hatuuzi data yako. WhatsApp yako inabaki kati yako na sisi tu.')">🔐 PRIVACY POLICY</button>
-<button class="menubtn" onclick="alert('TERMS: 18+ only. Hakuna 100% SURE. Cheza kile unaweza kupoteza. Odds zinabadilika - check bookmaker wako.')">📜 TERMS - 18+</button>
+<button class="menubtn" onclick="closeMenu();filterGames('PREVIOUS',null);goPage(0)">✅ PREVIOUS - ZILIZOKWISHA</button>
+<button class="menubtn" onclick="closeMenu();goPage(2)">❓ HELP</button>
+<button class="menubtn" onclick="alert('ODDS ZA MTAA - Nairobi. Analysis ya ukweli. 18+ only.')">ℹ️ ABOUT US</button>
+<button class="menubtn" onclick="alert('PRIVACY: Hatuchukui password yako, hatuuzi data yako.')">🔐 PRIVACY</button>
+<button class="menubtn" onclick="alert('TERMS: 18+ only. Hakuna 100% SURE. Cheza kile unaweza kupoteza.')">📜 TERMS - 18+</button>
 <button class="menubtn" onclick="window.open('https://wa.me/254101375876')">💬 CONTACT - WHATSAPP</button>
 <button onclick="closeMenu()" style="width:100%;padding:12px;margin:10px 0;background:#ffd700;color:#000;border:none;border-radius:10px;font-weight:900">✕ FUNGA MENU</button>
 </div>
@@ -44,51 +44,49 @@ input,textarea{width:100%;padding:10px;margin:6px 0;border-radius:10px;border:1p
 <div class="wacard"><b>WhatsApp Business - +254101375876</b><br>Chat nasi sasa - Tuma Slip yako hapa.<br><button onclick="window.open('https://wa.me/254101375876')">CHAT ON WHATSAPP →</button></div>
 <div style="margin:12px"><h3 style="color:#ffd700">🎯 CHAGUA SITE YAKO YA KUBET - ZOTE 12 HAPA 👇</h3><div class="allSites" id="allSitesTop"></div></div>
 <div class="filters" id="filters"><button class="active" onclick="filterGames('ALL',this)">ALL - ZIJAZO</button><button onclick="filterGames('JACKPOT',this)">JACKPOT</button><button onclick="filterGames('LIVE',this)">LIVE</button><button onclick="filterGames('EPL',this)">EPL</button><button onclick="filterGames('TODAY',this)">TODAY</button><button onclick="filterGames('PREVIOUS',this)">PREVIOUS ✅</button></div>
-<div id="mainGames"></div>
+<div id="mainGames"><div class="card"><div class="teams">Loading Game...</div><div class="box">Tafadhali subiri - game zinapakiwa.</div></div></div>
 <div class="ad">🔥 MEGA JACKPOT INAKUJA - 17 MATCHES - COMING SOON - Swipe Right →</div>
 </div>
 <div class="page">
-<h3 style="padding:0 14px;color:#ffd700">📅 GAME KWA SIKU - Swipe kuona siku zinazofuata</h3>
+<h3 style="padding:0 14px;color:#ffd700">📅 GAME KWA SIKU</h3>
 <div class="days" id="days"></div>
 <div id="dayGames"></div>
 <div class="ad">💡 TIP: Bofya siku yoyote - game za siku hiyo zinakuja hapa.</div>
 </div>
 <div class="page">
 <h3 style="padding:0 14px;color:#ffd700">🏆 JACKPOT & MEGA JACKPOT</h3>
-<div class="jack"><small>JACKPOT YA MTAA - 15 MATCHES ZIJAZO TU</small><h2>Jackpot Predictions</h2><p>Chagua 15 zijazo - zote zikiingia unashinda. Hii ni prediction, sio uhakika. Game zilizokwisha haziko hapa - ziko Previous.</p><div id="jackpotGames"></div></div>
+<div class="jack"><small>JACKPOT YA MTAA - 15 MATCHES ZIJAZO TU</small><h2>Jackpot Predictions</h2><p>Chagua 15 zijazo - zote zikiingia unashinda. Game zilizokwisha haziko hapa - ziko Previous.</p><div id="jackpotGames"></div></div>
 <div class="ad">🔥 MEGA JACKPOT - 17 MATCHES - INAKUJA DEC 2026 - Weka Alarma!</div>
 <div style="margin:12px;background:#1a2530;border-radius:12px;padding:14px"><h3 style="color:#ffd700">🎯 BET SITES ZOTE - CHAGUA YAKO</h3><div class="allSites" id="allSitesBottom"></div></div>
-<div style="margin:12px;background:#1a2530;border-radius:12px;padding:14px"><h3 style="color:#ffd700">❓ HELP - UKICHANGANYIKIWA</h3><p><b>1. LIVE iko wapi?</b> Bofya LIVE chini - kama hakuna live, inaandika Hakuna Live Sasa - ukweli.</p><p><b>2. Game za leo?</b> Bofya TODAY au siku kwenye Calendar.</p><p><b>3. Game ikiisha inaenda wapi?</b> Inaenda PREVIOUS yenyewe na matokeo ya ukweli FT: 2-1.</p><p><b>4. Jackpot?</b> Swipe right mara 2 - utaona Jackpot na Mega Jackpot - zijazo tu.</p><p><b>5. Msaada?</b> WhatsApp +254101375876</p></div>
-<div style="margin:12px;background:#1a2530;border-radius:12px;padding:14px"><h3 style="color:#ffd700">✅ PREVIOUS PREDICTIONS - GAME ZILIZOKWISHA</h3><div id="prevGames"></div></div>
+<div style="margin:12px;background:#1a2530;border-radius:12px;padding:14px"><h3 style="color:#ffd700">❓ HELP</h3><p><b>1. LIVE:</b> Bofya LIVE chini - kama hakuna live, inaandika Hakuna Live Sasa.</p><p><b>2. Game za leo?</b> Bofya TODAY au siku kwenye Calendar.</p><p><b>3. Game ikiisha?</b> Inaenda PREVIOUS yenyewe na FT Score.</p><p><b>4. Jackpot?</b> Swipe right mara 2 - zijazo tu.</p><p><b>5. Msaada?</b> WhatsApp +254101375876</p></div>
+<div style="margin:12px;background:#1a2530;border-radius:12px;padding:14px"><h3 style="color:#ffd700">✅ PREVIOUS - GAME ZILIZOKWISHA</h3><div id="prevGames"></div></div>
 <div style="margin:12px;background:#1a2530;border-radius:12px;padding:14px"><h3 style="color:#ffd700">🔐 PRIVACY & TERMS</h3><p>Hatuchukui password yako. Hatuuzi data yako. 18+ only. Hakuna 100% SURE. Cheza kile unaweza kupoteza.</p></div>
 </div>
 </div>
-<!-- ===== DOSI / ADMIN + MONITORING - WEWE TU - ?admin=odds123 ===== -->
 <div id="adminPanel" style="display:none;padding:14px;background:#111;border-top:3px solid #ffd700">
 <h2 style="color:#ffd700">🔐 DOSI - MONITORING & ADMIN</h2>
-<div class="monBox"><b>📊 SITE HEALTH - MONITORING</b><br><span id="monHealth">Checking...</span><br><span id="monTime">--</span><br><span id="monApi">--</span><br><span id="monCounts">--</span><br><span id="monErrors">--</span></div>
-<div class="monBox"><b>🖱️ CLICKS - CLIENT WALIBONYEZA WAPI?</b><br><span id="monClicks">Hakuna clicks bado</span><br><small>Melbet mingi = pesa nyingi Melbet. KE7 mingi = pesa KE7.</small></div>
-<div class="monBox"><b>⚠️ SHIDA NDOGO NDOGO - AUTO CHECK</b><br><span id="monIssues">Checking...</span></div>
-<button class="btn2" onclick="fixSite()">🔄 FIX SITE SASA - SAFISHA SHIDA NDOGO</button>
-<button class="btn" onclick="testAPI()">🧪 TEST API - INAFANYA KAZI?</button>
+<div class="monBox"><b>📊 SITE HEALTH</b><br><span id="monHealth">Checking...</span><br><span id="monTime">--</span><br><span id="monApi">--</span><br><span id="monCounts">--</span></div>
+<div class="monBox"><b>🖱️ CLICKS</b><br><span id="monClicks">Hakuna clicks bado</span></div>
+<div class="monBox"><b>⚠️ SHIDA</b><br><span id="monIssues">Checking...</span></div>
+<button class="btn2" onclick="fixSite()">🔄 FIX SITE SASA</button>
 <button class="btn" onclick="refreshAll()">↻ REFRESH GAME SASA</button>
-<button class="btnRed" onclick="clearClicks()">🗑️ FUTA CLICKS - ANZA UPYA</button>
+<button class="btnRed" onclick="clearClicks()">🗑️ FUTA CLICKS</button>
 <h3 style="color:#ffd700;margin-top:16px">🔑 API KEY</h3>
 <label>API KEY MPYA</label><input id="apiKey" placeholder="Paste Key MPYA"><button class="btn" onclick="saveKey()">SAVE API KEY</button>
 <h3 style="color:#ffd700">✍️ MANUAL GAME</h3>
-<label>League</label><input id="mLeague" placeholder="EPL / KPL"><label>Home</label><input id="mHome"><label>Away</label><input id="mAway"><label>Date</label><input id="mDate" type="date"><label>Time</label><input id="mTime" type="time"><label>Analysis Yako</label><textarea id="mAnalysis" placeholder="Mfano: Man City wako nyumbani, form nzuri..."></textarea><label>Pick</label><input id="mPick" placeholder="Man City Win OR Draw"><button class="btn" onclick="saveManual()">WEKA MANUAL GAME</button>
-<button class="btnRed" onclick="clearManual()">🗑️ FUTA MANUAL GAMES ZOTE</button>
-<p style="color:#9fb3c8;font-size:12px">Link ya Dosi: site yako + <b>?admin=odds123</b><br>Mfano: https://dery-cloud.github.io/?admin=odds123<br>Usiitume kwa client!</p>
+<label>League</label><input id="mLeague" placeholder="EPL / KPL"><label>Home</label><input id="mHome"><label>Away</label><input id="mAway"><label>Date</label><input id="mDate" type="date"><label>Time</label><input id="mTime" type="time"><label>Analysis Yako</label><textarea id="mAnalysis" placeholder="Mfano: Man City wako nyumbani..."></textarea><label>Pick</label><input id="mPick" placeholder="Man City Win OR Draw"><button class="btn" onclick="saveManual()">WEKA MANUAL GAME</button>
+<button class="btnRed" onclick="clearManual()">🗑️ FUTA MANUAL ZOTE</button>
+<p style="color:#9fb3c8;font-size:12px">Link ya Dosi: site yako + <b>?admin=odds123</b><br>Usiitume kwa client!</p>
 </div>
 <div class="bottom">
-<button onclick="openMenu()" id="b0">☰<br>MENU</button>
-<button onclick="goPage(0);filterGames('ALL',null)" id="b1" class="active">⚽<br>ALL</button>
+<button onclick="openMenu()">☰<br>MENU</button>
+<button onclick="goPage(0);filterGames('ALL',null)">⚽<br>ALL</button>
 <button onclick="window.open('https://wa.me/254101375876')">💬<br>WHATSAPP</button>
-<button onclick="goPage(2)" id="b3">🏆<br>JACKPOT</button>
-<button onclick="filterGames('LIVE',null);goPage(0)" id="b4">🔴<br>LIVE</button>
+<button onclick="goPage(2)">🏆<br>JACKPOT</button>
+<button onclick="filterGames('LIVE',null);goPage(0)">🔴<br>LIVE</button>
 </div>
 <script>
-const AFF = {
+var AFF = {
   melbet: "https://refpa3665.com/L?tag=d_6346195m_2170c_&site=6346195&ad=2170",
   kesh7: "https://ke7.com/?urc=214615471",
   mozzart: "https://www.mozzartbet.co.ke",
@@ -102,7 +100,7 @@ const AFF = {
   odibets: "https://odibets.com",
   bangbet: "https://www.bangbet.com"
 };
-const SITES = [
+var SITES = [
   {n:"MELBET",u:AFF.melbet,hot:"⭐ MAIN"},
   {n:"KE7",u:AFF.kesh7,hot:"⭐ MTAANI"},
   {n:"MOZZART",u:AFF.mozzart,hot:""},
@@ -116,45 +114,72 @@ const SITES = [
   {n:"ODIBETS",u:AFF.odibets,hot:""},
   {n:"BANGBET",u:AFF.bangbet,hot:""}
 ];
-function trackClick(name){try{let c=JSON.parse(localStorage.getItem('ozm_clicks')||'{}');c[name]=(c[name]||0)+1;c._total=(c._total||0)+1;localStorage.setItem('ozm_clicks',JSON.stringify(c));updateMonitoring();}catch(e){}}
-function sitesHTML(){return SITES.map(s=>`<a href="${s.u}" target="_blank" onclick="trackClick('${s.n}')">${s.n}<br><small>${s.hot||"BET HERE ↗"}</small></a>`).join('');}
-let API_KEY=localStorage.getItem('ozm_key')||"";let manual=JSON.parse(localStorage.getItem('ozm_manual')||'[]');let curFilter='ALL';let lastError="";let lastUpdate="--";
-const params=new URLSearchParams(location.search);if(params.get('admin')==='odds123'){document.getElementById('adminPanel').style.display='block';document.getElementById('apiKey').value=API_KEY;}
-function saveKey(){let v=document.getElementById('apiKey').value.trim();if(!v)return alert('Weka Key');localStorage.setItem('ozm_key',v);API_KEY=v;alert('Saved!');loadAPI();}
-function saveManual(){const g={league:document.getElementById('mLeague').value||'MANUAL',home:document.getElementById('mHome').value,away:document.getElementById('mAway').value,date:document.getElementById('mDate').value,time:document.getElementById('mTime').value,analysis:document.getElementById('mAnalysis').value,pick:document.getElementById('mPick').value,manual:true,status:'SCHEDULED'};if(!g.home||!g.away)return alert('Weka Home/Away');manual.unshift(g);localStorage.setItem('ozm_manual',JSON.stringify(manual));alert('Manual imewekwa');renderAll();}
-function clearManual(){if(!confirm('Futa manual zote?'))return;manual=[];localStorage.setItem('ozm_manual','[]');renderAll();alert('Manual zimefutwa');}
-function clearClicks(){localStorage.setItem('ozm_clicks','{}');updateMonitoring();alert('Clicks zimefutwa');}
-function fixSite(){localStorage.removeItem('ozm_broken');lastError="";alert('Site imesafishwa! Inarefresh sasa...');location.reload();}
-function refreshAll(){loadAPI();alert('Game zimerefreshiwa');}
-function testAPI(){if(!API_KEY)return alert('Hakuna API Key - weka kwanza hapo juu. Bila key, site inatumia game za mfano.');loadAPI();alert('Testing API - angalia Monitoring chini kama inasema OK au ERROR');}
-function updateMonitoring(){
-  const all=[...manual, ...(window.apiGames||[])];
-  const up=all.filter(g=>!(g.status&&g.status.includes('FINISHED')));
-  const fin=all.filter(g=>g.status&&g.status.includes('FINISHED'));
-  const live=all.filter(g=>g.status&&g.status.includes('LIVE'));
-  const elH=document.getElementById('monHealth');if(elH){elH.innerHTML = all.length>0 ? '<span class="ok">🟢 SITE IKO SAWA - Game zinapatikana</span>' : '<span class="bad">🔴 HAKUNA GAME - Check API au weka Manual</span>';}
-  const elT=document.getElementById('monTime');if(elT)elT.textContent='Last Update: '+lastUpdate;
-  const elA=document.getElementById('monApi');if(elA)elA.textContent='API Key: '+(API_KEY?'✅ Iko - '+API_KEY.slice(0,6)+'...':'⚠️ Hakuna - Site inatumia game za mfano');
-  const elC=document.getElementById('monCounts');if(elC)elC.textContent='Zijazo: '+up.length+' | Zilizoisha: '+fin.length+' | LIVE Sasa: '+live.length+' | Manual: '+manual.length;
-  const elE=document.getElementById('monErrors');if(elE)elE.innerHTML='Error ya mwisho: '+(lastError?'<span class="bad">'+lastError+'</span>':'<span class="ok">Hakuna error</span>');
-  let clicks={};try{clicks=JSON.parse(localStorage.getItem('ozm_clicks')||'{}');}catch(e){}
-  const elK=document.getElementById('monClicks');if(elK){let list=SITES.map(s=>s.n+': '+(clicks[s.n]||0)).join(' | ');elK.textContent='Total Clicks: '+(clicks._total||0)+' | '+list;}
-  const elI=document.getElementById('monIssues');if(elI){
-    let issues=[];
-    if(!API_KEY)issues.push('⚠️ Hakuna API Key - weka ili game ziwe live');
-    if(up.length===0)issues.push('🔴 Hakuna game zijazo - weka Manual au check API');
-    if(fin.length>0 && up.length===0)issues.push('ℹ️ Game zote zimeisha - ziko Previous, weka mpya');
-    if(lastError)issues.push('🔴 Error: '+lastError);
-    elI.innerHTML=issues.length?issues.join('<br>'):'<span class="ok">✅ Hakuna shida - site iko sawa kabisa</span>';
-  }
-}
-function closeMenu(){document.getElementById('menuDrawer').style.display='none';}function openMenu(){document.getElementById('menuDrawer').style.display='block';}
-function goPage(i){document.getElementById('pages').scrollTo({left:i*window.innerWidth,behavior:'smooth'});}
-function filterGames(f,btn){curFilter=f;if(btn){document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');}renderAll();}
-function getAnalysis(g){if(g.isFinished) return 'FT: '+g.finalScore+' - Pick yetu ilikuwa: '+(g.pick||'-')+' - '+(g.won===true?'✅ ILIINGIA!':g.won===false?'❌ HAIKUINGIA - Tunapost wins na losses wote.':'Angalia matokeo.')+' Historia inabaki wazi.';if(g.analysis && g.analysis.indexOf('Real fixture')===-1) return g.analysis;if(g.status && g.status.includes('LIVE')) return g.home+' wana-press - momentum iko kwao. Angalia 15 min zijazo - kama bado wana-press, Over 1.5 inaingia. Pick yetu: '+(g.pick||'Over 1.5');return g.home+' wako nyumbani - home advantage kubwa. '+g.away+' ugenini ni ngumu. Tumeangalia form ya mechi 5 zilizopita - Home ana nafasi kubwa. Pick yetu: '+(g.pick||'Home Win OR Draw')+' - Cheza kile unaweza kupoteza. 18+';}
+var API_KEY = "";
+var manual = [];
+var curFilter = "ALL";
+var apiGames = [];
+var lastError = "";
+var lastUpdate = "--";
+try{ API_KEY = localStorage.getItem('ozm_key') || ""; }catch(e){}
+try{ manual = JSON.parse(localStorage.getItem('ozm_manual') || '[]'); }catch(e){ manual = []; }
+function safeGet(id){ try{ return document.getElementById(id); }catch(e){ return null; } }
+function trackClick(name){ try{ var c = JSON.parse(localStorage.getItem('ozm_clicks') || '{}'); c[name] = (c[name]||0)+1; c._total = (c._total||0)+1; localStorage.setItem('ozm_clicks', JSON.stringify(c)); }catch(e){} try{ updateMonitoring(); }catch(e){} }
+function sitesHTML(){ var h=""; for(var i=0;i<SITES.length;i++){ h += '<a href="'+SITES[i].u+'" target="_blank" onclick="trackClick(\''+SITES[i].n+'\')">'+SITES[i].n+'<br><small>'+(SITES[i].hot||'BET HERE')+'</small></a>'; } return h; }
+function saveKey(){ var el=safeGet('apiKey'); if(!el||!el.value.trim()){ alert('Weka Key'); return; } try{ localStorage.setItem('ozm_key', el.value.trim()); }catch(e){} API_KEY=el.value.trim(); alert('Saved!'); loadAPI(); }
+function saveManual(){ var g={league:(safeGet('mLeague').value||'MANUAL'),home:safeGet('mHome').value,away:safeGet('mAway').value,date:safeGet('mDate').value,time:safeGet('mTime').value,analysis:safeGet('mAnalysis').value,pick:safeGet('mPick').value,manual:true,status:'SCHEDULED'}; if(!g.home||!g.away){ alert('Weka Home/Away'); return; } manual.unshift(g); try{ localStorage.setItem('ozm_manual', JSON.stringify(manual)); }catch(e){} alert('Manual imewekwa'); renderAll(); }
+function clearManual(){ if(!confirm('Futa manual zote?'))return; manual=[]; try{ localStorage.setItem('ozm_manual','[]'); }catch(e){} renderAll(); }
+function clearClicks(){ try{ localStorage.setItem('ozm_clicks','{}'); }catch(e){} try{ updateMonitoring(); }catch(e){} alert('Clicks zimefutwa'); }
+function fixSite(){ try{ localStorage.removeItem('ozm_broken'); }catch(e){} alert('Site imesafishwa! Inarefresh...'); location.reload(); }
+function refreshAll(){ loadAPI(); alert('Game zimerefreshiwa'); }
+function closeMenu(){ var e=safeGet('menuDrawer'); if(e) e.style.display='none'; }
+function openMenu(){ var e=safeGet('menuDrawer'); if(e) e.style.display='block'; }
+function goPage(i){ var e=safeGet('pages'); if(e) e.scrollTo({left:i*window.innerWidth,behavior:'smooth'}); }
+function filterGames(f,btn){ curFilter=f; try{ var btns=document.querySelectorAll('.filters button'); for(var i=0;i<btns.length;i++) btns[i].classList.remove('active'); if(btn) btn.classList.add('active'); }catch(e){} renderAll(); }
+function getAnalysis(g){ if(g.isFinished) return 'FT: '+g.finalScore+' - Pick yetu: '+(g.pick||'-')+' - '+(g.won===true?'✅ ILIINGIA!':g.won===false?'❌ HAIKUINGIA.':'Angalia matokeo.'); if(g.analysis) return g.analysis; if(g.status && g.status.indexOf('LIVE')>-1) return g.home+' wana-press. Pick: '+(g.pick||'Over 1.5'); return g.home+' wako nyumbani - home advantage kubwa. '+g.away+' ugenini ni ngumu. Pick yetu: '+(g.pick||'Home Win OR Draw')+' - 18+'; }
 function card(g){
-  const isFT = g.isFinished || (g.status && g.status.includes('FINISHED'));
-  const scoreBadge = isFT ? `<span class="score ft">FINISHED - FT ${g.finalScore||''}</span>` : `<span class="score">${g.status||'SCHEDULED'}</span>`;
-  const teamsLine = isFT ? `${g.home} ${g.finalScore||''}<br>${g.away}` : `${g.home}<br>${g.away}`;
-  const oddsBox = isFT ? `<div class="odds"><div>RESULT<br><small>${g.finalScore||'FT'}</small></div><div>PICK YETU<br><small>${g.pick||'-'}</small></div><div>STATUS<br><small>${g.won===true?'✅ WON':g.won===false?'❌ LOST':'FT'}</small></div><div>PRED<br><small>Previous</small></div></div>` : `<div class="odds"><div>1<br><small>Check Bookmaker</small></div><div>X<br><small>Check Bookmaker</small></div><div>2<br><small>Check Bookmaker</small></div><div>PRED<br><small>${g.pick||'Analysis 24h'}</small></div></div>`;
-  const betBox = isFT ? `<div style="text-align:center;color:#9fb3c8;font-size:12px;margin-top:8px">Game imeisha - Bet Sites ziko kwa game zijazo 👆</div>` : `<div class="betsites">${SITES.slice(0,4).map(s=>`<a href="${s.u}" target="_blank" onclick="trackClick('${s.n}')">${s.n} ↗</a>`).join('')}</div><div class="betsites">${SITES.slice(4,8).map(s=>`<a href="${s.u}" target="_blank" onclick="trackClick('${s.n}')">${s.n} ↗</a>`).join('')}</div><div class="betsites">${SITES.
+  var isFT = g.isFinished || (g.status && g.status.indexOf('FINISHED')>-1);
+  var scoreBadge = isFT ? '<span class="score ft">FINISHED - FT '+(g.finalScore||'')+'</span>' : '<span class="score">'+(g.status||'SCHEDULED')+'</span>';
+  var teamsLine = isFT ? g.home+' '+(g.finalScore||'')+'<br>'+g.away : g.home+'<br>'+g.away;
+  var oddsBox = isFT ? '<div class="odds"><div>RESULT<br><small>'+(g.finalScore||'FT')+'</small></div><div>PICK YETU<br><small>'+(g.pick||'-')+'</small></div><div>STATUS<br><small>'+(g.won===true?'✅ WON':g.won===false?'❌ LOST':'FT')+'</small></div><div>PRED<br><small>Previous</small></div></div>' : '<div class="odds"><div>1<br><small>Check Bookmaker</small></div><div>X<br><small>Check Bookmaker</small></div><div>2<br><small>Check Bookmaker</small></div><div>PRED<br><small>'+(g.pick||'Analysis 24h')+'</small></div></div>';
+  var betBox = "";
+  if(isFT){ betBox = '<div style="text-align:center;color:#9fb3c8;font-size:12px;margin-top:8px">Game imeisha - Bet Sites ziko kwa game zijazo</div>'; }
+  else {
+    betBox = '<div class="betsites">';
+    for(var i=0;i<4;i++) betBox += '<a href="'+SITES[i].u+'" target="_blank" onclick="trackClick(\''+SITES[i].n+'\')">'+SITES[i].n+' ↗</a>';
+    betBox += '</div><div class="betsites">';
+    for(var i=4;i<8;i++) betBox += '<a href="'+SITES[i].u+'" target="_blank" onclick="trackClick(\''+SITES[i].n+'\')">'+SITES[i].n+' ↗</a>';
+    betBox += '</div><div class="betsites">';
+    for(var i=8;i<12;i++) betBox += '<a href="'+SITES[i].u+'" target="_blank" onclick="trackClick(\''+SITES[i].n+'\')">'+SITES[i].n+' ↗</a>';
+    betBox += '</div>';
+  }
+  return '<div class="card"><div class="league">'+g.league+' - '+(g.date||'')+'</div>'+scoreBadge+'<div class="teams">'+teamsLine+'</div><div class="box"><b>'+(isFT?'FINAL RESULT:':'OUR ANALYSIS:')+'</b> '+getAnalysis(g)+'</div>'+oddsBox+betBox+'</div>';
+}
+function renderAll(){
+  try{
+    var all = manual.concat(apiGames);
+    var upcoming = []; var finished = [];
+    for(var i=0;i<all.length;i++){ if(all[i].status && all[i].status.indexOf('FINISHED')>-1) finished.push(all[i]); else upcoming.push(all[i]); }
+    var elM = safeGet('cMatches'); if(elM) elM.textContent = upcoming.length;
+    var elP = safeGet('cPrev'); if(elP) elP.textContent = finished.length;
+    var elT = safeGet('allSitesTop'); if(elT) elT.innerHTML = sitesHTML();
+    var elB = safeGet('allSitesBottom'); if(elB) elB.innerHTML = sitesHTML();
+    var filtered = upcoming;
+    if(curFilter==='LIVE'){ filtered=[]; for(var i=0;i<upcoming.length;i++) if(upcoming[i].status && upcoming[i].status.indexOf('LIVE')>-1) filtered.push(upcoming[i]); }
+    if(curFilter==='EPL'){ filtered=[]; for(var i=0;i<upcoming.length;i++) if(upcoming[i].league.indexOf('EPL')>-1 || upcoming[i].league.indexOf('Premier')>-1) filtered.push(upcoming[i]); }
+    if(curFilter==='TODAY'){ filtered=[]; for(var i=0;i<upcoming.length;i++) if(upcoming[i].date && upcoming[i].date.indexOf('18')>-1) filtered.push(upcoming[i]); }
+    if(curFilter==='PREVIOUS') filtered = finished;
+    if(curFilter==='JACKPOT') filtered = upcoming.slice(0,15);
+    if(curFilter==='ALL') filtered = upcoming;
+    var mainHTML = "";
+    if(filtered.length===0){
+      var msg = curFilter==='LIVE'?'Hakuna Live Sasa':curFilter==='PREVIOUS'?'Hakuna Previous Bado - game ikisha inaenda hapa':'Hakuna Game Hapa';
+      mainHTML = '<div class="card"><div class="teams">'+msg+'</div><div class="box">System ina-check kila 60 sec. Mechi ikianza inaonekana hapa. Ikiisha inaenda Previous.</div></div>';
+    } else { for(var i=0;i<filtered.length;i++) mainHTML += card(filtered[i]); }
+    var elMain = safeGet('mainGames'); if(elMain) elMain.innerHTML = mainHTML;
+    var dayHTML=""; for(var i=0;i<upcoming.length;i++) dayHTML += card(upcoming[i]);
+    var elDay = safeGet('dayGames'); if(elDay) elDay.innerHTML = dayHTML;
+    var jackHTML=""; var jack = upcoming.slice(0,15); for(var i=0;i<jack.length;i++) jackHTML += card(jack[i]);
+    var elJack = safeGet('jackpotGames'); if(elJack) elJack.innerHTML = jackHTML || '<p>Hakuna Jackpot zijazo.</p>';
+    var prevHTML=""; for(var i=0;i<finished.length;i++) prevHTML += card(finished[i]);
+    var elPrev = safeGet('prevGames'); if(elPrev) elPrev.innerHTML = prevHTML || '<p>Hakuna Previous bado.</p>';
+  }catch(e){ var elMain2=safeGet('mainGames'); 
