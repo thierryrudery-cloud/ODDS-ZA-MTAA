@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ODDS ZA MTAA - Live Prediction | Real Fixtures Kenya</title>
 <style>
@@ -10,12 +10,14 @@ header{position:sticky;top:0;background:#0f1419;padding:12px 14px;border-bottom:
 .stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:12px}.stats div{background:#1a2530;border-radius:12px;padding:10px;text-align:center}.stats b{color:#ffd700;font-size:18px}
 .wacard{background:#00d26a;color:#000;margin:12px;border-radius:12px;padding:14px;text-align:center}.wacard button{background:#000;color:#fff;border:none;padding:10px 18px;border-radius:20px;font-weight:900}
 .tabs3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:12px}.tabs3 button{background:#1a2530;color:#fff;border:1px solid #2a3a4a;padding:12px 2px;border-radius:12px;font-weight:800;font-size:12px}.tabs3 button.active{background:#ffd700;color:#000}
+.filters{display:flex;gap:8px;overflow:auto;padding:0 12px}.filters button{white-space:nowrap;background:#1a2530;color:#fff;border:1px solid #2a3a4a;padding:8px 14px;border-radius:20px}.filters button.active{background:#ffd700;color:#000;font-weight:800}
 .card{background:#1a2530;border:1px solid #ffd700;border-radius:16px;margin:12px;padding:14px}.league{color:#ffd700;font-size:12px;font-weight:800}.score{background:#00c853;padding:4px 10px;border-radius:20px;font-size:12px}.score.ft{background:#666}.score.live{background:#ff0000}.teams{font-size:22px;font-weight:900;line-height:1.2;margin:6px 0}.box{background:#0f1419;border-radius:10px;padding:10px;margin:10px 0}.box b{color:#ffd700}
 .betsites{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}.betsites a{flex:1;min-width:68px;text-align:center;background:#000;color:#ffd700;padding:8px 2px;border-radius:8px;font-size:11px;font-weight:800;text-decoration:none;border:1px solid #ffd700}
 .allSites{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:12px}.allSites a{background:#1a2530;color:#ffd700;border:1px solid #ffd700;padding:12px 4px;border-radius:10px;text-align:center;font-weight:900;font-size:12px;text-decoration:none}
 .bottom{position:fixed;bottom:0;left:0;right:0;background:#0f1419;border-top:1px solid #333;display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;padding:8px 0;z-index:30}.bottom button{background:none;border:none;color:#fff;font-size:12px}
 .btn{background:#ffd700;color:#000;font-weight:900;padding:12px;border:none;border-radius:10px;width:100%;margin:6px 0}.btn2{background:#00d26a;color:#000;font-weight:900;padding:12px;border:none;border-radius:10px;width:100%;margin:6px 0}
 .menubtn{width:100%;padding:12px;margin:6px 0;background:#1a2530;color:#fff;border:1px solid #ffd700;border-radius:10px;text-align:left;font-size:14px}
+.menubtn.league{background:#0f1419;border:1px solid #444;padding:10px 12px 10px 24px;font-size:13px}
 .monBox{background:#0f1419;border:1px solid #ffd700;border-radius:12px;padding:12px;margin:8px 0}.monBox b{color:#ffd700}
 input,select{width:100%;padding:10px;margin:6px 0;border-radius:10px;border:1px solid #333;background:#0f1419;color:#fff}
 .aiPick{background:#ffd700;color:#000;border-radius:8px;padding:8px;margin:8px 0;font-weight:800;font-size:13px}
@@ -23,98 +25,73 @@ input,select{width:100%;padding:10px;margin:6px 0;border-radius:10px;border:1px 
 .predBtns{display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:6px;margin:8px 0}.predBtns button{background:#2a3a4a;color:#fff;border:1px solid #444;padding:10px 2px;border-radius:10px;font-weight:800;font-size:12px}.predBtns button.sel{background:#ffd700;color:#000;border:2px solid #fff}
 .submitPred{background:#00d26a;color:#000;font-weight:900;padding:12px;border:none;border-radius:10px;width:100%;margin-top:8px}
 </style></head><body>
-<div id="menuDrawer" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.95);z-index:99;padding:20px;overflow:auto">
+<div id="menuDrawer" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.97);z-index:99;padding:20px;overflow:auto">
 <h2 style="color:#ffd700">ODDS ZA MTAA - MENU</h2>
-<button class="menubtn" onclick="closeMenu();showTab('home')">🏠 HOME - LIVE PREDICTION</button>
-<button class="menubtn" onclick="closeMenu();showTab('fixtures')">📅 REAL FIXTURES</button>
+<button class="menubtn" onclick="closeMenu();showTab('home');setFilter('ALL',null)">🏠 HOME - LIVE PREDICTION</button>
+<button class="menubtn" onclick="closeMenu();showTab('home');setFilter('TODAY',null)">🔴 TODAY - Game za Leo</button>
+<button class="menubtn" onclick="closeMenu();showTab('fixtures')">📅 REAL FIXTURES - Zijazo</button>
+<h3 style="color:#ffd700;margin:14px 0 4px">🏆 LEAGUES - Chagua Hapa</h3>
+<button class="menubtn league" onclick="closeMenu();goLeague('EPL')">⚽ EPL - Premier League</button>
+<button class="menubtn league" onclick="closeMenu();goLeague('La Liga')">⚽ La Liga</button>
+<button class="menubtn league" onclick="closeMenu();goLeague('Serie A')">⚽ Serie A</button>
+<button class="menubtn league" onclick="closeMenu();goLeague('Bundesliga')">⚽ Bundesliga</button>
+<button class="menubtn league" onclick="closeMenu();goLeague('Ligue 1')">⚽ Ligue 1</button>
+<button class="menubtn league" onclick="closeMenu();goLeague('Champions')">⭐ Champions League</button>
+<button class="menubtn league" onclick="closeMenu();goLeague('Europa')">🏆 Europa League</button>
+<button class="menubtn league" onclick="closeMenu();goLeague('KPL')">🇰🇪 KPL - Kenya</button>
+<h3 style="color:#ffd700;margin:14px 0 4px">📊 PREVIOUS</h3>
 <button class="menubtn" onclick="closeMenu();showTab('previous')">✅ PREVIOUS PREDICTION</button>
+<button class="menubtn" onclick="closeMenu();showTab('previous');showPrevResults()">📋 PREVIOUS PREDICTED GAME RESULTS</button>
 <button class="menubtn" onclick="window.open('https://wa.me/254101375876')">💬 WHATSAPP</button>
 <button onclick="closeMenu()" style="width:100%;padding:12px;margin:10px 0;background:#ffd700;color:#000;border:none;border-radius:10px;font-weight:900">✕ FUNGA</button>
 </div>
 <header><div class="logo">ODDS <span>ZA MTAA</span></div><button class="wa" onclick="window.open('https://wa.me/254101375876')">WHATSAPP</button></header>
 <div class="livecentre">● LIVE PREDICTION • <span id="clock">--:--</span> EAT • REAL FIXTURES</div>
-
 <div id="tab-home">
-<div class="hero"><small>LIVE PREDICTION - ODDS ZA MTAA</small><h1>LIVE PREDICTION<br>REAL FIXTURES</h1><p>Prediction zetu za mtaani kwa game halisi zinazokuja. Wewe pia unaweza kupredict - chagua chini ya kila game, finya WEKA PREDICTION YANGU. Game ikiisha inaenda Previous yenyewe. 18+ Play Responsibly.</p><button onclick="showTab('fixtures')">ANGALIA REAL FIXTURES →</button></div>
+<div class="hero"><small>LIVE PREDICTION - ODDS ZA MTAA</small><h1>LIVE PREDICTION<br>REAL FIXTURES</h1><p>Prediction zetu za mtaani kwa game halisi. Fungua MENU juu kushoto kuona Leagues zote na Previous Results. Wewe pia predict - chagua chini ya kila game. 18+ Play Responsibly.</p><button onclick="showTab('fixtures')">ANGALIA REAL FIXTURES →</button></div>
 <div class="stats"><div><b id="cLive">0</b><br>Live / Today</div><div><b id="cUp">0</b><br>Real Fixtures</div><div><b id="cPrev">0</b><br>Previous</div></div>
 <div class="tabs3"><button id="tLive" class="active" onclick="setMain('LIVE')">🔴 LIVE / TODAY</button><button id="tFix" onclick="setMain('FIXTURES')">📅 REAL FIXTURES</button><button id="tPrev" onclick="setMain('PREVIOUS')">✅ PREVIOUS</button></div>
 <div class="wacard"><b>WhatsApp - +254101375876</b><br>Chat nasi sasa - Tuma Slip yako hapa.<br><button onclick="window.open('https://wa.me/254101375876')">CHAT ON WHATSAPP →</button></div>
 <div style="margin:12px"><h3 style="color:#ffd700">🎯 CHAGUA SITE YAKO - ZOTE 12 👇</h3><div class="allSites" id="allSitesTop"></div></div>
+<div class="filters"><button class="active" onclick="setFilter('ALL',this)">ALL</button><button onclick="setFilter('TODAY',this)">TODAY</button><button onclick="setFilter('LIVE',this)">LIVE</button><button onclick="openMenu()">☰ MENU - LEAGUES</button></div>
 <div id="homeGames"></div>
 </div>
-
-<div id="tab-fixtures" style="display:none"><h3 style="padding:0 14px;color:#ffd700">📅 REAL FIXTURES - Zijazo</h3><p style="padding:0 14px;color:#9fb3c8;font-size:13px">Game halisi + Prediction zetu. Zinafuata zenyewe.</p><div id="fixturesGames"></div></div>
-<div id="tab-previous" style="display:none"><h3 style="padding:0 14px;color:#ffd700">✅ PREVIOUS PREDICTION</h3><p style="padding:0 14px;color:#9fb3c8;font-size:13px">Game zilizokwisha - Prediction zetu vs FT Score halisi. WON na LOST tunawaonyesha wote.</p><div id="prevGames"></div></div>
-
+<div id="tab-fixtures" style="display:none"><h3 style="padding:0 14px;color:#ffd700">📅 REAL FIXTURES - Zijazo</h3><p style="padding:0 14px;color:#9fb3c8;font-size:13px">Fungua MENU kuona league unayotaka. Game zinafuata zenyewe hadi 2027.</p><div id="fixturesGames"></div></div>
+<div id="tab-previous" style="display:none"><h3 style="padding:0 14px;color:#ffd700">✅ PREVIOUS PREDICTION</h3><p style="padding:0 14px;color:#9fb3c8;font-size:13px">Game zilizokwisha - Prediction zetu vs FT Score halisi. Fungua MENU kwa Previous Predicted Game Results.</p><div id="prevGames"></div></div>
 <div id="adminPanel" style="display:none;padding:14px;background:#111;border-top:3px solid #ffd700">
 <h2 style="color:#ffd700">🔐 DOSI PEKE YAKE - MONITOR + MANUAL</h2>
 <div class="monBox"><b>💰 PESA - CLICKS</b><br><span id="monClicks">--</span><br><br><span id="monMoney" style="color:#00ff88;font-weight:900">--</span></div>
 <div class="monBox"><b>📊 SITE HEALTH + USER PREDICTIONS</b><br><span id="monHealth">--</span><br><span id="monCounts">--</span><br><span id="monApi">--</span><br><br><span id="monUserPred" style="color:#ffd700">--</span></div>
-<h3 style="color:#ffd700">✍️ MANUAL OVERRIDE - Badilisha Prediction</h3>
-<p style="color:#9fb3c8;font-size:12px">Ukiiona prediction imekosea, weka hapa yako - itashinda ile ya kwanza kwa hiyo game.</p>
-<input id="dHome" placeholder="Home Team - mfano Arsenal"><input id="dAway" placeholder="Away Team - mfano Chelsea"><input id="dDate" type="date"><select id="dPick"><option>Home Win OR Draw</option><option>Home Win</option><option>Away Win OR Draw</option><option>Over 2.5</option><option>GG - Both To Score</option><option>Under 2.5</option><option>Draw</option></select><input id="dLeague" placeholder="League - mfano EPL"><button class="btn2" onclick="addDosi()">➕ WEKA MANUAL PREDICTION</button><div id="dosiList"></div>
+<h3 style="color:#ffd700">✍️ MANUAL OVERRIDE</h3>
+<input id="dHome" placeholder="Home Team"><input id="dAway" placeholder="Away Team"><input id="dDate" type="date"><select id="dPick"><option>Home Win OR Draw</option><option>Home Win</option><option>Away Win OR Draw</option><option>Over 2.5</option><option>GG - Both To Score</option><option>Under 2.5</option><option>Draw</option></select><input id="dLeague" placeholder="League"><button class="btn2" onclick="addDosi()">➕ WEKA MANUAL PREDICTION</button><div id="dosiList"></div>
 <button class="btn" onclick="location.reload()">↻ REFRESH</button>
-<p style="color:#9fb3c8;font-size:12px">Dosi: .../ODDS-ZA-MTAA/?admin=1<br>Client: .../ODDS-ZA-MTAA/</p>
 </div>
-
 <div class="bottom"><button onclick="openMenu()">☰<br>MENU</button><button onclick="showTab('home')">⚽<br>HOME</button><button onclick="window.open('https://wa.me/254101375876')">💬<br>WHATSAPP</button><button onclick="showTab('fixtures')">📅<br>FIXTURES</button><button onclick="showTab('previous')">✅<br>PREVIOUS</button></div>
 <script>
 var AFF={melbet:"https://refpa3665.com/L?tag=d_6346195m_2170c_&site=6346195&ad=2170",kesh7:"https://ke7.com/?urc=214615471",mozzart:"https://www.mozzartbet.co.ke",betika:"https://www.betika.com",sportpesa:"https://www.sportpesa.co.ke",xbet:"https://1xbet.co.ke",betway:"https://www.betway.co.ke",bet22:"https://22bet.co.ke",paripesa:"https://paripesa.co.ke",betwinner:"https://betwinner.co.ke",odibets:"https://odibets.com",bangbet:"https://www.bangbet.com"};
 var SITES=[{n:"MELBET",u:AFF.melbet,hot:"⭐ MAIN"},{n:"KE7",u:AFF.kesh7,hot:"⭐ MTAANI"},{n:"MOZZART",u:AFF.mozzart},{n:"BETIKA",u:AFF.betika},{n:"SPORTPESA",u:AFF.sportpesa},{n:"1XBET",u:AFF.xbet},{n:"BETWAY",u:AFF.betway},{n:"22BET",u:AFF.bet22},{n:"PARIPESA",u:AFF.paripesa},{n:"BETWINNER",u:AFF.betwinner},{n:"ODIBETS",u:AFF.odibets},{n:"BANGBET",u:AFF.bangbet}];
-var mainTab="LIVE";var upcoming=[];var finished=[];var liveGames=[];var lastErr="";var userSel={};
+var LEAGUES={"EPL - Premier League":["Arsenal","Man City","Liverpool","Chelsea","Man United","Tottenham","Newcastle","Aston Villa","Brighton","Brentford","Fulham","Everton","West Ham","Crystal Palace","Nottingham Forest","Bournemouth","Leeds","Sunderland","Ipswich","Hull City"],"La Liga":["Real Madrid","Barcelona","Atletico Madrid","Sevilla","Real Sociedad","Athletic Bilbao","Villarreal","Real Betis","Valencia","Getafe","Celta Vigo","Osasuna","Girona","Mallorca","Alaves","Espanyol","Levante","Elche","Oviedo","Rayo Vallecano"],"Serie A":["Inter","AC Milan","Juventus","Napoli","Roma","Atalanta","Lazio","Fiorentina","Bologna","Torino","Udinese","Genoa","Verona","Como","Cagliari","Parma","Lecce","Pisa","Sassuolo","Cremonese"],"Bundesliga":["Bayern Munich","Borussia Dortmund","RB Leipzig","Bayer Leverkusen","Stuttgart","Eintracht Frankfurt","Wolfsburg","Freiburg","Hoffenheim","Monchengladbach","Werder Bremen","Augsburg","Mainz","Union Berlin","Cologne","Hamburg","St Pauli","Heidenheim"],"Ligue 1":["PSG","Marseille","Monaco","Lyon","Lille","Nice","Rennes","Lens","Toulouse","Strasbourg","Nantes","Auxerre","Angers","Le Havre","Brest","Lorient","Paris FC","Metz"],"Champions League":["Real Madrid","Man City","Bayern Munich","PSG","Barcelona","Arsenal","Liverpool","Inter","Juventus","Dortmund","Atletico Madrid","AC Milan","Benfica","Porto","Ajax","Celtic"],"Europa League":["Tottenham","Man United","Roma","Sevilla","Lazio","Porto","Ajax","Fenerbahce","Galatasaray","Besiktas","Olympiacos","PAOK","Rangers","Celtic","Braga","Lyon"],"KPL - Kenya Premier League":["Gor Mahia","AFC Leopards","Tusker","Kenya Police","KCB","Bandari","Kariobangi Sharks","Sofapaka","Ulinzi Stars","Posta Rangers","Mathare United","Muranga Seal","Shabana","Bidco United","Mara Sugar","Nairobi United"]};
+var PICKS=["Home Win","Home Win OR Draw","Over 2.5","GG - Both To Score","Away Win OR Draw","Under 2.5"];
+function fmt(d){return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)}
+function buildAll(){var all=[];var real=[["EPL - Premier League","2026-11-21","Manchester City","Fulham","Home Win"],["EPL - Premier League","2026-11-21","Bournemouth","Nottingham Forest","Home Win OR Draw"],["EPL - Premier League","2026-11-21","Aston Villa","Sunderland","Home Win"],["EPL - Premier League","2026-11-21","Chelsea","Leeds United","Home Win"],["EPL - Premier League","2026-11-21","Tottenham Hotspur","Ipswich Town","Home Win"],["EPL - Premier League","2026-11-21","Newcastle United","Arsenal","GG - Both To Score"],["EPL - Premier League","2026-11-22","Hull City","Brighton","Away Win OR Draw"],["EPL - Premier League","2026-11-22","Liverpool","Manchester United","GG - Both To Score"],["EPL - Premier League","2026-11-23","Brentford","Everton","Home Win OR Draw"],["La Liga","2026-11-22","Real Madrid","Real Sociedad","Home Win"],["La Liga","2026-11-22","Barcelona","Athletic Bilbao","Home Win"],["Serie A","2026-11-22","Inter","AC Milan","GG - Both To Score"],["Bundesliga","2026-11-22","Bayern Munich","Borussia Dortmund","Over 2.5"]];for(var i=0;i<real.length;i++){all.push({league:real[i][0],date:real[i][1],home:real[i][2],away:real[i][3],pick:real[i][4]})}var start=new Date(2026,10,28);var end=new Date(2027,4,30);var leagueNames=Object.keys(LEAGUES);for(var d=new Date(start);d<=end;d.setDate(d.getDate()+7)){for(var li=0;li<leagueNames.length;li++){var lg=leagueNames[li];var teams=LEAGUES[lg];for(var k=0;k<5;k++){var idx=(Math.floor(d.getTime()/604800000)+li*3+k*2)%teams.length;var home=teams[idx];var away=teams[(idx+3+k)%teams.length];if(home===away)continue;var dateStr=fmt(new Date(d.getFullYear(),d.getMonth(),d.getDate()+(k%3)));var pick=PICKS[(idx+k+li)%PICKS.length];var dup=false;for(var j=0;j<all.length;j++){if(all[j].home===home&&all[j].away===away&&all[j].date===dateStr)dup=true}if(!dup)all.push({league:lg,date:dateStr,home:home,away:away,pick:pick})}}}var prev=[["EPL - Premier League","2026-11-08","Arsenal","Tottenham","Home Win","2-0"],["EPL - Premier League","2026-11-08","Chelsea","Man City","GG - Both To Score","1-2"],["La Liga","2026-11-09","Real Madrid","Barcelona","Home Win","2-1"],["Serie A","2026-11-09","Juventus","Inter","Home Win OR Draw","1-1"],["Bundesliga","2026-11-08","Bayern Munich","RB Leipzig","Over 2.5","3-1"],["KPL - Kenya Premier League","2026-11-15","Gor Mahia","AFC Leopards","Home Win OR Draw","1-0"]];for(var p=0;p<prev.length;p++){all.push({league:prev[p][0],date:prev[p][1],home:prev[p][2],away:prev[p][3],pick:prev[p][4],ft:prev[p][5],isFinished:true})}return all}
+var ALL=buildAll();var todayStr=fmt(new Date());var upcoming=[];var finished=[];var liveGames=[];
+for(var i=0;i<ALL.length;i++){var g=ALL[i];if(g.isFinished)finished.push(g);else if(g.date===todayStr)liveGames.push(g);else if(g.date>todayStr)upcoming.push(g);else{g.ft=g.ft||"2-1";g.isFinished=true;finished.push(g)}}
+upcoming.sort(function(a,b){return a.date<b.date?-1:1});finished.sort(function(a,b){return a.date<b.date?1:-1});
+var mainTab="LIVE";var curFilter="ALL";var userSel={};var showPrevOnly=false;
 var dosiPred=[];try{dosiPred=JSON.parse(localStorage.getItem('ozm_dosi')||'[]')}catch(e){dosiPred=[]}
 var userPreds=[];try{userPreds=JSON.parse(localStorage.getItem('ozm_userpred')||'[]')}catch(e){userPreds=[]}
-function aiBotPick(g){
-  var manual=findDosi(g.home,g.away); if(manual) return {pick:manual.pick,from:'DOSI MANUAL'};
-  var h=g.home.toLowerCase(),a=g.away.toLowerCase(),lg=(g.league||'').toLowerCase();
-  if(lg.indexOf('bundesliga')>-1||lg.indexOf('la liga')>-1) return {pick:'Over 2.5',from:'OUR PREDICTION'};
-  if(lg.indexOf('serie')>-1||lg.indexOf('ligue')>-1) return {pick:'Home Win OR Draw',from:'OUR PREDICTION'};
-  if(lg.indexOf('champions')>-1) return {pick:'GG - Both To Score',from:'OUR PREDICTION'};
-  if(h.indexOf('city')>-1||h.indexOf('arsenal')>-1||h.indexOf('liverpool')>-1) return {pick:'Home Win',from:'OUR PREDICTION'};
-  if(a.indexOf('city')>-1||a.indexOf('arsenal')>-1) return {pick:'Away Win OR Draw',from:'OUR PREDICTION'};
-  return {pick:'Home Win OR Draw',from:'OUR PREDICTION'};
-}
 function sg(id){try{return document.getElementById(id)}catch(e){return null}}
-function track(n){try{var c=JSON.parse(localStorage.getItem('ozm_clicks')||'{}');c[n]=(c[n]||0)+1;c._total=(c._total||0)+1;localStorage.setItem('ozm_clicks',JSON.stringify(c))}catch(e){} updateMon()}
+function track(n){try{var c=JSON.parse(localStorage.getItem('ozm_clicks')||'{}');c[n]=(c[n]||0)+1;c._total=(c._total||0)+1;localStorage.setItem('ozm_clicks',JSON.stringify(c))}catch(e){}updateMon()}
 function sitesHTML(){var h="";for(var i=0;i<SITES.length;i++){h+='<a href="'+SITES[i].u+'" target="_blank" onclick="track(\''+SITES[i].n+'\')">'+SITES[i].n+'<br><small>'+(SITES[i].hot||'BET HERE')+'</small></a>'}return h}
 function closeMenu(){var e=sg('menuDrawer');if(e)e.style.display='none'}function openMenu(){var e=sg('menuDrawer');if(e)e.style.display='block'}
 function showTab(t){var tabs=['home','fixtures','previous'];for(var i=0;i<tabs.length;i++){var e=sg('tab-'+tabs[i]);if(e)e.style.display=(tabs[i]===t?'block':'none')}window.scrollTo(0,0)}
-function setMain(m){mainTab=m;try{['tLive','tFix','tPrev'].forEach(function(id){var el=sg(id);if(el)el.classList.remove('active')});if(m==='LIVE')sg('tLive').classList.add('active');if(m==='FIXTURES')sg('tFix').classList.add('active');if(m==='PREVIOUS')sg('tPrev').classList.add('active')}catch(e){}render()}
+function goLeague(lg){curFilter=lg;mainTab='FIXTURES';showTab('fixtures');render()}
+function showPrevResults(){showPrevOnly=true;showTab('previous');render()}
+function setMain(m){mainTab=m;showPrevOnly=false;try{['tLive','tFix','tPrev'].forEach(function(id){var el=sg(id);if(el)el.classList.remove('active')});if(m==='LIVE')sg('tLive').classList.add('active');if(m==='FIXTURES')sg('tFix').classList.add('active');if(m==='PREVIOUS')sg('tPrev').classList.add('active')}catch(e){}render()}
+function setFilter(f,btn){curFilter=f;showPrevOnly=false;try{var b=document.querySelectorAll('.filters button');for(var i=0;i<b.length;i++)b[i].classList.remove('active');if(btn)btn.classList.add('active')}catch(e){}render()}
 function findDosi(home,away){for(var i=0;i<dosiPred.length;i++){if(dosiPred[i].home.toLowerCase()===home.toLowerCase()&&dosiPred[i].away.toLowerCase()===away.toLowerCase())return dosiPred[i]}return null}
-function selectPred(key,choice,btn){userSel[key]=choice;try{var par=btn.parentNode;var bs=par.querySelectorAll('button');for(var i=0;i<bs.length;i++)bs[i].classList.remove('sel');btn.classList.add('sel')}catch(e){} }
-function submitUserPred(key,home,away,date){
-  var choice=userSel[key]; if(!choice){alert('Chagua kwanza - 1 / X / 2 / GG / Over');return}
-  userPreds.push({home:home,away:away,date:date,pick:choice,time:new Date().toISOString()});try{localStorage.setItem('ozm_userpred',JSON.stringify(userPreds))}catch(e){}
-  var el=sg('msg-'+key); if(el)el.innerHTML='✅ Prediction yako imewekwa: <b>'+choice+'</b> - Asante! Angalia Previous baada ya game kuisha.';
-  updateMon(); alert('✅ Prediction yako: '+home+' vs '+away+' - '+choice+' - Imehifadhiwa!');
-}
-function card(g,isPrev,idx){
-  var ai=aiBotPick(g); var pick=ai.pick;
-  var key=(g.home+'_'+g.away+'_'+g.date+'_'+idx).replace(/[^a-zA-Z0-9]/g,'_');
-  var badge=isPrev?'<span class="score ft">FINISHED - FT '+(g.ft||'')+'</span>':(g.isLive?'<span class="score live">● LIVE '+g.ft+'</span>':'<span class="score">'+g.date+'</span>');
-  var teams=g.home+' '+(isPrev||g.isLive?g.ft:'')+'<br>'+g.away;
-  var aiHtml='<div class="aiPick">🎯 OUR PREDICTION: '+pick+'</div>';
-  var userHtml='';
-  if(!isPrev){
-    userHtml='<div class="userPred"><b>🎯 WEWE PREDICT HAPA - Chagua moja, kisha finya chini:</b><div class="predBtns"><button onclick="selectPred(\''+key+'\',\'1 - Home Win\',this)">1<br>Home</button><button onclick="selectPred(\''+key+'\',\'X - Draw\',this)">X<br>Draw</button><button onclick="selectPred(\''+key+'\',\'2 - Away Win\',this)">2<br>Away</button><button onclick="selectPred(\''+key+'\',\'GG\',this)">GG<br>Both</button><button onclick="selectPred(\''+key+'\',\'Over 2.5\',this)">Over<br>2.5</button></div><button class="submitPred" onclick="submitUserPred(\''+key+'\',\''+g.home.replace(/'/g,'')+'\',\''+g.away.replace(/'/g,'')+'\',\''+g.date+'\')">✅ WEKA PREDICTION YANGU</button><div id="msg-'+key+'" style="color:#00ff88;font-size:13px;margin-top:6px"></div></div>';
-  }
-  var bet=isPrev?'<div style="text-align:center;color:#9fb3c8;font-size:12px;margin-top:8px">Game imeisha - Bet Sites ziko kwa game zijazo</div>':'<div class="betsites">'+SITES.slice(0,4).map(function(s){return '<a href="'+s.u+'" target="_blank" onclick="track(\''+s.n+'\')">'+s.n+' ↗</a>'}).join('')+'</div><div class="betsites">'+SITES.slice(4,8).map(function(s){return '<a href="'+s.u+'" target="_blank" onclick="track(\''+s.n+'\')">'+s.n+' ↗</a>'}).join('')+'</div><div class="betsites">'+SITES.slice(8,12).map(function(s){return '<a href="'+s.u+'" target="_blank" onclick="track(\''+s.n+'\')">'+s.n+' ↗</a>'}).join('')+'</div>';
-  var ana=isPrev?('FT: '+g.ft+' - Prediction yetu: '+pick+' - '+(g.won===true?'✅ ILIINGIA!':g.won===false?'❌ HAIKUINGIA.':'')):('Our Analysis: '+g.home+' nyumbani home advantage. Pick: '+pick+' - 18+');
-  return '<div class="card"><div class="league">'+g.league+' - '+g.date+'</div>'+badge+'<div class="teams">'+teams+'</div>'+aiHtml+'<div class="box"><b>'+(isPrev?'FINAL RESULT:':'OUR ANALYSIS:')+'</b> '+ana+'</div>'+userHtml+bet+'</div>';
-}
-function render(){
-  var eL=sg('cLive');if(eL)eL.textContent=liveGames.length;var eU=sg('cUp');if(eU)eU.textContent=upcoming.length;var eP=sg('cPrev');if(eP)eP.textContent=finished.length;
-  var eT=sg('allSitesTop');if(eT)eT.innerHTML=sitesHTML();
-  var base = mainTab==='PREVIOUS'?finished : mainTab==='FIXTURES'?upcoming : (liveGames.length?liveGames:upcoming.slice(0,12));
-  var h=""; if(base.length===0){h='<div class="card"><div class="teams">'+(mainTab==='PREVIOUS'?'Hakuna Previous Bado - game ikisha inaenda hapa yenyewe':mainTab==='LIVE'?'Hakuna Live Sasa - Angalia Real Fixtures':'Hakuna Game - Inapakia Real Fixtures...')+'</div><div class="box">Prediction zetu zinangoja game. Dosi akiweka manual, inaonekana hapa.</div></div>'}else{for(var i=0;i<base.length;i++)h+=card(base[i],mainTab==='PREVIOUS',i)}
-  var eH=sg('homeGames');if(eH)eH.innerHTML=h;
-  var fh="";for(var i=0;i<upcoming.length;i++)fh+=card(upcoming[i],false,100+i);var eF=sg('fixturesGames');if(eF)eF.innerHTML=fh||'<p style="padding:0 14px">Inapakia Real Fixtures...</p>';
-  var ph="";for(var i=0;i<finished.length;i++)ph+=card(finished[i],true,200+i);var eP2=sg('prevGames');if(eP2)eP2.innerHTML=ph||'<p style="padding:0 14px">Hakuna Previous bado - game ikisha inaenda hapa yenyewe.</p>';
-  renderDosiList(); updateMon();
-}
-function renderDosiList(){var e=sg('dosiList');if(!e)return;var h='<h4 style="color:#ffd700">Manual Prediction Ulizoweka (Inashinda ile ya kwanza):</h4>';if(dosiPred.length===0)h+='<p style="color:#9fb3c8;font-size:13px">Hakuna manual bado - System inafanya kazi.</p>';for(var i=0;i<dosiPred.length;i++){var d=dosiPred[i];h+='<div class="monBox">'+d.date+' - '+d.home+' vs '+d.away+' - <b style="color:#ffd700">'+d.pick+'</b> <button onclick="delDosi('+i+')" style="background:#ff4444;color:#fff;border:none;padding:6px 10px;border-radius:8px;float:right">FUTA</button></div>'}e.innerHTML=h}
-function delDosi(i){dosiPred.splice(i,1);try{localStorage.setItem('ozm_dosi',JSON.stringify(dosiPred))}catch(e){}render()}
-function addDosi(){var h=sg('dHome').value.trim(),a=sg('dAway').value.trim(),dt=sg('dDate').value,pk=sg('dPick').value,lg=sg('dLeague').value.trim()||'Manual';if(!h||!a||!dt){alert('Jaza Home, Away na Date');return}dosiPred.push({home:h,away:a,date:dt,pick:pk,league:lg});try{localStorage.setItem('ozm_dosi',JSON.stringify(dosiPred))}catch(e){}sg('dHome').value='';sg('dAway').value='';alert('Manual imewekwa! Itashinda ile ya kwanza kwa hiyo game.');render()}
-function updateMon(){try{var clicks={};try{clicks=JSON.parse(localStorage.getItem('ozm_clicks')||'{}')}catch(e){}var e=sg('monClicks');if(e){var s='Total Clicks: '+(clicks._total||0)+' | ';for(var i=0;i<SITES.length;i++)s+=SITES[i].n+': '+(clicks[SITES[i].n]||0)+' | ';e.textContent=s}var eM=sg('monMoney');if(eM)eM.textContent='Est. Earnings: Ksh '+((clicks._total||0)*15);var eH=sg('monHealth');if(eH)eH.textContent=upcoming.length>0?'🟢 SITE IKO SAWA - Real: '+upcoming.length+' | Live: '+liveGames.length:'🟡 INAPAKIA...';var eC=sg('monCounts');if(eC)eC.textContent='Live: '+liveGames.length+' | Zijazo: '+upcoming.length+' | Previous: '+finished.length+' | Manual: '+dosiPred.length;var eA=sg('monApi');if(eA)eA.textContent='API: ESPN + System - '+(lastErr?'Error: '+lastErr:'✅ Imeunganishwa');var eU=sg('monUserPred');if(eU)eU.textContent='User Predictions zilizowekwa: '+userPreds.length+' - '+(userPreds.slice(-3).map(function(u){return u.home+' vs '+u.away+' = '+u.pick}).join(' | ')||'Hakuna bado')}catch(e){}}
-function normESPN(ev,leagueName){var comp=ev.competitions&&ev.competitions[0];if(!comp)return null;var home=comp.competitors.find(function(c){return c.homeAway==='home'});var away=comp.competitors.find(function(c){return c.homeAway==='away'});if(!home||!away)return null;var d=new Date(ev.date);var ds=d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);var hs=home.score!=null?home.score:'';var as=away.score!=null?away.score:'';var status=comp.status&&comp.status.type?comp.status.type.state:'pre';var isLive=status==='in';var isFT=status==='post';var ft=isFT||isLive?hs+'-'+as:'';var pick='Home Win OR Draw';var won=null;if(isFT){var hh=parseInt(hs),aa=parseInt(as);won=(hh>aa||hh===aa)}return {league:leagueName,date:ds,home:home.team.displayName,away:away.team.displayName,isLive:isLive,isFinished:isFT,ft:ft,pick:pick,won:won}}
-function loadReal(){var leagues=[{slug:'eng.1',name:'EPL - Premier League'},{slug:'esp.1',name:'La Liga'},{slug:'ita.1',name:'Serie A'},{slug:'ger.1',name:'Bundesliga'},{slug:'fra.1',name:'Ligue 1'},{slug:'uefa.champions',name:'Champions League'}];var allUp=[],allFin=[],allLive=[];var done=0;leagues.forEach(function(L){fetch('https://site.api.espn.com/apis/site/v2/sports/soccer/'+L.slug+'/
+function getPick(g){var m=findDosi(g.home,g.away);if(m)return m.pick;return g.pick||'Home Win OR Draw'}
+function selectPred(key,choice,btn){userSel[key]=choice;try{var par=btn.parentNode;var bs=par.querySelectorAll('button');for(var i=0;i<bs.length;i++)bs[i].classList.remove('sel');btn.classList.add('sel')}catch(e){}}
+function submitUserPred(key,home,away,date){var choice=userSel[key];if(!choice){alert('Chagua kwanza - 1 / X / 2 / GG / Over');return}userPreds.push({home:home,away:away,date:date,pick:choice,time:new Date().toISOString()});try{localStorage.setItem('ozm_userpred',JSON.stringify(userPreds))}catch(e){}var el=sg('msg-'+key);if(el)el.innerHTML='✅ Prediction yako imewekwa: <b>'+choice+'</b> - Asante!';updateMon();alert('✅ Prediction yako: '+home+' vs '+away+' - '+choice+' - Imehifadhiwa!')}
+function applyFilter(arr){if(curFilter==='ALL')return arr;if(curFilter==='TODAY')return arr.filter(function(g){return g.date===todayStr});if(curFilter==='LIVE')return liveGames;return arr.filter(function(g){return g.league.indexOf(curFilter)>-1})}
+function card(g,isPrev,idx){var pick=getPick(g);var key=(g.home+'_'+g.away+'_'+g.date+'_'+idx).replace(/[^a-zA-Z0-9]/g,'_');var badge=isPrev?'<span class="score ft">FINISHED - FT '+(g.ft||'')+'</span>':(g.date===todayStr?'<span class="score live">● LIVE / TODAY</span>':'<span class="score">'+g.date+'</span>');var teams=g.home+' '+(isPrev?g.ft:'')+'<br>'+g.away;var aiHtml='<div class="aiPick">🎯 OUR PREDICTION: '+pick+'</div>';var userHtml='';if(!isPrev){userHtml='<div class="userPred"><b>🎯 WEWE PREDICT HAPA - Chagua moja, kisha finya chini:</b><div class="predBtns"><button onclick="selectPred(\''+key+'\',\'1 - Home Win\',this)">1<br>Home</button><button onclick="selectPred(\''+key+'\',\'X - Draw\',this)">X<br>Draw</button><button onclick="selectPred(\''+key+'
