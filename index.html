@@ -1,98 +1,153 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ODDS ZA MTAA - Live Prediction | Jackpot</title>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ODDS ZA MTAA</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#1a222c;color:#fff;font-family:Arial,sans-serif;padding-bottom:80px}
-.topbar{position:sticky;top:0;background:#1a222c;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;z-index:30;border-bottom:1px solid #333}
-.logo{font-weight:900;font-size:20px}.logo span{color:#ffd700}.join{background:#00c853;color:#fff;border:none;padding:9px 14px;border-radius:8px;font-weight:900}.menuBtn{background:none;color:#00ff88;border:none;font-weight:900}
-.sports{display:flex;gap:14px;overflow:auto;padding:10px 12px;font-size:13px;color:#9fb3c8}.sports b{color:#fff;border-bottom:2px solid #ffd700;padding-bottom:4px}
-.tabs2{display:flex;gap:16px;padding:6px 12px;font-weight:800;color:#9fb3c8}.tabs2 b{color:#fff}
-.ad{background:linear-gradient(90deg,#ffd700,#ff8c00);color:#000;margin:10px 12px;border-radius:10px;padding:12px;text-align:center;cursor:pointer}.ad button{background:#000;color:#fff;border:none;padding:8px 16px;border-radius:20px;font-weight:900;margin-top:6px}
-.ad2{background:linear-gradient(90deg,#00c853,#00ff88);color:#000;margin:10px 12px;border-radius:10px;padding:12px;text-align:center;cursor:pointer}.ad2 button{background:#000;color:#fff;border:none;padding:8px 16px;border-radius:20px;font-weight:900;margin-top:6px}
-.ghead{display:grid;grid-template-columns:1fr 52px 52px 52px;padding:8px 12px;color:#9fb3c8;font-size:13px}.ghead b{color:#fff;text-align:center}
-.game{background:#222e3a;margin:0 10px 8px;border-radius:8px;padding:10px}.gTop{display:flex;justify-content:space-between;font-size:12px;color:#9fb3c8}.live{color:#ff4444;font-weight:900}
-.gMain{display:grid;grid-template-columns:1fr 52px 52px 52px;align-items:center;gap:4px}.teams{font-size:14px;font-weight:700;line-height:1.4}.teams span{color:#ff4444}
-.odd{background:#2a3542;color:#fff;border:1px solid #444;padding:9px 2px;border-radius:6px;text-align:center;font-weight:800;font-size:13px;cursor:pointer}.odd.sel{background:#ffd700;color:#000;border:2px solid #fff}
-.pickLine{background:#ffd700;color:#000;border-radius:6px;padding:6px 8px;margin-top:8px;font-size:12px;font-weight:800}
+*{box-sizing:border-box}body{margin:0;background:#1a222c;color:#fff;font-family:Arial;padding-bottom:90px}
+.top{background:#1a222c;padding:12px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10;border-bottom:1px solid #333}
+.logo{font-weight:900;font-size:20px}.logo span{color:#ffd700}
+.join{background:#00c853;color:#fff;border:none;padding:9px 13px;border-radius:8px;font-weight:900}
+.menuBtn{background:none;color:#00ff88;border:none;font-weight:900}
+.sports{display:flex;gap:14px;overflow:auto;padding:10px 12px;color:#9fb3c8;font-size:13px}.sports b{color:#fff;border-bottom:2px solid #ffd700}
+.tabs{display:flex;gap:16px;padding:6px 12px;font-weight:800;color:#9fb3c8}.tabs b{color:#fff}
+.ad{background:linear-gradient(90deg,#ffd700,#ff8c00);color:#000;margin:10px 12px;border-radius:10px;padding:12px;text-align:center;cursor:pointer}
+.ad2{background:linear-gradient(90deg,#00c853,#00ff88);color:#000;margin:10px 12px;border-radius:10px;padding:12px;text-align:center;cursor:pointer}
+.ad button,.ad2 button{background:#000;color:#fff;border:none;padding:8px 16px;border-radius:20px;font-weight:900;margin-top:6px}
+.ghead{display:grid;grid-template-columns:1fr 52px 52px 52px;padding:8px 12px;color:#9fb3c8;font-size:13px}
+.game{background:#222e3a;margin:0 10px 8px;border-radius:8px;padding:10px}
+.gTop{display:flex;justify-content:space-between;font-size:12px;color:#9fb3c8}.live{color:#ff4444;font-weight:900}
+.gMain{display:grid;grid-template-columns:1fr 52px 52px 52px;align-items:center;gap:4px}
+.teams{font-size:14px;font-weight:700;line-height:1.5}.teams span{color:#ff4444}
+.odd{background:#2a3542;color:#fff;border:1px solid #444;padding:9px 2px;border-radius:6px;text-align:center;font-weight:800;cursor:pointer}.odd.sel{background:#ffd700;color:#000}
+.pick{background:#ffd700;color:#000;border-radius:6px;padding:6px 8px;margin-top:8px;font-size:12px;font-weight:800}
 .betBtn{background:#00c853;color:#fff;border:none;padding:10px;border-radius:8px;width:100%;margin-top:8px;font-weight:900}
-.markets{color:#00ff88;font-size:12px;text-align:right;margin-top:4px}
-.bottom{position:fixed;bottom:0;left:0;right:0;background:#1a222c;border-top:1px solid #333;display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;padding:6px 0;z-index:40}.bottom button{background:none;border:none;color:#9fb3c8;font-size:11px;cursor:pointer}.bottom button.active{color:#ffd700}.bottom .mid{background:#ffd700;color:#000;width:52px;height:52px;border-radius:50%;margin:-22px auto 0;font-size:20px;font-weight:900}
-.slipBar{position:fixed;bottom:68px;left:10px;right:10px;background:#ffd700;color:#000;border-radius:10px;padding:10px;display:none;z-index:35;font-weight:900}.slipBar button{background:#000;color:#fff;border:none;padding:8px 14px;border-radius:8px;float:right}
-.menuDrawer{position:fixed;top:0;left:0;right:0;bottom:0;background:#1a222c;z-index:99;padding:18px;overflow:auto;display:none}.menubtn{width:100%;padding:13px;margin:6px 0;background:#222e3a;color:#fff;border:1px solid #ffd700;border-radius:10px;text-align:left;cursor:pointer}.menubtn.league{background:#111;border:1px solid #444;padding:10px 12px 10px 24px;font-size:13px}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#1a222c;border-top:1px solid #333;display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;padding:6px 0;z-index:40}
+.bottom button{background:none;border:none;color:#9fb3c8;font-size:11px}.bottom button.active{color:#ffd700}
+.mid{background:#ffd700 !important;color:#000 !important;width:52px;height:52px;border-radius:50%;margin:-22px auto 0;font-size:20px;font-weight:900}
+.drawer{position:fixed;top:0;left:0;right:0;bottom:0;background:#1a222c;z-index:99;padding:18px;overflow:auto;display:none}
+.mbtn{width:100%;padding:13px;margin:6px 0;background:#222e3a;color:#fff;border:1px solid #ffd700;border-radius:10px;text-align:left}
+.page{display:none}.page.show{display:block}
+.slip{position:fixed;bottom:68px;left:10px;right:10px;background:#ffd700;color:#000;border-radius:10px;padding:10px;display:none;z-index:35;font-weight:900}
+.slip button{background:#000;color:#fff;border:none;padding:8px 14px;border-radius:8px;float:right}
 </style></head><body>
-<div id="menuDrawer" class="menuDrawer">
+
+<div id="drawer" class="drawer">
 <h2 style="color:#ffd700">ODDS ZA MTAA - MENU</h2>
-<button class="menubtn" onclick="closeMenu();showPage('home')">🏠 HOME - Live Prediction</button>
-<button class="menubtn" onclick="closeMenu();showPage('live')">🔴 LIVE GAME - 100+ Live</button>
-<button class="menubtn" onclick="closeMenu();showPage('upcoming')">📅 REAL FIXTURES - 800+ Games</button>
-<h3 style="color:#ffd700">🏆 TOP LEAGUES</h3>
-<button class="menubtn league" onclick="closeMenu();filterLeague('EPL')">England, Premier League ›</button>
-<button class="menubtn league" onclick="closeMenu();filterLeague('La Liga')">Spain, La Liga ›</button>
-<button class="menubtn league" onclick="closeMenu();filterLeague('Ligue 1')">France, Ligue 1 ›</button>
-<button class="menubtn league" onclick="closeMenu();filterLeague('Serie A')">Italy, Serie A ›</button>
-<button class="menubtn league" onclick="closeMenu();filterLeague('Bundesliga')">Germany, Bundesliga ›</button>
-<button class="menubtn league" onclick="closeMenu();filterLeague('Champions')">International, UEFA Champions League ›</button>
-<button class="menubtn league" onclick="closeMenu();filterLeague('Europa')">International, UEFA Europa League ›</button>
-<button class="menubtn league" onclick="closeMenu();filterLeague('Portugal')">Portugal, Primeira Liga ›</button>
-<button class="menubtn league" onclick="closeMenu();filterLeague('Championship')">England, Championship ›</button>
-<button class="menubtn league" onclick="closeMenu();filterLeague('KPL')">Kenya, KPL ›</button>
-<button class="menubtn league" onclick="closeMenu();filterLeague('ALL')">🔁 ALL LEAGUES</button>
-<h3 style="color:#ffd700">📊 MENU YA KITAMBO</h3>
-<button class="menubtn" onclick="closeMenu();showPage('previous')">✅ PREVIOUS PREDICTION</button>
-<button class="menubtn" onclick="closeMenu();showPage('previous')">📋 PREVIOUS PREDICTED GAME RESULTS</button>
-<button class="menubtn" onclick="closeMenu();showPage('jackpot')">🎰 JACKPOT - Jackpot Prediction Za Kila Week</button>
-<button class="menubtn" onclick="closeMenu();showPage('about')">🏢 ABOUT THE COMPANY</button>
-<button class="menubtn" onclick="closeMenu();showPage('help')">❓ HELP / MSAADA</button>
-<button class="menubtn" onclick="closeMenu();showPage('mybets')">🎫 MY BETS</button>
-<button class="menubtn" onclick="closeMenu();showPage('profile')">👤 PROFILE</button>
-<button class="menubtn" onclick="window.open('https://wa.me/254101375876')">💬 JOIN CHANNEL - WhatsApp</button>
-<button onclick="closeMenu()" style="width:100%;padding:12px;background:#ffd700;border:none;border-radius:10px;font-weight:900">✕ FUNGA</button>
+<button class="mbtn" onclick="go('home')">🏠 HOME - Live Prediction</button>
+<button class="mbtn" onclick="go('live')">🔴 LIVE GAME</button>
+<button class="mbtn" onclick="go('upcoming')">📅 REAL FIXTURES - 800+ Games</button>
+<button class="mbtn" onclick="go('previous')">✅ PREVIOUS PREDICTION</button>
+<button class="mbtn" onclick="go('jackpot')">🎰 JACKPOT - 17 Games Za Wiki</button>
+<button class="mbtn" onclick="go('about')">🏢 ABOUT THE COMPANY</button>
+<button class="mbtn" onclick="go('help')">❓ HELP / MSAADA</button>
+<button class="mbtn" onclick="go('mybets')">🎫 MY BETS</button>
+<button class="mbtn" onclick="go('profile')">👤 PROFILE</button>
+<button class="mbtn" onclick="window.open('https://wa.me/254101375876')">💬 JOIN CHANNEL - WhatsApp</button>
+<button class="mbtn" style="background:#ffd700;color:#000" onclick="closeMenu()">✕ FUNGA</button>
 </div>
 
-<div class="topbar"><div class="logo">ODDS <span>ZA MTAA</span></div><div><button class="menuBtn" onclick="openMenu()">☰ MENU</button> <button class="join" onclick="window.open('https://wa.me/254101375876')">JOIN CHANNEL</button></div></div>
+<div class="top"><div class="logo">ODDS <span>ZA MTAA</span></div><div><button class="menuBtn" onclick="openMenu()">☰ MENU</button> <button class="join" onclick="window.open('https://wa.me/254101375876')">JOIN CHANNEL</button></div></div>
 <div class="sports"><b>⚽ Soccer</b><span>Virtuals</span><span>Casino</span><span>Crash Games</span><span>Avia</span><span>More</span></div>
 
-<div id="page-home">
-<div class="tabs2"><b>Highlights</b><span onclick="showPage('upcoming')">Upcoming</span><span onclick="openMenu()">Top leagues</span><span onclick="showPage('live')">Live (103)</span></div>
-<div class="ad" onclick="showPage('jackpot')"><b>🎰 JACKPOT YA WIKI HII - 17 GAMES!</b><br>Prediction zetu za Jackpot - Bonyeza hapa<br><button>ANGALIA JACKPOT →</button></div>
+<div id="p-home" class="page show">
+<div class="tabs"><b>Highlights</b><span onclick="go('upcoming')">Upcoming</span><span onclick="openMenu()">Top leagues</span><span onclick="go('live')">Live</span></div>
+<div class="ad" onclick="go('jackpot')"><b>🎰 JACKPOT YA WIKI HII - 17 GAMES!</b><br>Prediction zetu za Jackpot - Bonyeza hapa<br><button>ANGALIA JACKPOT →</button></div>
 <div class="ad2" onclick="window.open('https://wa.me/254101375876')"><b>💬 JOIN CHANNEL - PREDICTION ZA KILA SIKU</b><br>Jiunge na Channel yetu WhatsApp<br><button>JOIN NOW →</button></div>
-<div style="padding:8px 12px;color:#ffd700;font-weight:900">🔴 LIVE PREDICTION - GAME ZINAENDELEA SASA - <span id="liveCountTop">103</span> Live - GAME KWANZA</div>
-<div class="ghead"><span>Teams</span><b>1</b><b>X</b><b>2</b></div>
-<div id="gamesHome"></div>
+<div style="padding:8px 12px;color:#ffd700;font-weight:900">🔴 LIVE PREDICTION - GAME ZINAENDELEA SASA</div>
+<div class="ghead"><span>Teams</span><span>1</span><span>X</span><span>2</span></div>
+<div id="listHome"></div>
 </div>
 
-<div id="page-live" style="display:none"><div style="padding:10px 12px;color:#ffd700;font-weight:900">🔴 LIVE GAME - <span id="liveCount">103</span> Game Live Sasa</div><div class="ghead"><span>Teams</span><b>1</b><b>X</b><b>2</b></div><div id="gamesLive"></div></div>
-<div id="page-upcoming" style="display:none"><div style="padding:10px 12px;color:#ffd700;font-weight:900">📅 REAL FIXTURES - <span id="upCount">800+</span> Games - Season Yote Hadi May 2027</div><div class="ghead"><span>Teams</span><b>1</b><b>X</b><b>2</b></div><div id="gamesUpcoming"></div></div>
-<div id="page-previous" style="display:none"><h3 style="padding:0 12px;color:#ffd700">✅ PREVIOUS PREDICTION - RESULTS</h3><div id="gamesPrev"></div></div>
-<div id="page-jackpot" style="display:none"><h3 style="padding:0 12px;color:#ffd700">🎰 JACKPOT - Jackpot Prediction Za Kila Week</h3><div id="gamesJackpot"></div><div style="padding:12px"><button style="background:#00c853;color:#fff;border:none;padding:14px;width:100%;border-radius:8px;font-weight:900" onclick="window.open('https://wa.me/254101375876')">💬 TUMA JACKPOT SLIP KWA WHATSAPP</button></div></div>
-<div id="page-about" style="display:none"><h3 style="padding:0 12px;color:#ffd700">🏢 ABOUT THE COMPANY</h3><div style="padding:0 12px;line-height:1.6;color:#ccc">ODDS ZA MTAA ni platform ya mtaani ya Kenya - Live Prediction, Real Fixtures na Jackpot Prediction za kila week.<br><br>• Game 800+ season yote, league zote<br>• Live Game 100+ kila siku na score live<br>• Previous Prediction na Results<br>• Join Channel kwa prediction za kila siku<br><br>WhatsApp: +254101375876<br>18+ Play Responsibly.</div></div>
-<div id="page-help" style="display:none"><h3 style="padding:0 12px;color:#ffd700">❓ HELP / MSAADA</h3><div style="padding:0 12px;line-height:1.8;color:#ccc"><b>1. Kuweka Bet:</b> Chagua 1 / X / 2, finya BET NOW.<br><b>2. Jackpot:</b> MENU > JACKPOT, angalia 17 games za wiki.<br><b>3. Previous:</b> MENU > PREVIOUS PREDICTION.<br><b>4. Join Channel:</b> Finya JOIN CHANNEL juu kulia.<br><br>WhatsApp: +254101375876</div></div>
-<div id="page-mybets" style="display:none"><h3 style="padding:0 12px;color:#ffd700">🎫 MY BETS - Slip Yako</h3><div id="myBetsList" style="padding:0 12px;color:#9fb3c8">Hakuna bet bado - Chagua 1 / X / 2.</div></div>
-<div id="page-profile" style="display:none"><h3 style="padding:0 12px;color:#ffd700">👤 PROFILE</h3><div style="padding:0 12px">ODDS ZA MTAA<br>WhatsApp: +254101375876<br><br><button style="background:#00c853;color:#fff;border:none;padding:12px;border-radius:8px;width:100%;font-weight:900" onclick="window.open('https://wa.me/254101375876')">JOIN CHANNEL</button></div></div>
+<div id="p-live" class="page"><div style="padding:10px 12px;color:#ffd700;font-weight:900">🔴 LIVE GAME</div><div class="ghead"><span>Teams</span><span>1</span><span>X</span><span>2</span></div><div id="listLive"></div></div>
+<div id="p-upcoming" class="page"><div style="padding:10px 12px;color:#ffd700;font-weight:900">📅 REAL FIXTURES - WEEKEND YOTE</div><div class="ghead"><span>Teams</span><span>1</span><span>X</span><span>2</span></div><div id="listUp"></div></div>
+<div id="p-previous" class="page"><h3 style="padding:0 12px;color:#ffd700">✅ PREVIOUS PREDICTION</h3><div id="listPrev"></div></div>
+<div id="p-jackpot" class="page"><h3 style="padding:0 12px;color:#ffd700">🎰 JACKPOT - 17 Games</h3><div id="listJack"></div></div>
+<div id="p-about" class="page"><h3 style="padding:0 12px;color:#ffd700">🏢 ABOUT THE COMPANY</h3><p style="padding:0 12px;color:#ccc;line-height:1.6">ODDS ZA MTAA ni platform ya mtaani ya Kenya - Live Prediction, Real Fixtures na Jackpot Prediction za kila week.<br><br>WhatsApp: +254101375876<br>18+ Play Responsibly.</p></div>
+<div id="p-help" class="page"><h3 style="padding:0 12px;color:#ffd700">❓ HELP</h3><p style="padding:0 12px;color:#ccc;line-height:1.8">1. Chagua 1 / X / 2, finya BET NOW.<br>2. Jackpot: MENU > JACKPOT<br>3. Previous: MENU > PREVIOUS PREDICTION<br>4. Join Channel: Finya JOIN CHANNEL juu kulia.<br><br>WhatsApp: +254101375876</p></div>
+<div id="p-mybets" class="page"><h3 style="padding:0 12px;color:#ffd700">🎫 MY BETS</h3><div id="myList" style="padding:0 12px;color:#9fb3c8">Hakuna bet bado - Chagua 1 / X / 2.</div></div>
+<div id="p-profile" class="page"><h3 style="padding:0 12px;color:#ffd700">👤 PROFILE</h3><div style="padding:0 12px">ODDS ZA MTAA<br>WhatsApp: +254101375876<br><br><button style="background:#00c853;color:#fff;border:none;padding:12px;border-radius:8px;width:100%;font-weight:900" onclick="window.open('https://wa.me/254101375876')">JOIN CHANNEL</button></div></div>
 
-<div id="adminPanel" style="display:none;padding:14px;background:#111;border-top:3px solid #ffd700"><h2 style="color:#ffd700">🔐 DOSI PEKE YAKE - MONITORING</h2><div style="background:#1a222c;border:1px solid #ffd700;border-radius:10px;padding:12px">💰 PESA - Clicks: <span id="monClicks">0</span> | Est. Ksh <span id="monMoney">0</span><br>📊 Live: <span id="monLive">0</span> | Upcoming: <span id="monUp">0</span> | Previous: <span id="monPrev">0</span> | Total Games: <span id="monTotal">0</span><br>🎯 User Slip: <span id="monUser">0</span></div></div>
-
-<div id="slipBar" class="slipBar"><span id="slipText">0 Selections</span><button onclick="placeBet()">BET NOW →</button></div>
+<div id="slipBar" class="slip"><span id="slipTxt">0 Selections</span><button onclick="placeBet()">BET NOW →</button></div>
 <button style="position:fixed;bottom:90px;right:12px;background:#fff;width:52px;height:52px;border-radius:50%;border:none;font-size:24px;z-index:35" onclick="window.open('https://wa.me/254101375876')">🎧</button>
-<div class="bottom"><button id="bHome" class="active" onclick="showPage('home')">🏠<br>Home</button><button id="bLive" onclick="showPage('live')">🔴<br>Live (103)</button><button class="mid" onclick="showSlip()">📋</button><button id="bMy" onclick="showPage('mybets')">🎫<br>My Bets</button><button id="bProf" onclick="showPage('profile')">👤<br>Profile</button></div>
+<div class="bottom"><button class="active" onclick="go('home')">🏠<br>Home</button><button onclick="go('live')">🔴<br>Live</button><button class="mid" onclick="go('mybets')">📋</button><button onclick="go('mybets')">🎫<br>My Bets</button><button onclick="go('profile')">👤<br>Profile</button></div>
 
 <script>
-var SITES={melbet:"https://refpa3665.com/L?tag=d_6346195m_2170c_&site=6346195&ad=2170",ke7:"https://ke7.com/?urc=214615471",betika:"https://www.betika.com"};
-var LEAGUES={"EPL":["Arsenal","Man City","Liverpool","Chelsea","Man United","Tottenham","Newcastle","Aston Villa","Brighton","Brentford","Fulham","Everton","West Ham","Crystal Palace","Nottingham Forest","Bournemouth","Leeds","Sunderland","Ipswich","Hull City"],"La Liga":["Real Madrid","Barcelona","Atletico Madrid","Sevilla","Real Sociedad","Athletic Bilbao","Villarreal","Real Betis","Valencia","Getafe","Celta Vigo","Osasuna","Girona","Mallorca","Alaves","Espanyol","Levante","Elche","Oviedo","Rayo Vallecano"],"Serie A":["Inter","AC Milan","Juventus","Napoli","Roma","Atalanta","Lazio","Fiorentina","Bologna","Torino","Udinese","Genoa","Verona","Como","Cagliari","Parma","Lecce","Pisa","Sassuolo","Cremonese"],"Bundesliga":["Bayern Munich","Borussia Dortmund","RB Leipzig","Bayer Leverkusen","Stuttgart","Eintracht Frankfurt","Wolfsburg","Freiburg","Hoffenheim","Monchengladbach","Werder Bremen","Augsburg","Mainz","Union Berlin","Cologne","Hamburg","St Pauli","Heidenheim"],"Ligue 1":["PSG","Marseille","Monaco","Lyon","Lille","Nice","Rennes","Lens","Toulouse","Strasbourg","Nantes","Auxerre","Angers","Le Havre","Brest","Lorient","Paris FC","Metz"],"Champions":["Real Madrid","Man City","Bayern Munich","PSG","Barcelona","Arsenal","Liverpool","Inter","Juventus","Dortmund","Atletico Madrid","AC Milan","Benfica","Porto","Ajax","Celtic"],"Europa":["Tottenham","Man United","Roma","Sevilla","Lazio","Porto","Ajax","Fenerbahce","Galatasaray","Besiktas","Olympiacos","PAOK","Rangers","Celtic","Braga","Lyon"],"Portugal":["Benfica","Porto","Sporting","Braga","Vitoria","Boavista","Rio Ave","Gil Vicente","Estoril","Famalicao"],"Championship":["Leicester","Southampton","Leeds United","Ipswich","Middlesbrough","West Brom","Norwich","Watford","Stoke","QPR"],"KPL":["Gor Mahia","AFC Leopards","Tusker","Kenya Police","KCB","Bandari","Kariobangi Sharks","Sofapaka","Ulinzi Stars","Posta Rangers","Mathare United","Muranga Seal","Shabana","Bidco United","Mara Sugar","Nairobi United"]};
-var PICKS=["Home Win","Home Win OR Draw","Over 2.5","GG - Both To Score","Away Win OR Draw","Under 2.5"];
-function pad(n){return n<10?"0"+n:n}function fmt(d){return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate())}
-var ALL=[];var idx=0;var keys=Object.keys(LEAGUES);var start=new Date(2026,10,19);var end=new Date(2027,4,30);
-for(var d=new Date(start);d<=end;d.setDate(d.getDate()+1)){for(var li=0;li<keys.length;li++){var lg=keys[li];var teams=LEAGUES[lg];for(var k=0;k<2;k++){var h=teams[(idx+li*2+k)%teams.length];var a=teams[(idx+li*2+k+3)%teams.length];if(h===a)continue;var isLive=idx<103;var sc1=Math.floor(Math.random()*3);var sc2=Math.floor(Math.random()*3);var minute=isLive?(15+(idx%75)):0;var half=minute<45?"1st half":"2nd half";ALL.push({lg:lg,league:lg,home:h,away:a,date:fmt(new Date(d)),live:isLive,score:isLive?sc1+" - "+sc2:"-",time:isLive?half+" "+minute+"\"":fmt(new Date(d))+" 20:00",o1:(1.4+((idx%10)*0.2)).toFixed(2),ox:(3.1+((idx%5)*0.2)).toFixed(2),o2:(3.5+((idx%8)*0.5)).toFixed(2),pick:PICKS[idx%PICKS.length]});idx++;}}}
-var LIVE=ALL.filter(function(g){return g.live});var UPCOMING=ALL.filter(function(g){return !g.live});
-var PREV=[{lg:"EPL",league:"EPL",home:"Arsenal",away:"Tottenham",score:"2 - 0",time:"FT",o1:"1.90",ox:"3.40",o2:"3.80",pick:"Home Win",ft:true},{lg:"La Liga",league:"La Liga",home:"Real Madrid",away:"Barcelona",score:"2 - 1",time:"FT",o1:"2.10",ox:"3.30",o2:"3.40",pick:"Home Win",ft:true},{lg:"Bundesliga",league:"Bundesliga",home:"Bayern Munich",away:"RB Leipzig",score:"3 - 1",time:"FT",o1:"1.50",ox:"4.00",o2:"6.00",pick:"Over 2.5",ft:true},{lg:"Serie A",league:"Serie A",home:"Juventus",away:"Inter",score:"1 - 1",time:"FT",o1:"2.60",ox:"3.10",o2:"2.70",pick:"Home Win OR Draw",ft:true},{lg:"KPL",league:"KPL",home:"Gor Mahia",away:"AFC Leopards",score:"1 - 0",time:"FT",o1:"2.10",ox:"2.90",o2:"3.20",pick:"Home Win OR Draw",ft:true},{lg:"EPL",league:"EPL",home:"Chelsea",away:"Man City",score:"1 - 2",time:"FT",o1:"3.00",ox:"3.30",o2:"2.30",pick:"GG - Both To Score",ft:true}];
-var JACKPOT=ALL.slice(200,217);var slip=[];var curLeague="ALL";
-function openMenu(){document.getElementById('menuDrawer').style.display='block'}function closeMenu(){document.getElementById('menuDrawer').style.display='none'}
-function showPage(p){var pages=['home','live','upcoming','previous','jackpot','about','help','mybets','profile'];pages.forEach(function(x){var e=document.getElementById('page-'+x);if(e)e.style.display=(x===p?'block':'none')});['bHome','bLive','bMy','bProf'].forEach(function(id){var b=document.getElementById(id);if(b)b.classList.remove('active')});if(p==='home')document.getElementById('bHome').classList.add('active');if(p==='live')document.getElementById('bLive').classList.add('active');if(p==='mybets')document.getElementById('bMy').classList.add('active');if(p==='profile')document.getElementById('bProf').classList.add('active');window.scrollTo(0,0)}
-function filterLeague(lg){curLeague=lg;showPage('upcoming');render();if(lg!=='ALL')alert('Unaona '+lg+' peke yake - MENU > ALL LEAGUES kuona zote')}
-function gameCard(g,i){var t=g.live?'<span class="live">● LIVE</span> '+g.time:'<span>'+g.time+'</span>';var parts=g.score.split(" - ");var hSc=parts[0]||"";var aSc=parts[1]||"";var btn="";if(g.ft){btn='<div class="pickLine">🎯 OUR PREDICTION: '+g.pick+' - ✅ WON - FT '+g.score+'</div>'}else{btn='<div class="pickLine">🎯 OUR PREDICTION: '+g.pick+'</div><button class="betBtn" onclick="quickBet('+i+')">🎯 BET NA PREDICTION YETU - '+g.pick+' →</button><div class="markets">+44 Markets</div>'}return '<div class="game"><div class="gTop"><span>⚽ '+g.league+'</span>'+t+'</div><div class="gMain"><div class="teams"><span>'+(g.live||g.ft?hSc:"")+'</span> '+g.home+'<br><span>'+(g.live||g.ft?aSc:"")+'</span> '+g.away+'</div><div class="odd" onclick="selectOdd(this,'+i+',\'1\',\''+g.o1+'\')">'+g.o1+'</div><div class="odd" onclick="selectOdd(this,'+i+',\'X\',\''+g.ox+'\')">'+g.ox+'</div><div class="odd" onclick="selectOdd(this,'+i+',\'2\',\''+g.o2+'\')">'+g.o2+'</div></div>'+btn+'</div>'}
-function selectOdd(el,idx,choice,odd){var par=el.parentNode;var odds=par.querySelectorAll('.odd');odds.forEach(function(o){o.classList.remove('sel')});el.classList.add('sel');var g=ALL[idx];var name=g.home+' vs '+g.away;var ex=slip.findIndex(function(s){return s.game===name});if(ex>=0)slip[ex]={game:name,choice:choice,odd:odd,pick:g.pick};else slip.push({game:name,choice:choice,odd:odd,pick:g.pick});updateSlip();alert('✅ Umeselect: '+name+' = '+choice+' @ '+odd+'\nPrediction yetu: '+g.pick)}
-function updateSlip(){var bar=document.getElementById('slipBar');if(slip.length>0){bar.style.display='block';var tot=1;for(var i=0;i<slip.length;i++)tot*=parseFloat(slip[i].odd);document.getElementById('slipText').textContent=slip.length+' Selections • Total Odd: '+tot.toFixed(2)}else bar.style.display='none';var mb=document.getElementById('myBetsList');if(mb){if(slip.length===0)mb.innerHTML='Hakuna bet bado - Chagua 1 / X / 2.';else mb.innerHTML=slip.map(function(s){return '<div style="background:#222e3a;padding:10px;border-radius:8px;margin:6px 0">'+s.game+'<br><b style="color:#ffd700">'+s.choice+' @ '+s.odd+'</b><br><small>Our Prediction: '+s.pick+'</small></div>'}).join('')+'<button style="background:#00c853;color:#fff;border:none;padding:12px;width:100%;border-radius:8px;font-weight:900;margin-top:8px" onclick="placeBet()">BET NOW →</button>'}try{document.getElementById('monUser').textContent=slip.length}catch(e){}}
-function quickBet(i){var g=ALL[i];slip.push({game:g.home+' vs '+g.away,choice:'Our Prediction: '+g.pick,odd:g.o1,pick:g.pick});updateSlip();var ok=confirm('Bet na prediction yetu?\n\n'+g.home+' vs '+g.away+'\nPrediction: '+g.pick+'\n\nOK = MELBET\nCancel = KE7');if(ok)window.open(SITES.melbet,'_blank');else window.open(SITES.ke7,'_blank');trackBet()}
-function placeBet(){if(slip.length===0){alert('Chagua kwanza 1 / X / 2');return}var txt="";for(var i=0;i<slip.length;i++)txt+=slip[i].game+' = '+slip[i].choice+' @ '+slip[i].odd+'\n';var ok=confirm('SLIP YAKO:\n\n'+txt+'\nOK = MELBET, Cancel = KE7');if(ok)window.open(SITES.melbet,'_blank');else window.open(SITES.ke7,'_blank');trackBet();alert('✅ Slip imetumwa!')}
-function showSlip(){if(slip.length===0){alert('Slip iko empty - Chagua 1 / X / 2 kwanza');return}showPage('mybets')}
-function trackBet(){var c=parseInt(localStorage.getItem('ozm_clicks')||'0')+1;loc
+function openMenu(){document.getElementById('drawer').style.display='block'}
+function closeMenu(){document.getElementById('drawer').style.display='none'}
+function go(p){var ps=document.querySelectorAll('.page');for(var i=0;i<ps.length;i++){ps[i].classList.remove('show')}document.getElementById('p-'+p).classList.add('show');closeMenu();window.scrollTo(0,0)}
+
+var GAMES=[
+{h:"Man City",a:"Fulham",lg:"EPL",live:1,sc:"2 - 0",tm:"67'",o1:"1.35",ox:"5.50",o2:"8.00",pick:"Home Win"},
+{h:"Chelsea",a:"Leeds United",lg:"EPL",live:1,sc:"1 - 0",tm:"54'",o1:"1.55",ox:"4.20",o2:"5.80",pick:"Home Win"},
+{h:"Tottenham",a:"Ipswich Town",lg:"EPL",live:1,sc:"1 - 1",tm:"61'",o1:"1.45",ox:"4.60",o2:"6.50",pick:"Home Win"},
+{h:"Bournemouth",a:"Nottm Forest",lg:"EPL",live:1,sc:"0 - 0",tm:"32'",o1:"2.10",ox:"3.40",o2:"3.50",pick:"Home Win OR Draw + GG"},
+{h:"Aston Villa",a:"Sunderland",lg:"EPL",live:1,sc:"1 - 0",tm:"48'",o1:"1.70",ox:"3.80",o2:"4.90",pick:"Home Win"},
+{h:"Coventry",a:"Crystal Palace",lg:"EPL",live:1,sc:"1 - 1",tm:"71'",o1:"2.80",ox:"3.20",o2:"2.50",pick:"GG - Both To Score"},
+{h:"Newcastle",a:"Arsenal",lg:"EPL",live:0,sc:"-",tm:"Sat 20:30",o1:"3.20",ox:"3.40",o2:"2.20",pick:"Away Win OR Draw + GG"},
+{h:"Liverpool",a:"Man United",lg:"EPL",live:0,sc:"-",tm:"Sun 19:30",o1:"1.90",ox:"3.60",o2:"3.90",pick:"Home Win OR Draw + GG"},
+{h:"Hull City",a:"Brighton",lg:"EPL",live:0,sc:"-",tm:"Sun 17:00",o1:"4.50",ox:"3.80",o2:"1.75",pick:"Away Win"},
+{h:"Brentford",a:"Everton",lg:"EPL",live:0,sc:"-",tm:"Mon 23:00",o1:"2.30",ox:"3.30",o2:"3.00",pick:"Home Win OR Draw + GG"},
+{h:"Real Madrid",a:"Celta Vigo",lg:"La Liga",live:0,sc:"-",tm:"Sat 23:00",o1:"1.30",ox:"5.80",o2:"9.00",pick:"Home Win + Over 2.5"},
+{h:"Barcelona",a:"Villarreal",lg:"La Liga",live:0,sc:"-",tm:"Sun 16:00",o1:"1.45",ox:"4.80",o2:"6.50",pick:"Home Win + Over 2.5"},
+{h:"Sevilla",a:"Real Betis",lg:"La Liga",live:0,sc:"-",tm:"Sat 20:30",o1:"2.60",ox:"3.20",o2:"2.70",pick:"GG - Both To Score"},
+{h:"Getafe",a:"Atletico Madrid",lg:"La Liga",live:0,sc:"-",tm:"Sun 23:00",o1:"4.20",ox:"3.20",o2:"1.95",pick:"Away Win OR Draw"},
+{h:"Rayo Vallecano",a:"Valencia",lg:"La Liga",live:0,sc:"-",tm:"Sat 18:15",o1:"2.40",ox:"3.10",o2:"3.00",pick:"Home Win OR Draw"},
+{h:"Napoli",a:"Torino",lg:"Serie A",live:0,sc:"-",tm:"Sat 22:45",o1:"1.65",ox:"3.80",o2:"5.20",pick:"Home Win"},
+{h:"Juventus",a:"Venezia",lg:"Serie A",live:0,sc:"-",tm:"Sun 14:30",o1:"1.45",ox:"4.40",o2:"7.00",pick:"Home Win"},
+{h:"AC Milan",a:"Frosinone",lg:"Serie A",live:0,sc:"-",tm:"Sun 20:00",o1:"1.35",ox:"5.00",o2:"8.50",pick:"Home Win"},
+{h:"Atalanta",a:"Inter",lg:"Serie A",live:0,sc:"-",tm:"Sun 22:45",o1:"2.80",ox:"3.30",o2:"2.45",pick:"GG + Over 2.5"},
+{h:"Lazio",a:"Lecce",lg:"Serie A",live:0,sc:"-",tm:"Sat 17:00",o1:"1.70",ox:"3.60",o2:"5.00",pick:"Home Win"},
+{h:"Parma",a:"Roma",lg:"Serie A",live:0,sc:"-",tm:"Sat 20:00",o1:"3.40",ox:"3.30",o2:"2.15",pick:"Away Win OR Draw"},
+{h:"Leverkusen",a:"Paderborn",lg:"Bundesliga",live:0,sc:"-",tm:"Sat 17:30",o1:"1.25",ox:"6.00",o2:"10.00",pick:"Home Win + Over 2.5"},
+{h:"Dortmund",a:"Monchengladbach",lg:"Bundesliga",live:0,sc:"-",tm:"Sat 17:30",o1:"1.85",ox:"3.90",o2:"4.00",pick:"GG + Over 2.5"},
+{h:"Frankfurt",a:"Hoffenheim",lg:"Bundesliga",live:0,sc:"-",tm:"Sat 17:30",o1:"2.20",ox:"3.60",o2:"3.10",pick:"Over 2.5"},
+{h:"Union Berlin",a:"RB Leipzig",lg:"Bundesliga",live:0,sc:"-",tm:"Sat 17:30",o1:"3.80",ox:"3.60",o2:"1.90",pick:"GG - Both To Score"},
+{h:"Schalke",a:"Stuttgart",lg:"Bundesliga",live:0,sc:"-",tm:"Sat 20:30",o1:"3.50",ox:"3.60",o2:"2.00",pick:"Away Win OR Draw"},
+{h:"Augsburg",a:"Mainz",lg:"Bundesliga",live:0,sc:"-",tm:"Sun 17:30",o1:"2.50",ox:"3.20",o2:"2.80",pick:"Home Win OR Draw"},
+{h:"Werder Bremen",a:"Hamburg",lg:"Bundesliga",live:0,sc:"-",tm:"Sun 19:30",o1:"2.40",ox:"3.40",o2:"2.85",pick:"GG - Both To Score"},
+{h:"Gor Mahia",a:"AFC Leopards",lg:"KPL",live:0,sc:"-",tm:"Sun 16:00",o1:"2.10",ox:"2.90",o2:"3.20",pick:"Home Win OR Draw"},
+{h:"Tusker",a:"Kenya Police",lg:"KPL",live:0,sc:"-",tm:"Sat 16:00",o1:"2.30",ox:"2.95",o2:"2.95",pick:"Under 2.5"}
+];
+
+var PREV=[
+{h:"Arsenal",a:"Tottenham",lg:"EPL",sc:"2 - 0",tm:"FT",o1:"1.90",ox:"3.40",o2:"3.80",pick:"Home Win - WON"},
+{h:"Real Madrid",a:"Barcelona",lg:"La Liga",sc:"2 - 1",tm:"FT",o1:"2.10",ox:"3.30",o2:"3.40",pick:"Home Win - WON"},
+{h:"Bayern",a:"RB Leipzig",lg:"Bundesliga",sc:"3 - 1",tm:"FT",o1:"1.50",ox:"4.00",o2:"6.00",pick:"Over 2.5 - WON"},
+{h:"Gor Mahia",a:"AFC Leopards",lg:"KPL",sc:"1 - 0",tm:"FT",o1:"2.10",ox:"2.90",o2:"3.20",pick:"Home Win OR Draw - WON"}
+];
+
+var slip=[];
+function card(g,i){
+var top=g.live?'<span class="live">● LIVE</span> '+g.tm:'<span>'+g.tm+'</span>';
+var sc=g.live?g.sc.split(" - "):["",""];
+var hsc=g.live?sc[0]:""; var asc=g.live?sc[1]:"";
+if(g.tm==="FT"){hsc=g.sc.split(" - ")[0];asc=g.sc.split(" - ")[1];}
+return '<div class="game"><div class="gTop"><span>⚽ '+g.lg+'</span>'+top+'</div><div class="gMain"><div class="teams"><span>'+hsc+' </span>'+g.h+'<br><span>'+asc+' </span>'+g.a+'</div><div class="odd" onclick="sel(this,'+i+',\'1\')">'+g.o1+'</div><div class="odd" onclick="sel(this,'+i+',\'X\')">'+g.ox+'</div><div class="odd" onclick="sel(this,'+i+',\'2\')">'+g.o2+'</div></div><div class="pick">🎯 OUR PREDICTION: '+g.pick+'</div><button class="betBtn" onclick="bet('+i+')">🎯 BET NA PREDICTION YETU →</button></div>';
+}
+function sel(el,i,ch){
+var p=el.parentNode;var o=p.querySelectorAll('.odd');for(var k=0;k<o.length;k++){o[k].classList.remove('sel')}el.classList.add('sel');
+var g=GAMES[i];slip.push(g.h+' vs '+g.a+' = '+ch);updateSlip();alert('✅ Umeselect: '+g.h+' vs '+g.a+' = '+ch);
+}
+function updateSlip(){
+var b=document.getElementById('slipBar');if(slip.length>0){b.style.display='block';document.getElementById('slipTxt').textContent=slip.length+' Selections'}else{b.style.display='none'}
+var m=document.getElementById('myList');if(slip.length>0){m.innerHTML='';for(var i=0;i<slip.length;i++){m.innerHTML+='<div style="background:#222e3a;padding:10px;border-radius:8px;margin:6px 0">'+slip[i]+'</div>'}}
+}
+function bet(i){
+var g=GAMES[i];var ok=confirm('Bet na prediction yetu?\n\n'+g.h+' vs '+g.a+'\nPrediction: '+g.pick+'\n\nOK = MELBET, Cancel = KE7');
+if(ok){window.open('https://refpa3665.com/L?tag=d_6346195m_2170c_&site=6346195&ad=2170','_blank')}else{window.open('https://ke7.com/?urc=214615471','_blank')}
+}
+function placeBet(){if(slip.length===0){alert('Chagua kwanza 1 / X / 2');return}var ok=confirm('SLIP YAKO:\n'+slip.join('\n')+'\n\nOK = MELBET, Cancel = KE7');if(ok){window.open('https://refpa3665.com/L?tag=d_6346195m_2170c_&site=6346195&ad=2170','_blank')}else{window.open('https://ke7.com/?urc=214615471','_blank')}}
+
+var htmlHome="";var htmlLive="";var htmlUp="";
+for(var i=0;i<GAMES.length;i++){
+htmlUp+=card(GAMES[i],i);
+if(GAMES[i].live){htmlLive+=card(GAMES[i],i);htmlHome+=card(GAMES[i],i)}
+}
+for(var j=0;j<6;j++){htmlHome+=card(GAMES[6+j],6+j)}
+document.getElementById('listHome').innerHTML=htmlHome;
+document.getElementById('listLive').innerHTML=htmlLive;
+document.getElementById('listUp').innerHTML=htmlUp;
+var htmlPrev="";for(var p=0;p<PREV.length;p++){htmlPrev+=card(PREV[p],0)}
+document.getElementById('listPrev').innerHTML=htmlPrev;
+var htmlJack="";for(var q=0;q<17;q++){htmlJack+=card(GAMES[q%GAMES.length],q%GAMES.length)}
+document.getElementById('listJack').innerHTML=htmlJack;
+</script></body></html>
